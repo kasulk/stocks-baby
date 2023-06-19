@@ -5,18 +5,20 @@ import useSWR from "swr";
 // const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  // const url = "../../_ressources/demoStocks.json";
-  // const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
-  // const { data } = useSWR(url, fetcher);
-  // console.log(data);
-
-  // render data
-  // return <div>Hello {data.name}!</div>; // Hello Luke Skywalker!
+  const { data: stockData } = useSWR("/api/stocks", { fallbackData: [] });
 
   return (
     <>
-      <div className="text-red-500 bg-slate-600 hover:bg-slate-800">test</div>
+      {stockData.map((stock) => (
+        <div
+          key={stock._id}
+          className="text-red-500 bg-slate-600 hover:bg-slate-800"
+        >
+          {/* {stock.symbol} */}
+          {stock.ticker}
+          {/* {stock._id} */}
+        </div>
+      ))}
     </>
   );
 }
