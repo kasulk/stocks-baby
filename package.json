@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "buildcss": "tailwindcss build src/styles/global.css -o public/styles.css",
+    "watchcss": "tailwindcss -i src/styles/global.css -o public/styles.css --watch"
   },
   "dependencies": {
     "@types/node": "20.3.1",
