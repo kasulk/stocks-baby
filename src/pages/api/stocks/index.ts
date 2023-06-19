@@ -16,6 +16,7 @@ export default async function handler(
 
   if (request.method === "GET") {
     const DemoStocks = await DemoStock.find();
+    console.log("DemoStocks from DB:", DemoStocks);
     return response.status(200).json(DemoStocks);
   } else {
     return response.status(405).json({ message: "HTTP Method not allowed" });
