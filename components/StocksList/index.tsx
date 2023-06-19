@@ -1,10 +1,10 @@
-import StockListItem from "../StockListItem";
+import StocksListItem from "../StocksListItem";
 
 export default function StocksList({ stocksData }) {
   return (
     <>
       <ul>
-        <StockListItem stocksData={stocksData}></StockListItem>
+        <StocksListItem stocksData={stocksData}></StocksListItem>
       </ul>
     </>
   );

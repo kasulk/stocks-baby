@@ -1,3 +1,5 @@
+import StockCard from "../StockCard";
+
 export default function StockListItem({ stocksData }) {
   return (
     <>
@@ -6,7 +8,12 @@ export default function StockListItem({ stocksData }) {
           key={stock._id}
           className="text-red-500 bg-slate-600 hover:bg-slate-800 list-none"
         >
-          {stock.ticker}
+          <StockCard
+            ticker={stock.ticker}
+            name={stock.name}
+            exchange={stock.exchange}
+            assetType={stock.assetType}
+          />
         </li>
       ))}
     </>
