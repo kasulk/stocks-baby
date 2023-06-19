@@ -1,9 +1,12 @@
 import StockCard from "../StockCard";
+import { Stock } from "../StocksList";
 
-export default function StockListItem({ stocksData }) {
+// export default function StockListItem({ stocksData }) {
+export default function StockListItem(props: Stock[]) {
   return (
     <>
-      {stocksData.map((stock) => (
+      {/* {stocksData.map((stock) => ( */}
+      {props.map((stock) => (
         <li
           key={stock._id}
           className="text-red-500 bg-slate-600 hover:bg-slate-800 list-none"
