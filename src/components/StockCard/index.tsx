@@ -1,4 +1,12 @@
-export default function StockCard({ ticker, name, exchange, assetType }) {
+import { StockType } from "../../../types";
+
+export default function StockCard({
+  // id,
+  ticker,
+  name,
+  exchange,
+  assetType,
+}: StockType) {
   return (
     <article>
       <h1 className="font-bold text-xl">{ticker}</h1>

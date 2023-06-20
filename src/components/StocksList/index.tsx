@@ -1,19 +1,11 @@
 import StocksListItem from "../StocksListItem";
+import { StocksProps } from "../../../types";
 
-export type Stock = {
-  _id: string;
-  ticker: string;
-  name: string;
-  exchange: string;
-  assetType: string;
-};
-
-// export default function StocksList({ stocksData }: Stock[]) {
-export default function StocksList(props: Stock[]) {
+export default function StocksList({ stocks }: StocksProps) {
   return (
     <>
       <ul>
-        <StocksListItem stocksData={stocksData}></StocksListItem>
+        <StocksListItem stocks={stocks}></StocksListItem>
       </ul>
     </>
   );

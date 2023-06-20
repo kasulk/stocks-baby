@@ -1,17 +1,16 @@
+import { StocksProps } from "../../../types";
 import StockCard from "../StockCard";
-import { Stock } from "../StocksList";
 
-// export default function StockListItem({ stocksData }) {
-export default function StockListItem(props: Stock[]) {
+export default function StockListItem({ stocks }: StocksProps) {
   return (
     <>
-      {/* {stocksData.map((stock) => ( */}
-      {props.map((stock) => (
+      {stocks.map((stock) => (
         <li
           key={stock._id}
           className="text-red-500 bg-slate-600 hover:bg-slate-800 list-none"
         >
           <StockCard
+            // id={stock._id}
             ticker={stock.ticker}
             name={stock.name}
             exchange={stock.exchange}

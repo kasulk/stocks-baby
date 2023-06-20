@@ -1,17 +1,14 @@
 import useSWR from "swr";
-import StocksList, { Stock } from "../components/StocksList";
+import StocksList from "../components/StocksList";
+import { StockType } from "../../types";
 // import Image from "next/image";
 
 export default function Home() {
-  // const { data } = useSWR("/api/stocks", { fallbackData: [] });
-  const data = useSWR("/api/stocks", {
-    fallbackData: [],
-  }) as unknown as Stock[];
+  const { data } = useSWR("/api/stocks", { fallbackData: [] });
 
   return (
     <>
-      {/* <StocksList stocksData={data}></StocksList> */}
-      <StocksList {...data}></StocksList>
+      <StocksList stocks={data}></StocksList>
     </>
   );
 }
