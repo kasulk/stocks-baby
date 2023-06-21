@@ -5,7 +5,7 @@ export default function StockListItem({ stocks }: StocksProps) {
   return (
     <>
       {stocks.map((stock) => (
-        <li key={stock._id}>
+        <li key={stock._id} className="list-none">
           <StockCard
             // id={stock._id}
             // ticker={stock.ticker}

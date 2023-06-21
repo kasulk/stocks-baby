@@ -17,7 +17,10 @@ export default function StockCard({
 }: StockType) {
   //
   return (
-    <article className="m-4 p-4 rounded-lg text-slate-300 bg-slate-600 hover:bg-slate-800 list-none">
+    <article
+      // shadow not working...
+      className={`m-6 p-6 rounded-2xl shadow-xs text-slate-300 bg-slate-600 hover:bg-slate-800`}
+    >
       <p className="text-xs">
         <span>{Symbol}</span>:<span>{Exchange}</span>
       </p>
@@ -27,32 +30,36 @@ export default function StockCard({
         <p>{Industry}</p>
       </div>
       <p>
-        <span>Dividend: </span>
-        {DividendPerShare != "0" ? DividendPerShare : "-"}
+        <span className="text-sm text-slate-400">Dividend: </span>
+        <span>{DividendPerShare != "0" ? DividendPerShare : "-"}</span>
       </p>
       <p>
-        <span>Dividend %: </span>
-        {DividendYield != "0" ? `${Number(DividendYield) * 100}%` : "-"}
+        <span className="text-sm text-slate-400">Dividend %: </span>
+        <span>
+          {DividendYield != "0" ? `${Number(DividendYield) * 100}%` : "-"}
+        </span>
       </p>
       <p>
-        <span>EPS: </span>
-        {EPS}
+        <span className="text-sm text-slate-400">EPS: </span>
+        <span>{EPS}</span>
       </p>
       <p>
-        <span>BookValue: </span>
-        {BookValue}
+        <span className="text-sm text-slate-400">BookValue: </span>
+        <span>{BookValue}</span>
       </p>
       <p>
-        <span>52W Range: </span>
-        {_52WeekLow} - {_52WeekHigh}
+        <span className="text-sm text-slate-400">52W Range: </span>
+        <span>
+          {_52WeekLow} - {_52WeekHigh}
+        </span>
       </p>
       <p>
-        <span>Analyst Target Price: </span>
-        {AnalystTargetPrice}
+        <span className="text-sm text-slate-400">Analyst Target Price: </span>
+        <span>{AnalystTargetPrice}</span>
       </p>
       <p>
-        <span>Price: </span>
-        {Price}
+        <span className="text-sm text-slate-400">Price: </span>
+        <span>{Price}</span>
       </p>
     </article>
   );
