@@ -13,13 +13,7 @@ export default function StockCard({
   _52WeekLow,
   AnalystTargetPrice,
   Price,
-}: // id,
-// ticker,
-// name,
-// exchange,
-// assetType,
-
-StockType) {
+}: StockType) {
   //
   return (
     <article>
@@ -57,9 +51,6 @@ StockType) {
         <span>Price: </span>
         {Price}
       </p>
-      {/* <p>{name}</pDividendsPerShare>
-      <p>{exchange}</p>
-      <p>{assetType}</p> */}
       <br />
       <hr />
     </article>
