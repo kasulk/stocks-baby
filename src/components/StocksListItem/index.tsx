@@ -17,6 +17,17 @@ export default function StockListItem({ stocks }: StocksProps) {
             // assetType={stock.assetType}
             // ticker={stock.Symbol}
             Symbol={stock.Symbol}
+            Name={stock.Name}
+            Exchange={stock.Exchange}
+            Industry={stock.Industry}
+            DividendPerShare={stock.DividendPerShare}
+            DividendYield={stock.DividendYield}
+            EPS={stock.EPS}
+            BookValue={stock.BookValue}
+            _52WeekHigh={stock._52WeekHigh}
+            _52WeekLow={stock._52WeekLow}
+            AnalystTargetPrice={stock.AnalystTargetPrice}
+            Price={stock.Price}
           />
         </li>
       ))}

@@ -9,12 +9,18 @@
 
 export interface StockType {
   _id?: string; // TS: if not set to optional, TS complains when passing the props to Card-Component...
-  // ticker: string;
   Symbol: string;
-  // name: string;
-  // exchange: string;
-  // assetType: string;
-  // price?: number;
+  Name: string;
+  Exchange: string;
+  Industry: string;
+  DividendPerShare: string;
+  DividendYield: string;
+  EPS: string;
+  BookValue: string;
+  _52WeekHigh: string;
+  _52WeekLow: string;
+  AnalystTargetPrice: string;
+  Price: string;
 }
 
 export interface StocksProps {
