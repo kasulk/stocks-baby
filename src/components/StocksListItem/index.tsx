@@ -11,10 +11,12 @@ export default function StockListItem({ stocks }: StocksProps) {
         >
           <StockCard
             // id={stock._id}
-            ticker={stock.ticker}
-            name={stock.name}
-            exchange={stock.exchange}
-            assetType={stock.assetType}
+            // ticker={stock.ticker}
+            // name={stock.name}
+            // exchange={stock.exchange}
+            // assetType={stock.assetType}
+            // ticker={stock.Symbol}
+            Symbol={stock.Symbol}
           />
         </li>
       ))}
