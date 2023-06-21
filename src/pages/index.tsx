@@ -6,7 +6,7 @@ import { StockType } from "../../types";
 export default function Home() {
   const { data } = useSWR("/api/demostocks", { fallbackData: [] });
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <>

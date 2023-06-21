@@ -5,10 +5,7 @@ export default function StockListItem({ stocks }: StocksProps) {
   return (
     <>
       {stocks.map((stock) => (
-        <li
-          key={stock._id}
-          className="text-red-500 bg-slate-600 hover:bg-slate-800 list-none"
-        >
+        <li key={stock._id}>
           <StockCard
             // id={stock._id}
             // ticker={stock.ticker}
@@ -19,6 +16,7 @@ export default function StockListItem({ stocks }: StocksProps) {
             Symbol={stock.Symbol}
             Name={stock.Name}
             Exchange={stock.Exchange}
+            Sector={stock.Sector}
             Industry={stock.Industry}
             DividendPerShare={stock.DividendPerShare}
             DividendYield={stock.DividendYield}

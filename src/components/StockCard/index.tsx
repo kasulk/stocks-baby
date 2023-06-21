@@ -4,6 +4,7 @@ export default function StockCard({
   Symbol,
   Name,
   Exchange,
+  Sector,
   Industry,
   DividendPerShare,
   DividendYield,
@@ -16,13 +17,15 @@ export default function StockCard({
 }: StockType) {
   //
   return (
-    <article>
-      <span>{Symbol}</span>:<span>{Exchange}</span>
-      <h1 className="font-bold text-xl">{Name}</h1>
-      <p>
-        <span>Industry: </span>
-        {Industry}
+    <article className="m-4 p-4 rounded-lg text-red-500 bg-slate-600 hover:bg-slate-800 list-none">
+      <p className="text-xs">
+        <span>{Symbol}</span>:<span>{Exchange}</span>
       </p>
+      <h1 className="font-bold text-xl">{Name}</h1>
+      <div className="text-xs">
+        <p>{Sector}</p>
+        <p>{Industry}</p>
+      </div>
       <p>
         <span>Dividend: </span>
         {DividendPerShare != "0" ? DividendPerShare : "-"}
@@ -51,8 +54,6 @@ export default function StockCard({
         <span>Price: </span>
         {Price}
       </p>
-      <br />
-      <hr />
     </article>
   );
 }

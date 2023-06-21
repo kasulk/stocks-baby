@@ -12,6 +12,7 @@ export interface StockType {
   Symbol: string;
   Name: string;
   Exchange: string;
+  Sector: string;
   Industry: string;
   DividendPerShare: string;
   DividendYield: string;
