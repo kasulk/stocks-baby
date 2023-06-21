@@ -4,7 +4,9 @@ import { StockType } from "../../types";
 // import Image from "next/image";
 
 export default function Home() {
-  const { data } = useSWR("/api/stocks", { fallbackData: [] });
+  const { data } = useSWR("/api/demostocks", { fallbackData: [] });
+
+  console.log(data);
 
   return (
     <>
