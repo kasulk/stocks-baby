@@ -17,7 +17,7 @@ export default function StockCard({
 }: StockType) {
   //
   return (
-    <article className="m-4 p-4 rounded-lg text-red-500 bg-slate-600 hover:bg-slate-800 list-none">
+    <article className="m-4 p-4 rounded-lg text-slate-300 bg-slate-600 hover:bg-slate-800 list-none">
       <p className="text-xs">
         <span>{Symbol}</span>:<span>{Exchange}</span>
       </p>
@@ -32,7 +32,7 @@ export default function StockCard({
       </p>
       <p>
         <span>Dividend %: </span>
-        {DividendYield != "0" ? Number(DividendYield) * 100 : "-"}
+        {DividendYield != "0" ? `${Number(DividendYield) * 100}%` : "-"}
       </p>
       <p>
         <span>EPS: </span>
