@@ -1,14 +1,9 @@
-export default function SortDropdown({}) {
+export default function SortDropdown({ onSubmit }) {
   return (
     <div className="flex justify-end">
       <form method="post">
         <label htmlFor="sort">Sort: </label>
-        <select
-          name="sort"
-          id="sort"
-          className="p-1"
-          // onchange="if(this.value != 0) { this.form.submit(); }"
-        >
+        <select name="sort" id="sort" className="p-1" onChange={onSubmit}>
           {/* <option value="0">Sort by:</option> */}
           <option value="0" disabled>
             choose a value:
