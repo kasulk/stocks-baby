@@ -7,35 +7,64 @@ import { FormEvent, useState } from "react";
 
 export default function Home() {
   // const [sortParam, setSortParam] = useState("ticker-ascending");
-  const [sortParam, setSortParam] = useState("");
+  // const [sortParam, setSortParam] = useState("");
+  const [sortParam, setSortParam] = useState({
+    sortBy: "",
+    sortDirection: "",
+  });
+
   // move swr to stocklistitem?
   const { data: stocks } = useSWR("/api/demostocks", { fallbackData: [] });
 
   function handleSortSubmit(event: FormEvent<HTMLFormElement>) {
     const element = event.target as HTMLSelectElement;
-    setSortParam(element.value);
+    const elementOptionValues = element.value.split("-");
+
+    // console.log(elementOptionValues);
+
+    // setSortParam(element.value);
+    setSortParam({
+      sortBy: elementOptionValues[0],
+      sortDirection: elementOptionValues[1],
+    });
+
     // console.log(sortParam);
   }
 
-  console.log(sortParam);
+  // console.log(sortParam);
 
   // step: Make sort function dynamic, depending on chosen dropdown-value
   // step: e.g.: 'Symbol-ascending' => a.Symbol (take keyname and direction from dropdown-value)
   // const sortedStocks = stocks.slice().sort((a: String, b: String) => {
-  const sortedStocks: StockType[] = stocks
-    .slice()
-    .sort((a: StockType, b: StockType) => {
-      // if ascending
-      if (a.Symbol < b.Symbol) {
-        return -1;
-      }
-      if (a.Symbol > b.Symbol) {
-        return 1;
-      }
-    });
-
-  console.log("stocks:", stocks);
-  console.log("sortedStocks:", sortedStocks);
+  if (sortParam.sortDirection === "ascending") {
+    // const sortedStocks: StockType[] = stocks
+    stocks
+      // .slice()
+      .sort((a: StockType, b: StockType) => {
+        // if ascending
+        if (a.Symbol < b.Symbol) {
+          return -1;
+        }
+        if (a.Symbol > b.Symbol) {
+          return 1;
+        }
+      });
+  } else if (sortParam.sortDirection === "descending") {
+    // const sortedStocks: StockType[] = stocks
+    stocks
+      // .slice()
+      .sort((a: StockType, b: StockType) => {
+        // if ascending
+        if (a.Symbol < b.Symbol) {
+          return 1;
+        }
+        if (a.Symbol > b.Symbol) {
+          return -1;
+        }
+      });
+  }
+  // console.log("stocks:", stocks);
+  // console.log("sortedStocks:", sortedStocks);
 
   return (
     <>
