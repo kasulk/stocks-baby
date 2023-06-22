@@ -33,3 +33,5 @@ export type SortParamType = {
   sortBy: "Name" | "Symbol";
   sortDirection: "ascending" | "descending";
 };
+
+export type SortType = "Symbol" | "Name";
