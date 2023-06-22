@@ -31,14 +31,11 @@ export default function Home() {
     // console.log(sortParam);
   }
 
-  // console.log(sortParam);
-
-  // step: Make sort function dynamic, depending on chosen dropdown-value
-  // step: e.g.: 'Symbol-ascending' => a.Symbol (take keyname and direction from dropdown-value)
-
-  stocks.sort((a: StockType, b: StockType) => {
+  function sortStocksList(a: StockType, b: StockType) {
+    // stocks.sort((a: StockType, b: StockType, c = sortParam.sortDirection) => {
     if (sortParam.sortDirection === "ascending") {
       if (a.Symbol < b.Symbol) {
+        // if (a.[sortParam.sortDirection] < b.[sortParam.sortDirection]) { //! doesn't work...
         return -1;
       }
       if (a.Symbol > b.Symbol) {
@@ -52,7 +49,38 @@ export default function Home() {
         return -1;
       }
     }
+    // return 0
+  }
+
+  // console.log(sortParam);
+
+  // step: Make sort function dynamic, depending on chosen dropdown-value
+  // step: e.g.: 'Symbol-ascending' => a.Symbol (take keyname and direction from dropdown-value)
+
+  stocks.sort((a: StockType, b: StockType) => {
+    // sortStocksList(a, b);
+
+    const key = sortParam.sortBy;
+
+    if (sortParam.sortDirection === "ascending") {
+      if (a[key] < b[key]) {
+        return -1;
+      }
+      if (a[key] > b[key]) {
+        return 1;
+      }
+    } else if (sortParam.sortDirection === "descending") {
+      if (a[key] < b[key]) {
+        return 1;
+      }
+      if (a[key] > b[key]) {
+        return -1;
+      }
+    }
+    // return 0
   });
+  // })
+
   // }
   // if (sortParam.sortDirection === "ascending") {
   //   stocks.sort((a: StockType, b: StockType) => {
