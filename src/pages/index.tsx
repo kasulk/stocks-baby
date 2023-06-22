@@ -19,15 +19,20 @@ export default function Home() {
 
   console.log(sortParam);
 
-  const sortedStocks = stocks.slice().sort((a, b) => {
-    // ascending
-    if (a.Symbol < b.Symbol) {
-      return -1;
-    }
-    if (a.Symbol > b.Symbol) {
-      return 1;
-    }
-  });
+  // step: Make sort function dynamic, depending on chosen dropdown-value
+  // step: e.g.: 'Symbol-ascending' => a.Symbol (take keyname and direction from dropdown-value)
+  // const sortedStocks = stocks.slice().sort((a: String, b: String) => {
+  const sortedStocks: StockType[] = stocks
+    .slice()
+    .sort((a: StockType, b: StockType) => {
+      // if ascending
+      if (a.Symbol < b.Symbol) {
+        return -1;
+      }
+      if (a.Symbol > b.Symbol) {
+        return 1;
+      }
+    });
 
   console.log("stocks:", stocks);
   console.log("sortedStocks:", sortedStocks);

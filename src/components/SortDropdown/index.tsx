@@ -9,8 +9,8 @@ export default function SortDropdown({ onSubmit }) {
             choose a value:
           </option>
           <optgroup label="Ticker:">
-            <option value="ticker-ascending">Ticker: ascending</option>
-            <option value="ticker-descending">Ticker: descending</option>
+            <option value="Symbol-ascending">Ticker: ascending</option>
+            <option value="Symbol-descending">Ticker: descending</option>
           </optgroup>
         </select>
       </form>
