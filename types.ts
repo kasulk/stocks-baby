@@ -27,3 +27,8 @@ export interface StockType {
 export interface StocksProps {
   stocks: StockType[];
 }
+
+export type SortParamType = {
+  sortBy: "Name" | "Symbol";
+  sortDirection: "ascending" | "descending";
+};
