@@ -53,6 +53,8 @@ export default function Home() {
     low: number
   ) {
     const bruchwert = (currentPrice - low) / (high - low);
+    // console.log(Number(bruchwert.toFixed(4)));
+
     return bruchwert.toFixed(4);
   }
 

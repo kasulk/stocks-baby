@@ -50,41 +50,59 @@ export default function StockCard({
       </div>
       <p>
         <span className="text-sm text-slate-400">Dividend: </span>
-        <span>{DividendPerShare != "0" ? DividendPerShare : "-"}</span>
+        <span>
+          {/* {DividendPerShare != "0" ? Number(DividendPerShare).toFixed(2) : "-"} */}
+          {Number(DividendPerShare) ? Number(DividendPerShare).toFixed(2) : "-"}
+        </span>
       </p>
       <p>
         <span className="text-sm text-slate-400">Dividend %: </span>
         <span>
-          {DividendYield != "0" ? `${Number(DividendYield) * 100}%` : "-"}
+          {Number(DividendYield)
+            ? `${(Number(DividendYield) * 100).toFixed(2)}%`
+            : "-"}
         </span>
       </p>
-      <p>
+      {/* <p>
         <span className="text-sm text-slate-400">EPS: </span>
         <span>{EPS}</span>
+      </p> */}
+      <p title="FairValue: EPS x 15">
+        <span className="text-sm text-slate-400">FairValue (EPS): </span>
+        <span>{`${(Number(EPS) * 15).toFixed(2)} (${Number(EPS).toFixed(
+          2
+        )})`}</span>
       </p>
       <p>
         <span className="text-sm text-slate-400">BookValue: </span>
-        <span>{BookValue}</span>
+        <span>{Number(BookValue).toFixed(2)}</span>
+        {/* <span>{BookValue.toFixed(2)}</span> */}
       </p>
       <p>
         <span className="text-sm text-slate-400">52W Range: </span>
         <span>
-          {_52WeekLow} - {_52WeekHigh}
+          {Number(_52WeekLow).toFixed(2)} - {Number(_52WeekHigh).toFixed(2)}
         </span>
       </p>
-      {/* {Bruchwert52Week && ( */}
       <p title="Bruchwert: Current distance from 52Week Low in %">
         <span className="text-sm text-slate-400">52W Bruchwert: </span>
         <span>{(Number(Bruchwert52Week) * 100).toFixed(2)}%</span>
       </p>
-      {/* )} */}
+      {/* <p title="Bruchwert: Current distance from 52Week Low in %">
+        <span className="text-sm text-slate-400">52W Bruchwert (Range): </span>
+        <span>
+          {`${(Number(Bruchwert52Week) * 100).toFixed(
+            2
+          )}% (${_52WeekLow}-${_52WeekHigh})`}
+        </span>
+      </p> */}
       <p>
         <span className="text-sm text-slate-400">Analyst Target Price: </span>
-        <span>{AnalystTargetPrice}</span>
+        <span>{Number(AnalystTargetPrice).toFixed(2)}</span>
       </p>
       <p>
         <span className="text-sm text-slate-400">Price: </span>
-        <span>{Price}</span>
+        <span>{Number(Price).toFixed(2)}</span>
       </p>
     </article>
   );
