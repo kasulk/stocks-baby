@@ -55,7 +55,6 @@ export default function Home() {
     const bruchwert = (currentPrice - low) / (high - low);
     return bruchwert.toFixed(4);
   }
-  // console.log(calc52WeekBruchwert(75, 100, 50));
 
   function addBruchwertPropertyToArrOfObjs(arrOfObjects: StockType[]) {
     arrOfObjects.forEach((object) => {
@@ -67,7 +66,7 @@ export default function Home() {
     });
   }
   addBruchwertPropertyToArrOfObjs(stocks);
-  console.log(stocks);
+  // console.log(stocks);
 
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
 

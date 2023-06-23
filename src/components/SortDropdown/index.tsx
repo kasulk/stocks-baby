@@ -22,10 +22,10 @@ export default function SortDropdown({ onSort }: SortProps) {
             <option value="DividendYield-descending">Div%: descending</option>
           </optgroup>
           <optgroup label="52Week Bruchwert%">
-            <option value="Bruchwert52Week%-ascending">
+            <option value="Bruchwert52Week-ascending">
               Bruchwert%: ascending
             </option>
-            <option value="Bruchwert52Week%-descending">
+            <option value="Bruchwert52Week-descending">
               Bruchwert%: descending
             </option>
           </optgroup>
