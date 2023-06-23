@@ -1,37 +1,36 @@
-// export interface StockType {
-//   _id?: string; // TS: if not set to optional, TS complains when passing the props to Card-Component...
-//   ticker: string;
-//   name: string;
-//   exchange: string;
-//   assetType: string;
-//   price?: number;
-// }
-
-export interface StockType {
+export type StockType = {
   _id?: string; // TS: if not set to optional, TS complains when passing the props to Card-Component...
   Symbol: string;
   Name: string;
   Exchange: string;
   Sector: string;
   Industry: string;
-  DividendPerShare: string;
-  DividendYield: string;
-  EPS: string;
-  BookValue: string;
-  _52WeekHigh: string;
-  _52WeekLow: string;
-  AnalystTargetPrice: string;
-  Price: string;
-}
+  DividendPerShare: string | number;
+  DividendYield: string | number;
+  EPS: string | number;
+  BookValue: string | number;
+  _52WeekHigh: string | number;
+  _52WeekLow: string | number;
+  AnalystTargetPrice: string | number;
+  Price: string | number;
+};
 
-export interface StocksProps {
+export type StocksProps = {
   stocks: StockType[];
-}
+};
+
+// TS: Yair
+export type SortByType = "Symbol" | "Name";
+
+// TS: Yair
+export type SortDirectionType = "ascending" | "descending";
 
 // TS: Yair
 export type SortParamType = {
-  sortBy: "Name" | "Symbol";
-  sortDirection: "ascending" | "descending";
+  sortBy: SortByType;
+  sortDirection: SortDirectionType;
 };
 
-export type SortType = "Symbol" | "Name";
+export type SortProps = {
+  onSort: (event: React.FormEvent) => void;
+};

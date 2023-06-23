@@ -1,9 +1,11 @@
-export default function SortDropdown({ onSubmit }) {
+import { SortProps } from "../../../types";
+
+export default function SortDropdown({ onSort }: SortProps) {
   return (
     <div className="flex justify-end">
       <form method="post">
         <label htmlFor="sort">Sort: </label>
-        <select name="sort" id="sort" className="p-1" onChange={onSubmit}>
+        <select name="sort" id="sort" className="p-1" onChange={onSort}>
           <option className="italic" value="0" disabled>
             choose a value:
           </option>
