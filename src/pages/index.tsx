@@ -18,22 +18,25 @@ export default function Home() {
   });
   if (!stocks) return "Fetching stocks...";
   if (isLoading) return "Loading...";
-  console.log("stocks before:", stocks);
 
-  function processStocks(stocks: StockType[]) {
-    // return stocks.map((stock) => {
-    stocks.forEach((stock) => {
-      for (let key in stock) {
-        // if the value is a number, convert it into a number
-        if (Number(stock[key])) {
-          stock[key] = Number(stock[key]);
-        }
-      }
-    });
-  }
+  // console.log(stocks[1].DividendYield * 100);
+  // console.log(stocks[1].EPS);
+  // console.log(stocks[1].EPS * 15);
 
-  // processStocks(stocks);
-  console.log("stocks after:", stocks);
+  // console.log("stocks before:", stocks);
+  // obviously not necessary...
+  // function convertNumberStringPropertiesToNumbers(arrOfObjects: StockType[]) {
+  //   arrOfObjects.forEach((object) => {
+  //     for (let key in object) {
+  //       // if the value is a number, convert it into a number
+  //       if (Number(object[key])) {
+  //         object[key] = Number(object[key]);
+  //       }
+  //     }
+  //   });
+  // }
+  // convertNumberStringPropertiesToNumbers(stocks);
+  // console.log("stocks after:", stocks);
 
   function handleSort(event: React.FormEvent) {
     const sortOption = event.target as HTMLSelectElement;
