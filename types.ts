@@ -29,13 +29,13 @@ export interface StocksProps {
 }
 
 // TS: Yair
-export type SortType = "Symbol" | "Name";
+export type SortByType = "Symbol" | "Name";
 
 // TS: Yair
-export type SortDirection = "ascending" | "descending";
+export type SortDirectionType = "ascending" | "descending";
 
 // TS: Yair
 export type SortParamType = {
-  sortBy: SortType;
-  sortDirection: SortDirection;
+  sortBy: SortByType;
+  sortDirection: SortDirectionType;
 };
