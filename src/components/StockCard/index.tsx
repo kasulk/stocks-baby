@@ -16,9 +16,27 @@ export default function StockCard({
   Price,
 }: StockType) {
   //
+  const processedStocksData: (string | number)[] = [
+    Symbol,
+    Name,
+    Exchange,
+    Sector,
+    Industry,
+    Number(DividendPerShare),
+    // `${Math.round(Number(DividendYield) * 100).toFixed(2)}%`,
+    `${(Number(DividendYield) * 100).toFixed(2)}%`,
+    // Number(EPS),
+    Number(EPS) * 15, // FairValue
+    Number(BookValue),
+    `${Number(_52WeekLow)} - ${Number(_52WeekHigh)}`, // 52Week Price Range
+    Number(AnalystTargetPrice),
+    Number(Price),
+  ];
+  //
+  // console.log(processedStocksData[6]);
+
   return (
     <article
-      // shadow not working...
       className={`m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] hover:shadow-lg hover:shadow-gray-500`}
     >
       <p className="text-xs">
