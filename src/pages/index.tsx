@@ -17,8 +17,12 @@ export default function Home() {
     sortDirection: "ascending",
   });
 
-  //* move swr to stocklistitem?
-  const { data: stocks } = useSWR("/api/demostocks", { fallbackData: [] });
+  //? move swr to stocklistitem?
+  const { data: stocks, isLoading } = useSWR("/api/demostocks", {
+    fallbackData: [],
+  });
+  if (!stocks) return "Fetching stocks...";
+  if (isLoading) return "Loading...";
 
   function handleSortSubmit(event: FormEvent<HTMLFormElement>) {
     const sortOption = event.target as HTMLSelectElement;
@@ -35,7 +39,8 @@ export default function Home() {
     sortBy: SortByType,
     sortDirection: SortDirectionType
   ) {
-    const sorter = (a: StockType, b: StockType) => {
+    // const sorter = (a: StockType, b: StockType) => {
+    function sorter(a: StockType, b: StockType) {
       if (sortDirection === "ascending") {
         if (a[sortBy] < b[sortBy]) {
           return -1;
@@ -52,7 +57,7 @@ export default function Home() {
         }
       }
       return 0;
-    };
+    }
     stocks.sort(sorter);
   }
 

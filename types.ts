@@ -7,7 +7,7 @@
 //   price?: number;
 // }
 
-export interface StockType {
+export type StockType = {
   _id?: string; // TS: if not set to optional, TS complains when passing the props to Card-Component...
   Symbol: string;
   Name: string;
@@ -22,11 +22,11 @@ export interface StockType {
   _52WeekLow: string;
   AnalystTargetPrice: string;
   Price: string;
-}
+};
 
-export interface StocksProps {
+export type StocksProps = {
   stocks: StockType[];
-}
+};
 
 // TS: Yair
 export type SortByType = "Symbol" | "Name";
