@@ -39,3 +39,7 @@ export type SortParamType = {
   sortBy: SortByType;
   sortDirection: SortDirectionType;
 };
+
+export type SortProps = {
+  onSort: (event: React.FormEvent) => void;
+};

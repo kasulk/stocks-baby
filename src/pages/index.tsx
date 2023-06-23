@@ -5,6 +5,7 @@ import {
   StockType,
   SortDirectionType,
   SortByType,
+  SortProps,
 } from "../../types";
 import SortDropdown from "@/components/SortDropdown";
 import { FormEvent, useState } from "react";
@@ -24,11 +25,9 @@ export default function Home() {
   if (!stocks) return "Fetching stocks...";
   if (isLoading) return "Loading...";
 
-  // function handleSortSubmit(event: FormEvent<HTMLFormElement>) {
   function handleSort(event: React.FormEvent) {
     const sortOption = event.target as HTMLSelectElement;
     const sortOptionValues = sortOption.value.split("-");
-
     setSortParam({
       sortBy: sortOptionValues[0] as "Symbol", // TS: Yair
       sortDirection: sortOptionValues[1] as "ascending", // TS: Yair
@@ -66,7 +65,7 @@ export default function Home() {
 
   return (
     <>
-      <SortDropdown onSubmit={handleSort} />
+      <SortDropdown onSort={handleSort} />
       <StocksList stocks={stocks}></StocksList>
     </>
   );
