@@ -17,6 +17,18 @@ export default function SortDropdown({ onSort }: SortProps) {
             <option value="Name-ascending">Name: ascending</option>
             <option value="Name-descending">Name: descending</option>
           </optgroup>
+          <optgroup label="DividendYield">
+            <option value="DividendYield-ascending">Div%: ascending</option>
+            <option value="DividendYield-descending">Div%: descending</option>
+          </optgroup>
+          <optgroup label="52Week Bruchwert%">
+            <option value="Bruchwert52Week%-ascending">
+              Bruchwert%: ascending
+            </option>
+            <option value="Bruchwert52Week%-descending">
+              Bruchwert%: descending
+            </option>
+          </optgroup>
         </select>
       </form>
     </div>

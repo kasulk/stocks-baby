@@ -47,6 +47,28 @@ export default function Home() {
     });
   }
 
+  function calc52WeekBruchwert(
+    currentPrice: number,
+    high: number,
+    low: number
+  ) {
+    const bruchwert = (currentPrice - low) / (high - low);
+    return bruchwert.toFixed(4);
+  }
+  // console.log(calc52WeekBruchwert(75, 100, 50));
+
+  function addBruchwertPropertyToArrOfObjs(arrOfObjects: StockType[]) {
+    arrOfObjects.forEach((object) => {
+      object["Bruchwert52Week"] = calc52WeekBruchwert(
+        object.Price,
+        object._52WeekHigh,
+        object._52WeekLow
+      );
+    });
+  }
+  addBruchwertPropertyToArrOfObjs(stocks);
+  console.log(stocks);
+
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
 
   return (
