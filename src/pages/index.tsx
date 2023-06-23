@@ -24,7 +24,8 @@ export default function Home() {
   if (!stocks) return "Fetching stocks...";
   if (isLoading) return "Loading...";
 
-  function handleSortSubmit(event: FormEvent<HTMLFormElement>) {
+  // function handleSortSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSort(event: React.FormEvent) {
     const sortOption = event.target as HTMLSelectElement;
     const sortOptionValues = sortOption.value.split("-");
 
@@ -65,7 +66,7 @@ export default function Home() {
 
   return (
     <>
-      <SortDropdown onSubmit={handleSortSubmit} />
+      <SortDropdown onSubmit={handleSort} />
       <StocksList stocks={stocks}></StocksList>
     </>
   );
