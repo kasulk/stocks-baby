@@ -17,6 +17,7 @@ export type StockType = {
   // Price: string | number;
   Price: number;
   Bruchwert52Week?: number | string;
+  // Bruchwert52Week: number | string;
 };
 
 export type StocksProps = {

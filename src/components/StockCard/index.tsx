@@ -14,24 +14,25 @@ export default function StockCard({
   _52WeekLow,
   AnalystTargetPrice,
   Price,
+  Bruchwert52Week,
 }: StockType) {
   //
-  const processedStocksData: (string | number)[] = [
-    Symbol,
-    Name,
-    Exchange,
-    Sector,
-    Industry,
-    Number(DividendPerShare),
-    // `${Math.round(Number(DividendYield) * 100).toFixed(2)}%`,
-    `${(Number(DividendYield) * 100).toFixed(2)}%`,
-    // Number(EPS),
-    Number(EPS) * 15, // FairValue
-    Number(BookValue),
-    `${Number(_52WeekLow)} - ${Number(_52WeekHigh)}`, // 52Week Price Range
-    Number(AnalystTargetPrice),
-    Number(Price),
-  ];
+  // const processedStocksData: (string | number)[] = [
+  //   Symbol,
+  //   Name,
+  //   Exchange,
+  //   Sector,
+  //   Industry,
+  //   Number(DividendPerShare),
+  //   // `${Math.round(Number(DividendYield) * 100).toFixed(2)}%`,
+  //   `${(Number(DividendYield) * 100).toFixed(2)}%`,
+  //   // Number(EPS),
+  //   Number(EPS) * 15, // FairValue
+  //   Number(BookValue),
+  //   `${Number(_52WeekLow)} - ${Number(_52WeekHigh)}`, // 52Week Price Range
+  //   Number(AnalystTargetPrice),
+  //   Number(Price),
+  // ];
   //
   // console.log(processedStocksData[6]);
 
@@ -71,6 +72,12 @@ export default function StockCard({
           {_52WeekLow} - {_52WeekHigh}
         </span>
       </p>
+      {/* {Bruchwert52Week && ( */}
+      <p title="Bruchwert: Current distance from 52Week Low in %">
+        <span className="text-sm text-slate-400">52W Bruchwert: </span>
+        <span>{(Number(Bruchwert52Week) * 100).toFixed(2)}%</span>
+      </p>
+      {/* )} */}
       <p>
         <span className="text-sm text-slate-400">Analyst Target Price: </span>
         <span>{AnalystTargetPrice}</span>

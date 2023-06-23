@@ -20,6 +20,7 @@ export default function StockListItem({ stocks }: StocksProps) {
             _52WeekLow={stock._52WeekLow}
             AnalystTargetPrice={stock.AnalystTargetPrice}
             Price={stock.Price}
+            Bruchwert52Week={stock.Bruchwert52Week}
           />
         </li>
       ))}
