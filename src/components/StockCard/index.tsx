@@ -19,7 +19,7 @@ export default function StockCard({
   return (
     <article
       // shadow not working...
-      className={`m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 hover:bg-slate-800 hover:scale-[1.02]`}
+      className={`m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] hover:shadow-lg hover:shadow-gray-500`}
     >
       <p className="text-xs">
         <span>{Symbol}</span>:<span>{Exchange}</span>
