@@ -4,6 +4,7 @@ import { SortParamType, StockType } from "../../types";
 import SortDropdown from "../components/SortDropdown";
 import { useState } from "react";
 import sortStocksList from "../utils/SortUtils";
+import addBruchwertPropertyToArrOfObjs from "@/utils/DataUtils";
 
 export default function Home() {
   const [sortParam, setSortParam] = useState<SortParamType>({
@@ -12,7 +13,7 @@ export default function Home() {
     sortDirection: "ascending",
   });
 
-  //? move swr to stocklistitem?
+  //? move swr to StockListItem?
   const { data: stocks, isLoading } = useSWR("/api/demostocks", {
     fallbackData: [],
   });
@@ -47,26 +48,6 @@ export default function Home() {
     });
   }
 
-  function calc52WeekBruchwert(
-    currentPrice: number,
-    high: number,
-    low: number
-  ) {
-    const bruchwert = (currentPrice - low) / (high - low);
-    // console.log(Number(bruchwert.toFixed(4)));
-
-    return bruchwert.toFixed(4);
-  }
-
-  function addBruchwertPropertyToArrOfObjs(arrOfObjects: StockType[]) {
-    arrOfObjects.forEach((object) => {
-      object["Bruchwert52Week"] = calc52WeekBruchwert(
-        object.Price,
-        object._52WeekHigh,
-        object._52WeekLow
-      );
-    });
-  }
   addBruchwertPropertyToArrOfObjs(stocks);
   // console.log(stocks);
 
