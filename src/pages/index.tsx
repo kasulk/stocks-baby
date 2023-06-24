@@ -4,7 +4,10 @@ import { SortParamType, StockType } from "../../types";
 import SortDropdown from "../components/SortDropdown";
 import { useState } from "react";
 import sortStocksList from "../utils/SortUtils";
-import addBruchwertPropertyToArrOfObjs from "@/utils/DataUtils";
+import {
+  addBruchwertPropertyToArrOfObjs,
+  convertNumberStringPropertiesToNumbers,
+} from "@/utils/DataUtils";
 
 export default function Home() {
   const [sortParam, setSortParam] = useState<SortParamType>({
@@ -20,25 +23,6 @@ export default function Home() {
   if (!stocks) return "Fetching stocks...";
   if (isLoading) return "Loading...";
 
-  // console.log(stocks[1].DividendYield * 100);
-  // console.log(stocks[1].EPS);
-  // console.log(stocks[1].EPS * 15);
-
-  // console.log("stocks before:", stocks);
-  // obviously not necessary...
-  // function convertNumberStringPropertiesToNumbers(arrOfObjects: StockType[]) {
-  //   arrOfObjects.forEach((object) => {
-  //     for (let key in object) {
-  //       // if the value is a number, convert it into a number
-  //       if (Number(object[key])) {
-  //         object[key] = Number(object[key]);
-  //       }
-  //     }
-  //   });
-  // }
-  // convertNumberStringPropertiesToNumbers(stocks);
-  // console.log("stocks after:", stocks);
-
   function handleSort(event: React.FormEvent) {
     const sortOption = event.target as HTMLSelectElement;
     const sortOptionValues = sortOption.value.split("-");
@@ -47,6 +31,11 @@ export default function Home() {
       sortDirection: sortOptionValues[1] as "ascending", // TS: Yair
     });
   }
+
+  // ? runs every time the comp rerenders...
+  // ? should only run one time after the data is fetched...
+  convertNumberStringPropertiesToNumbers(stocks);
+  // console.log("stocks after:", stocks);
 
   addBruchwertPropertyToArrOfObjs(stocks);
   // console.log(stocks);
