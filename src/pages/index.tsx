@@ -2,7 +2,7 @@ import useSWR from "swr";
 import StocksList from "../components/StocksList";
 import { SortParamType, StockType } from "../../types";
 import SortDropdown from "../components/SortDropdown";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import sortStocksList from "../utils/SortUtils";
 import {
   addBruchwertPropertyToArrOfObjs,
@@ -20,6 +20,22 @@ export default function Home() {
   const { data: stocks, isLoading } = useSWR("/api/demostocks", {
     fallbackData: [],
   });
+
+  useEffect(() => {
+    const oldStocks = stocks;
+    // ? runs every time the comp rerenders...
+    // ? should only run one time after the data is fetched...
+    convertNumberStringPropertiesToNumbers(stocks);
+    addBruchwertPropertyToArrOfObjs(stocks);
+    console.log(stocks);
+
+    // cleanup
+    return () => {
+      // undo stocks manipulation by setting the old stocks values again
+      stocks = oldStocks;
+    };
+  }, []);
+
   if (!stocks) return "Fetching stocks...";
   if (isLoading) return "Loading...";
 
@@ -31,14 +47,6 @@ export default function Home() {
       sortDirection: sortOptionValues[1] as "ascending", // TS: Yair
     });
   }
-
-  // ? runs every time the comp rerenders...
-  // ? should only run one time after the data is fetched...
-  convertNumberStringPropertiesToNumbers(stocks);
-  // console.log("stocks after:", stocks);
-
-  addBruchwertPropertyToArrOfObjs(stocks);
-  // console.log(stocks);
 
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
 

@@ -86,7 +86,11 @@ export default function StockCard({
       </p>
       <p title="Bruchwert: Current distance from 52Week Low in %">
         <span className="text-sm text-slate-400">52W Bruchwert: </span>
-        <span>{(Number(Bruchwert52Week) * 100).toFixed(2)}%</span>
+        <span>
+          {Number(Bruchwert52Week)
+            ? (Number(Bruchwert52Week) * 100).toFixed(2) + "%"
+            : "-"}
+        </span>
       </p>
       {/* <p title="Bruchwert: Current distance from 52Week Low in %">
         <span className="text-sm text-slate-400">52W Bruchwert (Range): </span>
