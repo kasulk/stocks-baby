@@ -21,23 +21,25 @@ export default function Home() {
     fallbackData: [],
   });
 
-  useEffect(() => {
-    const oldStocks = stocks;
-    // ? runs every time the comp rerenders...
-    // ? should only run one time after the data is fetched...
-    convertNumberStringPropertiesToNumbers(stocks);
-    addBruchwertPropertyToArrOfObjs(stocks);
-    console.log(stocks);
+  // useEffect(() => {
+  //   const oldStocks = stocks;
+  //   // ? runs every time the comp rerenders...
+  //   // ? should only run one time after the data is fetched...
+  //   convertNumberStringPropertiesToNumbers(stocks);
+  //   addBruchwertPropertyToArrOfObjs(stocks);
+  //   console.log(stocks);
 
-    // cleanup
-    return () => {
-      // undo stocks manipulation by setting the old stocks values again
-      stocks = oldStocks;
-    };
-  }, []);
+  //   // cleanup
+  //   return () => {
+  //     // undo stocks manipulation by setting the old stocks values again
+  //     stocks = oldStocks;
+  //   };
+  // }, []);
 
   if (!stocks) return "Fetching stocks...";
   if (isLoading) return "Loading...";
+
+  // addBruchwertPropertyToArrOfObjs(stocks);
 
   function handleSort(event: React.FormEvent) {
     const sortOption = event.target as HTMLSelectElement;

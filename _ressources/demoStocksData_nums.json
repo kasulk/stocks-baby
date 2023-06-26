@@ -47,7 +47,8 @@
     "200DayMovingAverage": 195.8,
     "SharesOutstanding": 3169500000,
     "DividendDate": "None",
-    "ExDividendDate": "None"
+    "ExDividendDate": "None",
+    "Bruchwert52Week": 0.811
   },
   {
     "Symbol": "OZK",
@@ -97,7 +98,8 @@
     "200DayMovingAverage": 40.36,
     "SharesOutstanding": 115080000,
     "DividendDate": "2023-04-21",
-    "ExDividendDate": "2023-04-13"
+    "ExDividendDate": "2023-04-13",
+    "Bruchwert52Week": 0.4915
   },
   {
     "Symbol": "KO",
@@ -147,7 +149,8 @@
     "200DayMovingAverage": 60.91,
     "SharesOutstanding": 4324580000,
     "DividendDate": "2023-07-03",
-    "ExDividendDate": "2023-06-15"
+    "ExDividendDate": "2023-06-15",
+    "Bruchwert52Week": 0.7224
   },
   {
     "Symbol": "WBA",
@@ -197,7 +200,8 @@
     "200DayMovingAverage": 35.34,
     "SharesOutstanding": 862796000,
     "DividendDate": "2023-06-12",
-    "ExDividendDate": "2023-05-18"
+    "ExDividendDate": "2023-05-18",
+    "Bruchwert52Week": 0.2691
   },
   {
     "Symbol": "PETS",
@@ -247,7 +251,8 @@
     "200DayMovingAverage": 18.37,
     "SharesOutstanding": 21171000,
     "DividendDate": "2023-06-12",
-    "ExDividendDate": "2023-06-05"
+    "ExDividendDate": "2023-06-05",
+    "Bruchwert52Week": 0.1003
   },
   {
     "Symbol": "AAPL",
@@ -297,7 +302,8 @@
     "200DayMovingAverage": 153.18,
     "SharesOutstanding": 15728700000,
     "DividendDate": "2023-05-18",
-    "ExDividendDate": "2023-05-12"
+    "ExDividendDate": "2023-05-12",
+    "Bruchwert52Week": 0.9676
   },
   {
     "Symbol": "MCD",
@@ -347,7 +353,8 @@
     "200DayMovingAverage": 270.61,
     "SharesOutstanding": 730094000,
     "DividendDate": "2023-06-20",
-    "ExDividendDate": "2023-06-02"
+    "ExDividendDate": "2023-06-02",
+    "Bruchwert52Week": 0.9399
   },
   {
     "Symbol": "IIPR",
@@ -397,7 +404,8 @@
     "200DayMovingAverage": 89.55,
     "SharesOutstanding": 28035000,
     "DividendDate": "2023-07-14",
-    "ExDividendDate": "2023-06-29"
+    "ExDividendDate": "2023-06-29",
+    "Bruchwert52Week": 0.1835
   },
   {
     "Symbol": "FL",
@@ -447,7 +455,8 @@
     "200DayMovingAverage": 37.14,
     "SharesOutstanding": 93924000,
     "DividendDate": "2023-07-28",
-    "ExDividendDate": "2023-07-13"
+    "ExDividendDate": "2023-07-13",
+    "Bruchwert52Week": 0.1529
   },
   {
     "Symbol": "PFE",
@@ -497,6 +506,7 @@
     "200DayMovingAverage": 43.87,
     "SharesOutstanding": 5645310000,
     "DividendDate": "2023-06-09",
-    "ExDividendDate": "2023-05-11"
+    "ExDividendDate": "2023-05-11",
+    "Bruchwert52Week": 0.1793
   }
 ]

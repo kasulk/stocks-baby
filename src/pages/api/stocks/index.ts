@@ -4,6 +4,7 @@ import Stock from "../../../../db/models/Stock";
 // TS: NextApiRequest and NextApiResponse types from next,
 // TS: provide type checking for the request and response objects.
 import { NextApiRequest, NextApiResponse } from "next";
+import { StockType } from "../../../../types";
 
 // TS: from Next.js template...
 // type Data = {
@@ -27,3 +28,5 @@ export default async function handler(
     return response.status(405).json({ message: "HTTP Method not allowed" });
   }
 }
+
+function processDividendYields(stocks: StockType[]) {}
