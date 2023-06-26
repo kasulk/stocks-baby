@@ -58,9 +58,7 @@ export default function StockCard({
       <p>
         <span className="text-sm text-slate-400">Dividend %: </span>
         <span>
-          {Number(DividendYield)
-            ? `${(Number(DividendYield) * 100).toFixed(2)}%`
-            : "-"}
+          {Number(DividendYield) ? `${Number(DividendYield).toFixed(2)}%` : "-"}
         </span>
       </p>
       {/* <p>
@@ -88,7 +86,7 @@ export default function StockCard({
         <span className="text-sm text-slate-400">52W Bruchwert: </span>
         <span>
           {Number(Bruchwert52Week)
-            ? (Number(Bruchwert52Week) * 100).toFixed(2) + "%"
+            ? Number(Bruchwert52Week).toFixed(2) + "%"
             : "-"}
         </span>
       </p>

@@ -72,7 +72,7 @@
     "PEGRatio": "None",
     "BookValue": 38.43,
     "DividendPerShare": 1.3,
-    "DividendYield": 0.0351,
+    "DividendYield": 3.51,
     "EPS": 4.54,
     "RevenuePerShareTTM": 10.23,
     "ProfitMargin": 0.497,
@@ -99,7 +99,7 @@
     "SharesOutstanding": 115080000,
     "DividendDate": "2023-04-21",
     "ExDividendDate": "2023-04-13",
-    "Bruchwert52Week": 0.4915
+    "Bruchwert52Week": 49.15
   },
   {
     "Symbol": "KO",
@@ -123,7 +123,7 @@
     "PEGRatio": 3.601,
     "BookValue": 5.83,
     "DividendPerShare": 1.78,
-    "DividendYield": 0.0298,
+    "DividendYield": 2.98,
     "EPS": 2.27,
     "RevenuePerShareTTM": 10.05,
     "ProfitMargin": 0.227,
@@ -150,7 +150,7 @@
     "SharesOutstanding": 4324580000,
     "DividendDate": "2023-07-03",
     "ExDividendDate": "2023-06-15",
-    "Bruchwert52Week": 0.7224
+    "Bruchwert52Week": 72.24
   },
   {
     "Symbol": "WBA",
@@ -174,7 +174,7 @@
     "PEGRatio": 12.0,
     "BookValue": 24.56,
     "DividendPerShare": 1.917,
-    "DividendYield": 0.0588,
+    "DividendYield": 5.88,
     "EPS": -3.71,
     "RevenuePerShareTTM": 154.34,
     "ProfitMargin": -0.0236,
@@ -201,7 +201,7 @@
     "SharesOutstanding": 862796000,
     "DividendDate": "2023-06-12",
     "ExDividendDate": "2023-05-18",
-    "Bruchwert52Week": 0.2691
+    "Bruchwert52Week": 26.91
   },
   {
     "Symbol": "PETS",
@@ -225,7 +225,7 @@
     "PEGRatio": 2.58,
     "BookValue": 6.09,
     "DividendPerShare": 1.2,
-    "DividendYield": 0.0851,
+    "DividendYield": 8.51,
     "EPS": 0.01,
     "RevenuePerShareTTM": 12.67,
     "ProfitMargin": 0.0009,
@@ -252,7 +252,7 @@
     "SharesOutstanding": 21171000,
     "DividendDate": "2023-06-12",
     "ExDividendDate": "2023-06-05",
-    "Bruchwert52Week": 0.1003
+    "Bruchwert52Week": 10.03
   },
   {
     "Symbol": "AAPL",
@@ -276,7 +276,7 @@
     "PEGRatio": 2.75,
     "BookValue": 3.953,
     "DividendPerShare": 0.92,
-    "DividendYield": 0.0052,
+    "DividendYield": 0.52,
     "EPS": 5.9,
     "RevenuePerShareTTM": 24.12,
     "ProfitMargin": 0.245,
@@ -303,7 +303,7 @@
     "SharesOutstanding": 15728700000,
     "DividendDate": "2023-05-18",
     "ExDividendDate": "2023-05-12",
-    "Bruchwert52Week": 0.9676
+    "Bruchwert52Week": 96.76
   },
   {
     "Symbol": "MCD",
@@ -327,7 +327,7 @@
     "PEGRatio": 3.336,
     "BookValue": -7.91,
     "DividendPerShare": 5.8,
-    "DividendYield": 0.0207,
+    "DividendYield": 2.07,
     "EPS": 9.31,
     "RevenuePerShareTTM": 31.92,
     "ProfitMargin": 0.294,
@@ -354,7 +354,7 @@
     "SharesOutstanding": 730094000,
     "DividendDate": "2023-06-20",
     "ExDividendDate": "2023-06-02",
-    "Bruchwert52Week": 0.9399
+    "Bruchwert52Week": 93.99
   },
   {
     "Symbol": "IIPR",
@@ -378,7 +378,7 @@
     "PEGRatio": 0,
     "BookValue": 69.35,
     "DividendPerShare": 7.15,
-    "DividendYield": 0.0964,
+    "DividendYield": 9.64,
     "EPS": 5.63,
     "RevenuePerShareTTM": 10.31,
     "ProfitMargin": 0.557,
@@ -405,7 +405,7 @@
     "SharesOutstanding": 28035000,
     "DividendDate": "2023-07-14",
     "ExDividendDate": "2023-06-29",
-    "Bruchwert52Week": 0.1835
+    "Bruchwert52Week": 18.35
   },
   {
     "Symbol": "FL",
@@ -429,7 +429,7 @@
     "PEGRatio": -71.36,
     "BookValue": 34.96,
     "DividendPerShare": 1.6,
-    "DividendYield": 0.0588,
+    "DividendYield": 5.88,
     "EPS": 2.63,
     "RevenuePerShareTTM": 90.84,
     "ProfitMargin": 0.0288,
@@ -456,7 +456,7 @@
     "SharesOutstanding": 93924000,
     "DividendDate": "2023-07-28",
     "ExDividendDate": "2023-07-13",
-    "Bruchwert52Week": 0.1529
+    "Bruchwert52Week": 15.29
   },
   {
     "Symbol": "PFE",
@@ -480,7 +480,7 @@
     "PEGRatio": 1.173,
     "BookValue": 17.89,
     "DividendPerShare": 1.61,
-    "DividendYield": 0.0409,
+    "DividendYield": 4.09,
     "EPS": 5.07,
     "RevenuePerShareTTM": 16.56,
     "ProfitMargin": 0.312,
@@ -507,6 +507,6 @@
     "SharesOutstanding": 5645310000,
     "DividendDate": "2023-06-09",
     "ExDividendDate": "2023-05-11",
-    "Bruchwert52Week": 0.1793
+    "Bruchwert52Week": 17.93
   }
 ]
