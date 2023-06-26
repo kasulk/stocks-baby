@@ -28,5 +28,3 @@ export default async function handler(
     return response.status(405).json({ message: "HTTP Method not allowed" });
   }
 }
-
-function processDividendYields(stocks: StockType[]) {}
