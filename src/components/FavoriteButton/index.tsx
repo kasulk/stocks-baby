@@ -4,21 +4,21 @@ export default function FavoriteButton() {
   let isFavorite: boolean;
   const size = 10;
   const colorName = "rose";
-  const colorIntesitiy = "900";
-  const color = colorName + "-" + colorIntesitiy;
+  const colorIntensitiy = "900";
+  const color = colorName + "-" + colorIntensitiy;
 
   isFavorite = false;
-  //   isFavorite = true;
+  isFavorite = true;
 
   return (
     <button className="absolute top-5 right-5">
       <svg
         className={`h-${size} w-${size} ${
           isFavorite
-            ? //   ? `fill-${color}`
-              `fill-rose-900`
-            : //   : `fill-transparent stroke-${color} stroke-3 hover:fill-${color}`
-              `fill-transparent stroke-rose-900 stroke-2 hover:fill-rose-700`
+            ? `fill-${color}`
+            : //   `fill-rose-900`
+              `fill-transparent stroke-${color} stroke-3 hover:fill-${color}`
+          //   `fill-transparent stroke-rose-900 stroke-2 hover:fill-rose-900`
         }`}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
