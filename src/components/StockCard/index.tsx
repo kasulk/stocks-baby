@@ -9,6 +9,7 @@ export default function StockCard({
   DividendPerShare,
   DividendYield,
   EPS,
+  EPSx15,
   BookValue,
   _52WeekHigh,
   _52WeekLow,
@@ -17,24 +18,6 @@ export default function StockCard({
   Bruchwert52Week,
 }: StockType) {
   //
-  // const processedStocksData: (string | number)[] = [
-  //   Symbol,
-  //   Name,
-  //   Exchange,
-  //   Sector,
-  //   Industry,
-  //   Number(DividendPerShare),
-  //   // `${Math.round(Number(DividendYield) * 100).toFixed(2)}%`,
-  //   `${(Number(DividendYield) * 100).toFixed(2)}%`,
-  //   // Number(EPS),
-  //   Number(EPS) * 15, // FairValue
-  //   Number(BookValue),
-  //   `${Number(_52WeekLow)} - ${Number(_52WeekHigh)}`, // 52Week Price Range
-  //   Number(AnalystTargetPrice),
-  //   Number(Price),
-  // ];
-  //
-  // console.log(processedStocksData[6]);
 
   return (
     <article
@@ -48,12 +31,13 @@ export default function StockCard({
         <p>{Sector}</p>
         <p>{Industry}</p>
       </div>
+      {/* Numbers */}
       <p>
         <span className="text-sm text-slate-400">Dividend: </span>
         <span>
           {/* {DividendPerShare != "0" ? Number(DividendPerShare).toFixed(2) : "-"} */}
           {/* {Number(DividendPerShare) ? Number(DividendPerShare).toFixed(2) : "-"} */}
-          {/* {Number(DividendPerShare).toFixed(2)} */}
+          {Number(DividendPerShare).toFixed(2)}
         </span>
       </p>
       <p>
@@ -62,16 +46,18 @@ export default function StockCard({
           {Number(DividendYield) ? `${Number(DividendYield).toFixed(2)}%` : "-"}
         </span>
       </p>
-      {/* <p>
+      <p>
         <span className="text-sm text-slate-400">EPS: </span>
         <span>{EPS}</span>
-      </p> */}
-      <p title="FairValue: EPS x 15">
-        <span className="text-sm text-slate-400">FairValue (EPS): </span>
-        <span>{`${(Number(EPS) * 15).toFixed(2)} (${Number(EPS).toFixed(
-          2
-        )})`}</span>
       </p>
+      <p title="FairValue: EPS x 15">
+        <span className="text-sm text-slate-400">FairValue: </span>
+        <span>{`${Number(EPSx15).toFixed(2)}`}</span>
+      </p>
+      {/* <p title="FairValue: EPS x 15">
+        <span className="text-sm text-slate-400">FairValue (EPS): </span>
+        <span>{`${Number(EPSx15).toFixed(2)} (${Number(EPS).toFixed( 2)})`}</span>
+      </p> */}
       <p>
         <span className="text-sm text-slate-400">BookValue: </span>
         <span>{Number(BookValue).toFixed(2)}</span>
@@ -91,14 +77,6 @@ export default function StockCard({
             : "-"}
         </span>
       </p>
-      {/* <p title="Bruchwert: Current distance from 52Week Low in %">
-        <span className="text-sm text-slate-400">52W Bruchwert (Range): </span>
-        <span>
-          {`${(Number(Bruchwert52Week) * 100).toFixed(
-            2
-          )}% (${_52WeekLow}-${_52WeekHigh})`}
-        </span>
-      </p> */}
       <p>
         <span className="text-sm text-slate-400">Analyst Target Price: </span>
         <span>{Number(AnalystTargetPrice).toFixed(2)}</span>

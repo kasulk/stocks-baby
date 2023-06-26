@@ -15,6 +15,7 @@ export default function StockListItem({ stocks }: StocksProps) {
             DividendPerShare={stock.DividendPerShare}
             DividendYield={stock.DividendYield}
             EPS={stock.EPS}
+            EPSx15={stock.EPSx15}
             BookValue={stock.BookValue}
             _52WeekHigh={stock._52WeekHigh}
             _52WeekLow={stock._52WeekLow}

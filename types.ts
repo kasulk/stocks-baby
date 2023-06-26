@@ -8,6 +8,7 @@ export type StockType = {
   DividendPerShare: string | number;
   DividendYield: string | number;
   EPS: number;
+  EPSx15: number;
   BookValue: number; // | string
   _52WeekHigh: number;
   _52WeekLow: number;
