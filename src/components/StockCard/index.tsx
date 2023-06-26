@@ -52,7 +52,8 @@ export default function StockCard({
         <span className="text-sm text-slate-400">Dividend: </span>
         <span>
           {/* {DividendPerShare != "0" ? Number(DividendPerShare).toFixed(2) : "-"} */}
-          {Number(DividendPerShare) ? Number(DividendPerShare).toFixed(2) : "-"}
+          {/* {Number(DividendPerShare) ? Number(DividendPerShare).toFixed(2) : "-"} */}
+          {/* {Number(DividendPerShare).toFixed(2)} */}
         </span>
       </p>
       <p>
