@@ -7,12 +7,15 @@ export type StockType = {
   Industry: string;
   DividendPerShare: string | number;
   DividendYield: string | number;
-  EPS: string | number;
-  BookValue: string | number;
-  _52WeekHigh: string | number;
-  _52WeekLow: string | number;
+  EPS: number;
+  EPSx15: number;
+  BookValue: number; // | string
+  _52WeekHigh: number;
+  _52WeekLow: number;
   AnalystTargetPrice: string | number;
-  Price: string | number;
+  Price: number;
+  Bruchwert52Week?: number | string;
+  // Bruchwert52Week: number | string;
 };
 
 export type StocksProps = {

@@ -4,9 +4,9 @@ export default function sortStocksList(
   stocks: StockType[],
   sortBy: SortByType,
   sortDirection: SortDirectionType
-) {
+): void {
   // const sorter = (a: StockType, b: StockType) => {
-  function sorter(a: StockType, b: StockType) {
+  function sorter(a: StockType, b: StockType): number {
     if (sortDirection === "ascending") {
       if (a[sortBy] < b[sortBy]) {
         return -1;
