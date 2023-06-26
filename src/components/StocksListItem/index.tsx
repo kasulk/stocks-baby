@@ -1,12 +1,16 @@
-import { StocksProps } from "../../../types";
+import { FuncProps, StocksProps } from "../../../types";
 import StockCard from "../StockCard";
 
-export default function StockListItem({ stocks }: StocksProps) {
+export default function StockListItem({
+  stocks,
+  onToggleFavorite,
+}: StocksProps) {
   return (
     <>
       {stocks.map((stock) => (
         <li key={stock._id} className="list-none">
           <StockCard
+            _id={stock._id}
             Symbol={stock.Symbol}
             Name={stock.Name}
             Exchange={stock.Exchange}
@@ -22,6 +26,7 @@ export default function StockListItem({ stocks }: StocksProps) {
             AnalystTargetPrice={stock.AnalystTargetPrice}
             Price={stock.Price}
             Bruchwert52Week={stock.Bruchwert52Week}
+            onToggleFavorite={onToggleFavorite}
           />
         </li>
       ))}

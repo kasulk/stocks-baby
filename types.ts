@@ -16,10 +16,12 @@ export type StockType = {
   Price: number;
   Bruchwert52Week?: number | string;
   // Bruchwert52Week: number | string;
+  Favorites?: string[];
 };
 
 export type StocksProps = {
   stocks: StockType[];
+  onToggleFavorite?: (event: React.MouseEvent) => void;
 };
 
 // TS: Yair
@@ -36,4 +38,8 @@ export type SortParamType = {
 
 export type SortProps = {
   onSort: (event: React.FormEvent) => void;
+};
+
+export type FuncProps = {
+  onToggleFavorite: (event: React.MouseEvent) => void;
 };

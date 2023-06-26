@@ -1,8 +1,9 @@
-import { StockType } from "../../../types";
+import { FuncProps, StockType } from "../../../types";
 import FavoriteButton from "../FavoriteButton";
 import FavoriteButtonIcon from "../FavoriteButtonIcon";
 
 export default function StockCard({
+  _id,
   Symbol,
   Name,
   Exchange,
@@ -18,8 +19,10 @@ export default function StockCard({
   AnalystTargetPrice,
   Price,
   Bruchwert52Week,
+  onToggleFavorite,
 }: StockType) {
   //
+  // console.log(onToggleFavorite);
 
   return (
     <article
@@ -30,7 +33,7 @@ export default function StockCard({
       </p>
       <h1 className="font-bold text-xl">
         {Name}
-        <FavoriteButton />
+        <FavoriteButton onToggleFavorite={onToggleFavorite} _id={_id} />
       </h1>
       <div className="text-xs">
         <p>{Sector}</p>

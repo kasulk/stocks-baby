@@ -9,6 +9,8 @@ import {
   convertNumberStringPropertiesToNumbers,
 } from "@/utils/DataUtils";
 
+const currentUsername = "icke";
+
 export default function Home() {
   const [sortParam, setSortParam] = useState<SortParamType>({
     // TS: Yair
@@ -33,12 +35,29 @@ export default function Home() {
     });
   }
 
+  // onclick:
+  // change classes of button/icon
+  // add/remove current user id in db
+  function handleToggleFavorite(
+    event: React.MouseEvent<HTMLButtonElement>
+    // id: any
+  ): void {
+    // const test = event.target;
+    // console.log("geil!");
+    // console.log(id);
+    console.log(event);
+  }
+  // console.log(handleToggleFavorite);
+
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
 
   return (
     <>
       <SortDropdown onSort={handleSort} />
-      <StocksList stocks={stocks}></StocksList>
+      <StocksList
+        stocks={stocks}
+        onToggleFavorite={handleToggleFavorite}
+      ></StocksList>
     </>
   );
 }

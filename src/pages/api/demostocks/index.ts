@@ -26,4 +26,13 @@ export default async function handler(
   } else {
     return response.status(405).json({ message: "HTTP Method not allowed" });
   }
+
+  if (request.method === "PUT") {
+    const demostockToUpdate = await Demostock.findByIdAndUpdate(id, {
+      $set: request.body,
+    });
+    // Find the stock by its ID and update the content that is part of the request body!
+    response.status(200).json(demostockToUpdate);
+    // If successful, you'll receive an OK status code.
+  }
 }

@@ -1,6 +1,7 @@
+import { FuncProps, StockType } from "../../../types";
 import FavoriteButtonIcon from "../FavoriteButtonIcon";
 
-export default function FavoriteButton() {
+export default function FavoriteButton({ _id, onToggleFavorite }: StockType) {
   let isFavorite: boolean;
   const size = 10;
   const colorName = "rose";
@@ -10,8 +11,15 @@ export default function FavoriteButton() {
   isFavorite = false;
   //   isFavorite = true;
 
+  // console.log(onToggleFavorite);
+  // console.log(_id);
+
   return (
-    <button className="absolute top-4 right-4">
+    <button
+      className="absolute top-4 right-4"
+      onClick={() => onToggleFavorite(_id)}
+      // onClick={() => console.log(_id)}  //! funzt
+    >
       <svg
         className={`h-${size} w-${size} ${
           isFavorite

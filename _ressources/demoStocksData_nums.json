@@ -257,7 +257,8 @@
     "SharesOutstanding": 21171000,
     "DividendDate": "2023-06-12",
     "ExDividendDate": "2023-06-05",
-    "Bruchwert52Week": 10.03
+    "Bruchwert52Week": 10.03,
+    "Favorites": ["64998f8277a09c6664851841"]
   },
   {
     "Symbol": "AAPL",
@@ -361,7 +362,8 @@
     "SharesOutstanding": 730094000,
     "DividendDate": "2023-06-20",
     "ExDividendDate": "2023-06-02",
-    "Bruchwert52Week": 93.99
+    "Bruchwert52Week": 93.99,
+    "Favorites": ["64998f8277a09c6664851841"]
   },
   {
     "Symbol": "IIPR",
