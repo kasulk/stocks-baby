@@ -8,10 +8,10 @@ export default function FavoriteButton() {
   const color = colorName + "-" + colorIntensitiy;
 
   isFavorite = false;
-  isFavorite = true;
+  //   isFavorite = true;
 
   return (
-    <button className="absolute top-5 right-5">
+    <button className="absolute top-4 right-4">
       <svg
         className={`h-${size} w-${size} ${
           isFavorite
