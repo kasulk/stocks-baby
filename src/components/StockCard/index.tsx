@@ -1,4 +1,6 @@
 import { StockType } from "../../../types";
+import FavoriteButton from "../FavoriteButton";
+import FavoriteButtonIcon from "../FavoriteButtonIcon";
 
 export default function StockCard({
   Symbol,
@@ -21,12 +23,15 @@ export default function StockCard({
 
   return (
     <article
-      className={`m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] hover:shadow-lg hover:shadow-gray-500`}
+      className={`m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] hover:shadow-lg hover:shadow-gray-500 relative`}
     >
       <p className="text-xs">
         <span>{Symbol}</span>:<span>{Exchange}</span>
       </p>
-      <h1 className="font-bold text-xl">{Name}</h1>
+      <h1 className="font-bold text-xl">
+        {Name}
+        <FavoriteButton />
+      </h1>
       <div className="text-xs">
         <p>{Sector}</p>
         <p>{Industry}</p>
