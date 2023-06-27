@@ -33,10 +33,16 @@ export default async function handler(
       const demostockToUpdate = await Demostock.findById(id);
       if (demostockToUpdate.Favorites.includes(Favorites)) {
         await Demostock.findOneAndUpdate({ _id: id }, { $pull: { Favorites } });
-        console.log("Wert erfolgreich aus dem Array entfernt");
+        console.log(
+          `User '${Favorites}' successfully removed from Favorites array`
+        );
+        response.status(200).json(demostockToUpdate);
       } else {
         await Demostock.findOneAndUpdate({ _id: id }, { $push: { Favorites } });
-        console.log("Wert erfolgreich zum Array hinzugefügt");
+        console.log(
+          `User '${Favorites}' successfully added to Favorites array`
+        );
+        response.status(200).json(demostockToUpdate);
       }
     } catch (error) {
       console.error("Fehler beim Aktualisieren des Arrays", error);
@@ -61,9 +67,7 @@ export default async function handler(
 
     //   response.status(200).json(demostockToUpdate);
     //   // If successful, you'll receive an OK status code.
-    // }
-    //
-    // else {
-    //   return response.status(405).json({ message: "HTTP Method not allowed" });
+  } else {
+    return response.status(405).json({ message: "HTTP Method not allowed" });
   }
 }

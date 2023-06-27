@@ -3,7 +3,7 @@ import StockCard from "../StockCard";
 
 type Props = {
   stocks: Stock[];
-  onToggleFavorite: (id: string) => void;
+  onToggleFavorite: (id: string, user: string) => void;
 };
 
 export default function StockListItem({ stocks, onToggleFavorite }: Props) {

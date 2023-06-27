@@ -4,7 +4,7 @@ import { Stock } from "../../../types";
 // type Props = StockType & {
 type Props = {
   stocks: Stock[];
-  onToggleFavorite: (id: string) => void;
+  onToggleFavorite: (id: string, user: string) => void;
 };
 
 export default function StocksList({ stocks, onToggleFavorite }: Props) {

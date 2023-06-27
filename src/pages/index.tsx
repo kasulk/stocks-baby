@@ -68,13 +68,14 @@ export default function Home() {
   //! @patchrequest,  step 1
   async function handleToggleFavorite(
     // event: React.MouseEvent<HTMLButtonElement>
-    stockId: string
-    // userId: string,
+    stockId: string,
+    userId: string
   ): Promise<void> {
     //
     const favoriteData = {
       id: stockId,
-      Favorites: "prrrlllt",
+      // Favorites: "prrrlllt",
+      Favorites: userId,
       // zzzTest: "yadayada",
     };
     console.log(favoriteData);
