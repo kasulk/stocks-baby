@@ -22,23 +22,29 @@ export default async function handler(
 
   //! @patchrequest, step 4
   if (request.method === "PATCH") {
-    const { id, Favorites } = request.body;
-
-    try {
-      const demostockToUpdate = await Demostock.findById(id);
-      if (demostockToUpdate.Favorites.includes(Favorites)) {
-        await Demostock.findOneAndUpdate({ _id: id }, { $pull: { Favorites } });
-        console.log(`User '${Favorites}' removed from Favorites array`);
-        response.status(200).json(demostockToUpdate);
-      } else {
-        await Demostock.findOneAndUpdate({ _id: id }, { $push: { Favorites } });
-        console.log(`User '${Favorites}' added to Favorites array`);
-        response.status(200).json(demostockToUpdate);
-      }
-    } catch (error) {
-      console.error("Fehler beim Aktualisieren des Arrays", error);
-    }
+    await toggleUserToStockFavorites(request, response);
   } else {
     return response.status(405).json({ message: "HTTP Method not allowed" });
+  }
+}
+
+async function toggleUserToStockFavorites(
+  request: NextApiRequest,
+  response: NextApiResponse
+) {
+  const { id, Favorites } = request.body;
+  try {
+    const demostockToUpdate = await Demostock.findById(id);
+    if (demostockToUpdate.Favorites.includes(Favorites)) {
+      await Demostock.findOneAndUpdate({ _id: id }, { $pull: { Favorites } });
+      // console.log(`User '${Favorites}' removed from Favorites array`);
+      response.status(200).json(demostockToUpdate);
+    } else {
+      await Demostock.findOneAndUpdate({ _id: id }, { $push: { Favorites } });
+      // console.log(`User '${Favorites}' added to Favorites array`);
+      response.status(200).json(demostockToUpdate);
+    }
+  } catch (error) {
+    console.error("Error updating the Favorites Array...", error);
   }
 }
