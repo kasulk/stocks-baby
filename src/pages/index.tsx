@@ -73,11 +73,12 @@ export default function Home() {
     // fieldName: string
   ): Promise<void> {
     // console.log(id);
+
     const favoriteData = {
-      _id: stockId,
-      // Favorites: ["icke"],
+      // _id: stockId,
+      Favorites: ["duso"],
       // [fieldName]: userId,
-      zzzTest: "test",
+      // zzzTest: "yadayada",
     };
     console.log(favoriteData);
 

@@ -112,6 +112,7 @@ const demostockSchema = new Schema({
   ExDividendDate: String,
   Bruchwert52Week: Number,
   Favorites: [String], // Field "Favorites" is Array of Strings
+  zzzTest: String,
 });
 
 // check whether the model with this name has already been compiled and if yes, take the already compiled model

@@ -5,13 +5,9 @@ import Demostock from "../../../../db/models/Demostock";
 // TS: provide type checking for the request and response objects.
 import { NextApiRequest, NextApiResponse } from "next";
 
-// TS: from Next.js template...
-// type Data = {
-//   name: string;
-// };
-
 //test
-const id = "";
+// const id = "649ac84a77a09c6664851867"; // aapl
+const id = "649ac84a77a09c6664851862"; // tsla
 
 export default async function handler(
   // TS: Type annotation to the handler function, indicating that
