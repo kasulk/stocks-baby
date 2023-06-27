@@ -4,8 +4,15 @@ import { SortParamType, Stock } from "../../types";
 import SortDropdown from "../components/SortDropdown";
 import { useEffect, useState } from "react";
 import sortStocksList from "../utils/SortUtils";
+import useSWRMutation from "swr/mutation";
 
 const currentUsername = "icke";
+
+// const url: string = "test";
+
+//
+//
+//
 
 export default function Home() {
   const [sortParam, setSortParam] = useState<SortParamType>({
@@ -19,8 +26,34 @@ export default function Home() {
     fallbackData: [],
   });
 
+  //! @patchrequest
+  const { trigger, isMutating } = useSWRMutation(
+    // `/api/jokes/${id}`,
+    `/api/demostocks`,
+    sendRequest
+  );
+  //
+  //
+  //! @patchrequest
+  // TS: typified: async function sendRequest(url: string, { arg }) {
+  async function sendRequest(url: string, { arg }: { arg: object }) {
+    const response = await fetch(url, {
+      method: "PATCH",
+      body: JSON.stringify(arg),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      await response.json();
+    } else {
+      console.error(`Error: ${response.status}`);
+    }
+  }
+
   if (!stocks) return "Fetching stocks...";
   if (isLoading) return "Loading...";
+  if (isMutating) return "Submitting your changes...";
 
   function handleSort(event: React.FormEvent) {
     const sortOption = event.target as HTMLSelectElement;
@@ -31,14 +64,21 @@ export default function Home() {
     });
   }
 
-  // onclick:
-  // change classes of button/icon
-  // add/remove current user id in db
-  function handleToggleFavorite(
+  //! @patchrequest
+  async function handleToggleFavorite(
     // event: React.MouseEvent<HTMLButtonElement>
     id: string
-  ): void {
-    console.log(id);
+  ): Promise<void> {
+    // console.log(id);
+    const favoriteData = {
+      _id: id,
+      // Favorites: ["icke"],
+      zzzTest: "test",
+    };
+    console.log(favoriteData);
+
+    // await trigger(id);
+    await trigger(favoriteData);
   }
 
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);

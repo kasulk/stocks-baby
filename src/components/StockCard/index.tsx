@@ -46,12 +46,13 @@ export default function StockCard({
 
   return (
     <article
-      className={`m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] hover:shadow-lg hover:shadow-gray-500 relative`}
+      className={`relative m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] hover:shadow-lg hover:shadow-gray-500`}
     >
       <p className="text-xs">
         <span>{Symbol}</span>:<span>{Exchange}</span>
       </p>
       <h1 className="font-bold text-xl">
+        {/* <h1 className="relative font-bold text-xl"> */}
         {Name}
         <FavoriteButton onToggleFavorite={onToggleFavorite} _id={_id} />
       </h1>
