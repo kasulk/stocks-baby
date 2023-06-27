@@ -32,7 +32,11 @@ export default async function handler(
     const demostockToUpdate = await Demostock.findByIdAndUpdate(id, {
       $set: request.body,
     });
-    // Find the stock by its ID and update the content that is part of the request body!
+
+    if (!demostockToUpdate) {
+      response.status(404).json({ status: "Not found" });
+    } // Find the stock by its ID and update the content that is part of the request body!
+
     response.status(200).json(demostockToUpdate);
     // If successful, you'll receive an OK status code.
   }

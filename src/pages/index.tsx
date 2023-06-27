@@ -47,7 +47,8 @@ export default function Home() {
     if (response.ok) {
       await response.json();
     } else {
-      console.error(`Error: ${response.status}`);
+      console.error(`Error (Response not ok): ${response.status}`);
+      console.error(response);
     }
   }
 
@@ -67,12 +68,15 @@ export default function Home() {
   //! @patchrequest
   async function handleToggleFavorite(
     // event: React.MouseEvent<HTMLButtonElement>
-    id: string
+    stockId: string
+    // userId: string,
+    // fieldName: string
   ): Promise<void> {
     // console.log(id);
     const favoriteData = {
-      _id: id,
+      _id: stockId,
       // Favorites: ["icke"],
+      // [fieldName]: userId,
       zzzTest: "test",
     };
     console.log(favoriteData);
