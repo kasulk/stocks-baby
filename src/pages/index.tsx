@@ -26,7 +26,7 @@ export default function Home() {
     fallbackData: [],
   });
 
-  //! @patchrequest
+  //! @patchrequest, step 3
   const { trigger, isMutating } = useSWRMutation(
     // `/api/jokes/${id}`,
     `/api/demostocks`,
@@ -34,12 +34,12 @@ export default function Home() {
   );
   //
   //
-  //! @patchrequest
+  //! @patchrequest, step2
   // TS: typified: async function sendRequest(url: string, { arg }) {
   async function sendRequest(url: string, { arg }: { arg: object }) {
     const response = await fetch(url, {
       method: "PATCH",
-      body: JSON.stringify(arg),
+      body: JSON.stringify(arg), // request body?
       headers: {
         "Content-Type": "application/json",
       },
@@ -65,24 +65,23 @@ export default function Home() {
     });
   }
 
-  //! @patchrequest
+  //! @patchrequest,  step 1
   async function handleToggleFavorite(
     // event: React.MouseEvent<HTMLButtonElement>
     stockId: string
     // userId: string,
-    // fieldName: string
   ): Promise<void> {
-    // console.log(id);
-
+    //
     const favoriteData = {
-      // _id: stockId,
-      Favorites: ["duso"],
-      // [fieldName]: userId,
+      id: stockId,
+      Favorites: "prrrlllt",
       // zzzTest: "yadayada",
     };
     console.log(favoriteData);
+    // step: check the Favorites array of the stock with the clicked id
+    // step: if the user exists in the Favorites array, delete him
+    // step: else push him to the array
 
-    // await trigger(id);
     await trigger(favoriteData);
   }
 

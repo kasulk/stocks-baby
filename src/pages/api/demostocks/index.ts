@@ -24,20 +24,46 @@ export default async function handler(
     return response.status(200).json(demostocks);
   }
 
+  //! @patchrequest, step 4
   if (request.method === "PATCH") {
-    const demostockToUpdate = await Demostock.findByIdAndUpdate(id, {
-      $set: request.body,
-    });
+    const { id, Favorites } = request.body;
 
-    if (!demostockToUpdate) {
-      response.status(404).json({ status: "Not found" });
-    } // Find the stock by its ID and update the content that is part of the request body!
+    // neu
+    try {
+      const demostockToUpdate = await Demostock.findById(id);
+      if (demostockToUpdate.Favorites.includes(Favorites)) {
+        await Demostock.findOneAndUpdate({ _id: id }, { $pull: { Favorites } });
+        console.log("Wert erfolgreich aus dem Array entfernt");
+      } else {
+        await Demostock.findOneAndUpdate({ _id: id }, { $push: { Favorites } });
+        console.log("Wert erfolgreich zum Array hinzugefügt");
+      }
+    } catch (error) {
+      console.error("Fehler beim Aktualisieren des Arrays", error);
+    }
+    // const id = request.body._id;
+    // const document = await Demostock.findById(id);
+    // if (document.Favorites.includes(value)) {
+    //   console.log("Wert bereits im Array vorhanden");
+    //   const demostockToUpdate = await Demostock.find
+    //   return;
+    // }
+    //
+    // const demostockToUpdate = await Demostock.findByIdAndUpdate(id, {
+    //   // $set: request.body,
+    //   $push: request.body,
+    //   // $push: request.body.Favorites,
+    // });
 
-    response.status(200).json(demostockToUpdate);
-    // If successful, you'll receive an OK status code.
-  }
-  //
-  else {
-    return response.status(405).json({ message: "HTTP Method not allowed" });
+    // if (!demostockToUpdate) {
+    //   response.status(404).json({ status: "Not found" });
+    // } // Find the stock by its ID and update the content that is part of the request body!
+
+    //   response.status(200).json(demostockToUpdate);
+    //   // If successful, you'll receive an OK status code.
+    // }
+    //
+    // else {
+    //   return response.status(405).json({ message: "HTTP Method not allowed" });
   }
 }
