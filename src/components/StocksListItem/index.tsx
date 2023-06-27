@@ -29,6 +29,7 @@ export default function StockListItem({ stocks, onToggleFavorite }: Props) {
             Price={stock.Price}
             Bruchwert52Week={stock.Bruchwert52Week}
             onToggleFavorite={onToggleFavorite}
+            Favorites={stock.Favorites}
           />
         </li>
       ))}
