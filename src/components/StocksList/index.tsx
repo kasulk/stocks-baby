@@ -1,9 +1,9 @@
 import StocksListItem from "../StocksListItem";
-import { StockType } from "../../../types";
+import { Stock } from "../../../types";
 
 // type Props = StockType & {
 type Props = {
-  stocks: StockType[];
+  stocks: Stock[];
   onToggleFavorite: (id: string) => void;
 };
 

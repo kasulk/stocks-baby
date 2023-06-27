@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import StocksList from "../components/StocksList";
-import { SortParamType, StockType } from "../../types";
+import { SortParamType, Stock } from "../../types";
 import SortDropdown from "../components/SortDropdown";
 import { useEffect, useState } from "react";
 import sortStocksList from "../utils/SortUtils";
@@ -15,7 +15,7 @@ export default function Home() {
   });
 
   //? move swr to StockListItem?
-  const { data: stocks, isLoading } = useSWR<StockType[]>("/api/demostocks", {
+  const { data: stocks, isLoading } = useSWR<Stock[]>("/api/demostocks", {
     fallbackData: [],
   });
 

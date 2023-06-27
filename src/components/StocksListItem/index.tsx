@@ -1,8 +1,8 @@
-import { StockType } from "../../../types";
+import { Stock } from "../../../types";
 import StockCard from "../StockCard";
 
 type Props = {
-  stocks: StockType[];
+  stocks: Stock[];
   onToggleFavorite: (id: string) => void;
 };
 

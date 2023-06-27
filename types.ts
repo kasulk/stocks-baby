@@ -1,4 +1,4 @@
-export type StockType = {
+export type Stock = {
   _id: string; // TS: if not set to optional, TS complains when passing the props to Card-Component...
   Symbol: string;
   Name: string;
