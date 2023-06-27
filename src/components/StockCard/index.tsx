@@ -1,6 +1,26 @@
-import { FuncProps, StockType } from "../../../types";
 import FavoriteButton from "../FavoriteButton";
 import FavoriteButtonIcon from "../FavoriteButtonIcon";
+
+type Props = {
+  // stocks: StockType[];
+  _id: string;
+  Symbol: string;
+  Name: string;
+  Exchange: string;
+  Sector: string;
+  Industry: string;
+  DividendPerShare: number;
+  DividendYield: number;
+  EPS: number;
+  EPSx15: number;
+  BookValue: number;
+  _52WeekHigh: number;
+  _52WeekLow: number;
+  AnalystTargetPrice: number;
+  Price: number;
+  Bruchwert52Week: number;
+  onToggleFavorite: (id: string) => void;
+};
 
 export default function StockCard({
   _id,
@@ -20,7 +40,7 @@ export default function StockCard({
   Price,
   Bruchwert52Week,
   onToggleFavorite,
-}: StockType) {
+}: Props) {
   //
   // console.log(onToggleFavorite);
 

@@ -1,7 +1,13 @@
 import StocksListItem from "../StocksListItem";
-import { FuncProps, StocksProps } from "../../../types";
+import { StockType } from "../../../types";
 
-export default function StocksList({ stocks, onToggleFavorite }: StocksProps) {
+// type Props = StockType & {
+type Props = {
+  stocks: StockType[];
+  onToggleFavorite: (id: string) => void;
+};
+
+export default function StocksList({ stocks, onToggleFavorite }: Props) {
   return (
     <>
       {/* <ul className="flex flex-wrap"> */}

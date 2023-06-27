@@ -4,10 +4,6 @@ import { SortParamType, StockType } from "../../types";
 import SortDropdown from "../components/SortDropdown";
 import { useEffect, useState } from "react";
 import sortStocksList from "../utils/SortUtils";
-import {
-  addBruchwertPropertyToArrOfObjs,
-  convertNumberStringPropertiesToNumbers,
-} from "@/utils/DataUtils";
 
 const currentUsername = "icke";
 
@@ -19,7 +15,7 @@ export default function Home() {
   });
 
   //? move swr to StockListItem?
-  const { data: stocks, isLoading } = useSWR("/api/demostocks", {
+  const { data: stocks, isLoading } = useSWR<StockType[]>("/api/demostocks", {
     fallbackData: [],
   });
 
@@ -39,15 +35,11 @@ export default function Home() {
   // change classes of button/icon
   // add/remove current user id in db
   function handleToggleFavorite(
-    event: React.MouseEvent<HTMLButtonElement>
-    // id: any
+    // event: React.MouseEvent<HTMLButtonElement>
+    id: string
   ): void {
-    // const test = event.target;
-    // console.log("geil!");
-    // console.log(id);
-    console.log(event);
+    console.log(id);
   }
-  // console.log(handleToggleFavorite);
 
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
 

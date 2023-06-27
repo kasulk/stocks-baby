@@ -1,10 +1,12 @@
-import { FuncProps, StocksProps } from "../../../types";
+import { StockType } from "../../../types";
 import StockCard from "../StockCard";
 
-export default function StockListItem({
-  stocks,
-  onToggleFavorite,
-}: StocksProps) {
+type Props = {
+  stocks: StockType[];
+  onToggleFavorite: (id: string) => void;
+};
+
+export default function StockListItem({ stocks, onToggleFavorite }: Props) {
   return (
     <>
       {stocks.map((stock) => (
