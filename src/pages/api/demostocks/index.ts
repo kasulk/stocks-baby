@@ -20,7 +20,7 @@ export default async function handler(
     return response.status(200).json(demostocks);
   }
 
-  //! @patchrequest, step 4
+  // @patchrequest, step3
   if (request.method === "PATCH") {
     await toggleUserToStockFavorites(request, response);
   } else {

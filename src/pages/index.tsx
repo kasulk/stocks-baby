@@ -20,16 +20,18 @@ export default function Home() {
     fallbackData: [],
   });
 
-  //! @patchrequest, step 3
+  // @patchrequest, step3
   const { trigger, isMutating } = useSWRMutation(
     `/api/demostocks`,
-    sendRequest
+    // sendRequest
+    sendRequestFavoriteToggle
   );
   //
-  //
-  //! @patchrequest, step2
-  // TS: typified: async function sendRequest(url: string, { arg }) {
-  async function sendRequest(url: string, { arg }: { arg: object }) {
+  // @patchrequest, step2
+  async function sendRequestFavoriteToggle(
+    url: string,
+    { arg }: { arg: object }
+  ) {
     const response = await fetch(url, {
       method: "PATCH",
       body: JSON.stringify(arg),
@@ -45,9 +47,9 @@ export default function Home() {
     }
   }
 
-  if (!stocks) return "Fetching stocks...";
-  if (isLoading) return "Loading...";
-  if (isMutating) return "Submitting your changes...";
+  if (!stocks) return <h1>Fetching stocks...</h1>;
+  if (isLoading) return <h1>Loading...</h1>;
+  if (isMutating) return <h1>Submitting your changes...</h1>;
 
   function handleSort(event: React.FormEvent) {
     const sortOption = event.target as HTMLSelectElement;
@@ -58,7 +60,7 @@ export default function Home() {
     });
   }
 
-  //! @patchrequest,  step 1
+  // @patchrequest, step1
   async function handleToggleFavorite(
     stockId: string,
     userId: string
@@ -68,7 +70,6 @@ export default function Home() {
       id: stockId,
       Favorites: userId,
     };
-    // console.log(favoriteData);
 
     await trigger(favoriteData);
   }

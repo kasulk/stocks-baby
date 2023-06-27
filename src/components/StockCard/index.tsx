@@ -2,7 +2,6 @@ import FavoriteButton from "../FavoriteButton";
 import FavoriteButtonIcon from "../FavoriteButtonIcon";
 
 type Props = {
-  // stocks: StockType[];
   _id: string;
   Symbol: string;
   Name: string;
@@ -44,7 +43,6 @@ export default function StockCard({
   Favorites,
 }: Props) {
   //
-  // console.log(onToggleFavorite);
 
   return (
     <article
@@ -54,7 +52,6 @@ export default function StockCard({
         <span>{Symbol}</span>:<span>{Exchange}</span>
       </p>
       <h1 className="font-bold text-xl">
-        {/* <h1 className="relative font-bold text-xl"> */}
         {Name}
         <FavoriteButton
           onToggleFavorite={onToggleFavorite}
@@ -66,7 +63,7 @@ export default function StockCard({
         <p>{Sector}</p>
         <p>{Industry}</p>
       </div>
-      {/* Numbers */}
+      {/*     >>> Numbers <<<     */}
       <p>
         <span className="text-sm text-slate-400">Dividend: </span>
         <span>
