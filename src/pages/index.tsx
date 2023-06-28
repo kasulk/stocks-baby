@@ -64,7 +64,8 @@ export default function Home() {
     id: string;
     Favorites: string;
   };
-  function mutateFavoriteData(
+
+  function mutateFavoriteData( // Yair
     currentData: Stock[],
     mutation: FavoriteMutation
   ) {
@@ -106,6 +107,8 @@ export default function Home() {
           favoriteData
         );
       },
+      // if the db mutation fails, rollback local changes
+      rollbackOnError: true,
     });
   }
 
