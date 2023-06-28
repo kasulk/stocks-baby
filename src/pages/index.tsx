@@ -1,8 +1,8 @@
-import useSWR, { useSWRConfig } from "swr";
+import useSWR from "swr";
 import StocksList from "../components/StocksList";
 import { SortParamType, Stock } from "../../types";
 import SortDropdown from "../components/SortDropdown";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import sortStocksList from "../utils/SortUtils";
 import useSWRMutation from "swr/mutation";
 
@@ -15,19 +15,19 @@ export default function Home() {
     sortDirection: "ascending",
   });
 
-  //? move swr to StockListItem?
+  // useSWR only fetches data, useSWRMutation also mutates it
   const { data: stocks, isLoading } = useSWR<Stock[]>("/api/demostocks", {
     fallbackData: [],
   });
 
   // @patchrequest, step3
-  const { trigger, isMutating } = useSWRMutation(
+  const { trigger } = useSWRMutation(
     `/api/demostocks`,
-    sendRequestFavoriteToggle // sendRequest
+    updateFavoriteStockToggle // sendRequest
   );
 
   // @patchrequest, step2
-  async function sendRequestFavoriteToggle(
+  async function updateFavoriteStockToggle(
     url: string,
     { arg }: { arg: object }
   ) {
@@ -48,7 +48,6 @@ export default function Home() {
 
   if (!stocks) return <h1>Fetching stocks...</h1>;
   if (isLoading) return <h1>Loading...</h1>;
-  // if (isMutating) return <h1>Submitting your changes...</h1>;
 
   function handleSort(event: React.FormEvent) {
     const sortOption = event.target as HTMLSelectElement;
@@ -72,7 +71,8 @@ export default function Home() {
     const stockToUpdate = currentData?.find(
       (stock) => stock._id === mutation.id
     );
-    const mutatedStock = { ...stockToUpdate };
+    const mutatedStock = { ...stockToUpdate }; // copy stockToUpdate
+
     if (mutatedStock.Favorites?.includes(mutation.Favorites)) {
       mutatedStock.Favorites = mutatedStock.Favorites.filter(
         (userId) => userId !== mutation.Favorites
@@ -83,6 +83,7 @@ export default function Home() {
         mutation.Favorites,
       ];
     }
+
     return currentData.map((stock) =>
       stock._id === mutatedStock._id ? mutatedStock : stock
     );
