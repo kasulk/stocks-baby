@@ -19,7 +19,8 @@ type Props = {
   Price: number;
   Bruchwert52Week: number;
   onToggleFavorite: (id: string, user: string) => void;
-  Favorites: string[];
+  Favorites?: string[];
+  LogoURL: string;
 };
 
 export default function StockCard({
@@ -41,6 +42,7 @@ export default function StockCard({
   Bruchwert52Week,
   onToggleFavorite,
   Favorites,
+  LogoURL,
 }: Props) {
   //
 
