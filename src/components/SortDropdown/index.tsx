@@ -1,5 +1,6 @@
 type Props = {
-  onSort: (event: React.FormEvent) => void;
+  // onSort: (event: React.FormEvent) => void;
+  onSort: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
 export default function SortDropdown({ onSort }: Props) {

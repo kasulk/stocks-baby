@@ -49,8 +49,8 @@ export default function Home() {
   if (!stocks) return <h1>Fetching stocks...</h1>;
   if (isLoading) return <h1>Loading...</h1>;
 
-  function handleSort(event: React.FormEvent) {
-    const sortOption = event.target as HTMLSelectElement;
+  function handleSort(event: React.ChangeEvent<HTMLSelectElement>) {
+    const sortOption = event.target;
     const sortOptionValues = sortOption.value.split("-");
     setSortParam({
       sortBy: sortOptionValues[0] as "Symbol", // TS: Yair
