@@ -6,7 +6,7 @@ export default function InfoButton() {
   return (
     <svg
       //   className={`text-slate-300`}
-      className={`inline ml-1 text-white bg-white rounded-full`}
+      className={`inline ml-1 fill-slate-400 border border-slate-600 rounded-full`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
       //   viewBox="0 0 24 24"

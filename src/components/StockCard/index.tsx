@@ -71,11 +71,13 @@ export default function StockCard({
           height={logoSize}
           alt={`Logo of ${Name}`}
         />
-        <h1 className="items-center my-2 font-bold text-xl">
+        <h1 className="my-2 font-bold text-xl">
           <span>{Name}</span>
-          <span title={Description}>
-            <InfoButton />
-          </span>
+          {Description && (
+            <span title={Description}>
+              <InfoButton />
+            </span>
+          )}
         </h1>
         <div className="my-2 text-xs text-right">
           <p className="my-1 font-bold">{Sector}</p>

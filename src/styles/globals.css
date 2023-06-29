@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-  outline: 1px dashed darkred; /* //! for production only */
+  /* outline: 1px dashed darkred; //! for production only */
 }
 
 :root {
