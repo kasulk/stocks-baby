@@ -1,3 +1,4 @@
+import Image from "next/image";
 import FavoriteButton from "../FavoriteButton";
 import FavoriteButtonIcon from "../FavoriteButtonIcon";
 
@@ -54,6 +55,7 @@ export default function StockCard({
         <span>{Symbol}</span>:<span>{Exchange}</span>
       </p>
       <h1 className="font-bold text-xl">
+        <Image src={LogoURL} width={10} height={10} alt={`Logo of ${Name}`} />
         {Name}
         <FavoriteButton
           onToggleFavorite={onToggleFavorite}
