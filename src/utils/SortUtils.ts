@@ -1,12 +1,12 @@
-import { StockType, SortByType, SortDirectionType } from "../../types";
+import { Stock, SortByType, SortDirectionType } from "../../types";
 
 export default function sortStocksList(
-  stocks: StockType[],
+  stocks: Stock[],
   sortBy: SortByType,
   sortDirection: SortDirectionType
 ): void {
   // const sorter = (a: StockType, b: StockType) => {
-  function sorter(a: StockType, b: StockType): number {
+  function sorter(a: Stock, b: Stock): number {
     if (sortDirection === "ascending") {
       if (a[sortBy] < b[sortBy]) {
         return -1;
