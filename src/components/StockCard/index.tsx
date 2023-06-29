@@ -1,6 +1,6 @@
 import Image from "next/image";
+import InfoButton from "../InfoButton";
 import FavoriteButton from "../FavoriteButton";
-import FavoriteButtonIcon from "../FavoriteButtonIcon";
 
 type Props = {
   _id: string;
@@ -69,7 +69,12 @@ export default function StockCard({
           height={logoSize}
           alt={`Logo of ${Name}`}
         />
-        <h1 className="my-2 font-bold text-xl">{Name}</h1>
+        <h1 className="flex items-center my-2 font-bold text-xl">
+          {Name}
+          <span title="test">
+            <InfoButton />
+          </span>
+        </h1>
         <div className="my-2 text-xs text-right">
           <p className="my-1 font-bold">{Sector}</p>
           <p>{Industry}</p>
