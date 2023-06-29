@@ -63,7 +63,7 @@ export default function StockCard({
       </p>
       <header>
         <Image
-          className="rounded-full mt-4 object-scale-down"
+          className="w-auto h-auto rounded-full mt-4 object-scale-down"
           src={LogoURL}
           width={logoSize}
           height={logoSize}
