@@ -5,10 +5,15 @@ type Props = {
 
 export default function SortDropdown({ onSort }: Props) {
   return (
-    <div className="flex justify-end">
+    <div>
       <form method="post">
         <label htmlFor="sort">Sort: </label>
-        <select name="sort" id="sort" className="p-1" onChange={onSort}>
+        <select
+          name="sort"
+          id="sort"
+          className="py-2 px-4 rounded-md"
+          onChange={onSort}
+        >
           <option className="italic" value="0" disabled>
             choose a value:
           </option>

@@ -5,6 +5,7 @@ import SortDropdown from "../components/SortDropdown";
 import { useState } from "react";
 import sortStocksList from "../utils/SortUtils";
 import useSWRMutation from "swr/mutation";
+import Heart from "../../_ressources/heart.svg";
 
 // const currentUsername = "icke";
 const currentUser = "icke";
@@ -120,10 +121,15 @@ export default function Home() {
 
   return (
     <>
-      <button onClick={() => setIsShowFavoriteStocks(!isShowFavoriteStocks)}>
-        {isShowFavoriteStocks ? "Show All" : "Show Favorites"}
-      </button>
-      <SortDropdown onSort={handleSort} />
+      <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
+        <button
+          className="border rounded-md py-2 px-4 m-2 md:mr-4 mr-0"
+          onClick={() => setIsShowFavoriteStocks(!isShowFavoriteStocks)}
+        >
+          {isShowFavoriteStocks ? "Show All" : "❤ Show Favorites"}
+        </button>
+        <SortDropdown onSort={handleSort} />
+      </div>
       <StocksList
         stocks={stocks}
         onToggleFavorite={handleToggleFavorite}
