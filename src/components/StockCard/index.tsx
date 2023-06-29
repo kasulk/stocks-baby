@@ -53,30 +53,28 @@ export default function StockCard({
     <article
       className={`relative m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] hover:shadow-lg hover:shadow-gray-500`}
     >
+      <FavoriteButton
+        onToggleFavorite={onToggleFavorite}
+        _id={_id}
+        Favorites={Favorites}
+      />
       <p className="text-xs">
         <span>{Symbol}</span>:<span>{Exchange}</span>
       </p>
-      <h1 className="flex my-4 font-bold text-xl">
+      <header>
         <Image
-          // className="rounded-full border-8 border-transparent"
-          className="rounded-full mr-2 object-scale-down"
+          className="rounded-full mt-4 object-scale-down"
           src={LogoURL}
           width={logoSize}
           height={logoSize}
           alt={`Logo of ${Name}`}
         />
-        <span>{Name}</span>
-
-        <FavoriteButton
-          onToggleFavorite={onToggleFavorite}
-          _id={_id}
-          Favorites={Favorites}
-        />
-      </h1>
-      <div className="text-xs">
-        <p>{Sector}</p>
-        <p>{Industry}</p>
-      </div>
+        <h1 className="my-2 font-bold text-xl">{Name}</h1>
+        <div className="my-2 text-xs text-right">
+          <p className="my-1 font-bold">{Sector}</p>
+          <p>{Industry}</p>
+        </div>
+      </header>
       {/*     >>> Numbers <<<     */}
       <p>
         <span className="text-sm text-slate-400">Dividend: </span>
