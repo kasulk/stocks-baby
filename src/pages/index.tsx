@@ -120,11 +120,7 @@ export default function Home() {
 
   return (
     <>
-      <button
-        onClick={() => {
-          setIsShowFavoriteStocks(!isShowFavoriteStocks);
-        }}
-      >
+      <button onClick={() => setIsShowFavoriteStocks(!isShowFavoriteStocks)}>
         {isShowFavoriteStocks ? "Show All" : "Show Favorites"}
       </button>
       <SortDropdown onSort={handleSort} />
