@@ -2,7 +2,8 @@ import useSWR from "swr";
 import StocksList from "../components/StocksList";
 import { SortParamType, Stock } from "../../types";
 import SortDropdown from "../components/SortDropdown";
-import { useState } from "react";
+import ShowFavoriteStocksToggle from "@/components/ShowFavoriteStocksToggle";
+import { Dispatch, SetStateAction, useState } from "react";
 import sortStocksList from "../utils/SortUtils";
 import useSWRMutation from "swr/mutation";
 import Heart from "../../_ressources/heart.svg";
@@ -12,6 +13,7 @@ const currentUser = "icke";
 
 export default function Home() {
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] =
+    // useState<Dispatch<SetStateAction<boolean>>>(false);
     useState<boolean>(false);
   const [sortParam, setSortParam] = useState<SortParamType>({
     // TS: Yair
@@ -122,12 +124,10 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
-        <button
-          className="transition hover:scale-x-105 bg-slate-200 hover:bg-slate-300 active:bg-slate-400 shadow-md hover:shadow-lg active:shadow-none rounded-md py-2 px-4 m-2 md:mr-4 mr-0"
-          onClick={() => setIsShowFavoriteStocks(!isShowFavoriteStocks)}
-        >
-          {isShowFavoriteStocks ? "Show All" : "❤ Show Favorites"}
-        </button>
+        <ShowFavoriteStocksToggle
+          isShowFavoriteStocks={isShowFavoriteStocks}
+          setIsShowFavoriteStocks={setIsShowFavoriteStocks}
+        />
         <SortDropdown onSort={handleSort} />
       </div>
       <StocksList
