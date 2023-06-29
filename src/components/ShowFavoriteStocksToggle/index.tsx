@@ -1,8 +1,6 @@
-import { SetStateAction } from "react";
-
 type Props = {
   isShowFavoriteStocks: boolean;
-  setIsShowFavoriteStocks: React.Dispatch<SetStateAction<boolean>>;
+  setIsShowFavoriteStocks: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function ShowFavoriteStocksToggle({

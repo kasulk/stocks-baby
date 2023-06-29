@@ -12,9 +12,7 @@ import Heart from "../../_ressources/heart.svg";
 const currentUser = "icke";
 
 export default function Home() {
-  const [isShowFavoriteStocks, setIsShowFavoriteStocks] =
-    // useState<Dispatch<SetStateAction<boolean>>>(false);
-    useState<boolean>(false);
+  const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [sortParam, setSortParam] = useState<SortParamType>({
     // TS: Yair
     sortBy: "Symbol",
