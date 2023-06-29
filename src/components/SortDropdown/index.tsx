@@ -5,13 +5,13 @@ type Props = {
 
 export default function SortDropdown({ onSort }: Props) {
   return (
-    <div>
+    <div className="transition hover:scale-x-105">
       <form method="post">
         <label htmlFor="sort">Sort: </label>
         <select
           name="sort"
           id="sort"
-          className="py-2 px-4 rounded-md"
+          className="transition shadow-md hover:shadow-lg active:shadow-none py-2 px-4 rounded-md bg-slate-200 hover:bg-slate-300"
           onChange={onSort}
         >
           <option className="italic" value="0" disabled>
