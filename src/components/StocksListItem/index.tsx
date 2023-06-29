@@ -25,6 +25,7 @@ export default function StockListItem({
             _id={stock._id}
             Symbol={stock.Symbol}
             Name={stock.Name}
+            Description={stock.Description}
             Exchange={stock.Exchange}
             Sector={stock.Sector}
             Industry={stock.Industry}
@@ -41,6 +42,7 @@ export default function StockListItem({
             onToggleFavorite={onToggleFavorite}
             Favorites={stock.Favorites}
             currentUser={currentUser}
+            LogoURL={stock.LogoURL}
           />
         </li>
       ))}

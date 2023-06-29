@@ -17,10 +17,10 @@ export default function FavoriteButton({
 
   return (
     <svg
-      className={`absolute top-4 right-4 cursor-pointer transition ${
+      className={`absolute top-4 right-4 cursor-pointer transition active:fill-slate-100 active:stroke-slate-100 active:transition-none hover:scale-125  ${
         isFavorite
-          ? `fill-rose-900 hover:fill-slate-500`
-          : `fill-transparent stroke-rose-900 stroke-3 hover:fill-rose-900 focus:fill-slate-100`
+          ? `fill-rose-900 scale-110 hover:fill-slate-500`
+          : `fill-transparent stroke-slate-300 stroke-2 scale-90 hover:fill-rose-900 hover:stroke-none`
       }`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"

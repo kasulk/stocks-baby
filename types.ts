@@ -2,6 +2,7 @@ export type Stock = {
   _id: string; // TS: if not set to optional, TS complains when passing the props to Card-Component...
   Symbol: string;
   Name: string;
+  Description: string;
   Exchange: string;
   Sector: string;
   Industry: string;
@@ -16,6 +17,7 @@ export type Stock = {
   Price: number;
   Bruchwert52Week: number;
   Favorites?: string[];
+  LogoURL: string;
 };
 
 // TS: Yair
