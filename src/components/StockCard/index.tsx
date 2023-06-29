@@ -1,10 +1,12 @@
+import Image from "next/image";
+import InfoButton from "../InfoButton";
 import FavoriteButton from "../FavoriteButton";
-import FavoriteButtonIcon from "../FavoriteButtonIcon";
 
 type Props = {
   _id: string;
   Symbol: string;
   Name: string;
+  Description: string;
   Exchange: string;
   Sector: string;
   Industry: string;
@@ -19,13 +21,17 @@ type Props = {
   Price: number;
   Bruchwert52Week: number;
   onToggleFavorite: (id: string, user: string) => void;
-  Favorites: string[];
+  Favorites?: string[];
+  LogoURL: string;
 };
+
+const logoSize = 64;
 
 export default function StockCard({
   _id,
   Symbol,
   Name,
+  Description,
   Exchange,
   Sector,
   Industry,
@@ -41,6 +47,7 @@ export default function StockCard({
   Bruchwert52Week,
   onToggleFavorite,
   Favorites,
+  LogoURL,
 }: Props) {
   //
 
@@ -48,21 +55,35 @@ export default function StockCard({
     <article
       className={`relative m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] hover:shadow-lg hover:shadow-gray-500`}
     >
+      <FavoriteButton
+        onToggleFavorite={onToggleFavorite}
+        _id={_id}
+        Favorites={Favorites}
+      />
       <p className="text-xs">
         <span>{Symbol}</span>:<span>{Exchange}</span>
       </p>
-      <h1 className="font-bold text-xl">
-        {Name}
-        <FavoriteButton
-          onToggleFavorite={onToggleFavorite}
-          _id={_id}
-          Favorites={Favorites}
+      <header>
+        <Image
+          className="w-auto h-auto rounded-full mt-4 object-scale-down"
+          src={LogoURL}
+          width={logoSize}
+          height={logoSize}
+          alt={`Logo of ${Name}`}
         />
-      </h1>
-      <div className="text-xs">
-        <p>{Sector}</p>
-        <p>{Industry}</p>
-      </div>
+        <h1 className="my-2 font-bold text-xl">
+          <span>{Name}</span>
+          {Description && (
+            <span title={Description}>
+              <InfoButton />
+            </span>
+          )}
+        </h1>
+        <div className="my-2 text-xs text-right">
+          <p className="my-1 font-bold">{Sector}</p>
+          <p>{Industry}</p>
+        </div>
+      </header>
       {/*     >>> Numbers <<<     */}
       <p>
         <span className="text-sm text-slate-400">Dividend: </span>

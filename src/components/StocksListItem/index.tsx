@@ -15,6 +15,7 @@ export default function StockListItem({ stocks, onToggleFavorite }: Props) {
             _id={stock._id}
             Symbol={stock.Symbol}
             Name={stock.Name}
+            Description={stock.Description}
             Exchange={stock.Exchange}
             Sector={stock.Sector}
             Industry={stock.Industry}
@@ -30,6 +31,7 @@ export default function StockListItem({ stocks, onToggleFavorite }: Props) {
             Bruchwert52Week={stock.Bruchwert52Week}
             onToggleFavorite={onToggleFavorite}
             Favorites={stock.Favorites}
+            LogoURL={stock.LogoURL}
           />
         </li>
       ))}
