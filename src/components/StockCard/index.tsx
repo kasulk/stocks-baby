@@ -24,6 +24,8 @@ type Props = {
   LogoURL: string;
 };
 
+const logoSize = 64;
+
 export default function StockCard({
   _id,
   Symbol,
@@ -54,9 +56,17 @@ export default function StockCard({
       <p className="text-xs">
         <span>{Symbol}</span>:<span>{Exchange}</span>
       </p>
-      <h1 className="font-bold text-xl">
-        <Image src={LogoURL} width={10} height={10} alt={`Logo of ${Name}`} />
-        {Name}
+      <h1 className="flex my-4 font-bold text-xl">
+        <Image
+          // className="rounded-full border-8 border-transparent"
+          className="rounded-full mr-2 object-scale-down"
+          src={LogoURL}
+          width={logoSize}
+          height={logoSize}
+          alt={`Logo of ${Name}`}
+        />
+        <span>{Name}</span>
+
         <FavoriteButton
           onToggleFavorite={onToggleFavorite}
           _id={_id}
