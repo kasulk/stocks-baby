@@ -7,6 +7,7 @@ import sortStocksList from "../utils/SortUtils";
 import useSWRMutation from "swr/mutation";
 
 // const currentUsername = "icke";
+const currentUser = "icke";
 
 export default function Home() {
   const [sortParam, setSortParam] = useState<SortParamType>({
@@ -115,12 +116,26 @@ export default function Home() {
 
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
 
+  let isShowFavorites = true;
+  isShowFavorites = false;
+
   return (
     <>
+      <button
+        onClick={() => {
+          console.log("before:", isShowFavorites);
+          isShowFavorites = !isShowFavorites;
+          console.log("after:", isShowFavorites);
+        }}
+      >
+        {isShowFavorites ? "Show All" : "Show Favorites"}
+      </button>
       <SortDropdown onSort={handleSort} />
       <StocksList
         stocks={stocks}
         onToggleFavorite={handleToggleFavorite}
+        currentUser={currentUser}
+        isShowFavorites={isShowFavorites}
       ></StocksList>
     </>
   );
