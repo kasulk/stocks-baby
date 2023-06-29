@@ -6,6 +6,7 @@ type Props = {
   _id: string;
   Symbol: string;
   Name: string;
+  Description: string;
   Exchange: string;
   Sector: string;
   Industry: string;
@@ -30,6 +31,7 @@ export default function StockCard({
   _id,
   Symbol,
   Name,
+  Description,
   Exchange,
   Sector,
   Industry,
@@ -69,9 +71,9 @@ export default function StockCard({
           height={logoSize}
           alt={`Logo of ${Name}`}
         />
-        <h1 className="flex items-center my-2 font-bold text-xl">
-          {Name}
-          <span title="test">
+        <h1 className="items-center my-2 font-bold text-xl">
+          <span>{Name}</span>
+          <span title={Description}>
             <InfoButton />
           </span>
         </h1>
