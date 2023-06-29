@@ -4,17 +4,17 @@ import StockCard from "../StockCard";
 type Props = {
   stocks: Stock[];
   onToggleFavorite: (id: string, user: string) => void;
-  isShowFavorites: boolean;
+  isShowFavoriteStocks: boolean;
   currentUser: string;
 };
 
 export default function StockListItem({
   stocks,
   onToggleFavorite,
-  isShowFavorites,
+  isShowFavoriteStocks,
   currentUser,
 }: Props) {
-  if (isShowFavorites) {
+  if (isShowFavoriteStocks) {
     stocks = stocks.filter((stock) => stock.Favorites?.includes(currentUser));
   }
   return (

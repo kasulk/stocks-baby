@@ -4,14 +4,14 @@ import { Stock } from "../../../types";
 type Props = {
   stocks: Stock[];
   onToggleFavorite: (id: string, user: string) => void;
-  isShowFavorites: boolean;
+  isShowFavoriteStocks: boolean;
   currentUser: string;
 };
 
 export default function StocksList({
   stocks,
   onToggleFavorite,
-  isShowFavorites,
+  isShowFavoriteStocks,
   currentUser,
 }: Props) {
   return (
@@ -19,7 +19,7 @@ export default function StocksList({
       <StocksListItem
         stocks={stocks}
         onToggleFavorite={onToggleFavorite}
-        isShowFavorites={isShowFavorites}
+        isShowFavoriteStocks={isShowFavoriteStocks}
         currentUser={currentUser}
       ></StocksListItem>
     </ul>
