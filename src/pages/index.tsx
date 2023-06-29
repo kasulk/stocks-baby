@@ -10,6 +10,7 @@ import useSWRMutation from "swr/mutation";
 const currentUser = "icke";
 
 export default function Home() {
+  const [isShowFavorites, setIsShowFavorites] = useState(false);
   const [sortParam, setSortParam] = useState<SortParamType>({
     // TS: Yair
     sortBy: "Symbol",
@@ -116,15 +117,12 @@ export default function Home() {
 
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
 
-  let isShowFavorites = true;
-  isShowFavorites = false;
-
   return (
     <>
       <button
         onClick={() => {
           console.log("before:", isShowFavorites);
-          isShowFavorites = !isShowFavorites;
+          setIsShowFavorites(!isShowFavorites);
           console.log("after:", isShowFavorites);
         }}
       >
