@@ -49,7 +49,8 @@
     "SharesOutstanding": 3169500000,
     "DividendDate": "None",
     "ExDividendDate": "None",
-    "Bruchwert52Week": 0.811
+    "Bruchwert52Week": 0.811,
+    "LogoURL": "https://api.twelvedata.com/logo/tesla.com"
   },
   {
     "Symbol": "OZK",
@@ -101,7 +102,8 @@
     "SharesOutstanding": 115080000,
     "DividendDate": "2023-04-21",
     "ExDividendDate": "2023-04-13",
-    "Bruchwert52Week": 49.15
+    "Bruchwert52Week": 49.15,
+    "LogoURL": "https://api.twelvedata.com/logo/ozk.com"
   },
   {
     "Symbol": "KO",
@@ -153,7 +155,8 @@
     "SharesOutstanding": 4324580000,
     "DividendDate": "2023-07-03",
     "ExDividendDate": "2023-06-15",
-    "Bruchwert52Week": 72.24
+    "Bruchwert52Week": 72.24,
+    "LogoURL": "https://api.twelvedata.com/logo/coca-colacompany.com"
   },
   {
     "Symbol": "WBA",
@@ -205,7 +208,8 @@
     "SharesOutstanding": 862796000,
     "DividendDate": "2023-06-12",
     "ExDividendDate": "2023-05-18",
-    "Bruchwert52Week": 26.91
+    "Bruchwert52Week": 26.91,
+    "LogoURL": "https://api.twelvedata.com/logo/walgreensbootsalliance.com"
   },
   {
     "Symbol": "PETS",
@@ -258,7 +262,8 @@
     "DividendDate": "2023-06-12",
     "ExDividendDate": "2023-06-05",
     "Bruchwert52Week": 10.03,
-    "Favorites": ["64998f8277a09c6664851841"]
+    "Favorites": ["64998f8277a09c6664851841"],
+    "LogoURL": "https://api.twelvedata.com/logo/1800petmeds.com"
   },
   {
     "Symbol": "AAPL",
@@ -310,7 +315,8 @@
     "SharesOutstanding": 15728700000,
     "DividendDate": "2023-05-18",
     "ExDividendDate": "2023-05-12",
-    "Bruchwert52Week": 96.76
+    "Bruchwert52Week": 96.76,
+    "LogoURL": "https://api.twelvedata.com/logo/apple.com"
   },
   {
     "Symbol": "MCD",
@@ -363,7 +369,8 @@
     "DividendDate": "2023-06-20",
     "ExDividendDate": "2023-06-02",
     "Bruchwert52Week": 93.99,
-    "Favorites": ["64998f8277a09c6664851841"]
+    "Favorites": ["64998f8277a09c6664851841"],
+    "LogoURL": "https://api.twelvedata.com/logo/corporate.mcdonalds.com"
   },
   {
     "Symbol": "IIPR",
@@ -415,7 +422,8 @@
     "SharesOutstanding": 28035000,
     "DividendDate": "2023-07-14",
     "ExDividendDate": "2023-06-29",
-    "Bruchwert52Week": 18.35
+    "Bruchwert52Week": 18.35,
+    "LogoURL": "https://api.twelvedata.com/logo/innovativeindustrialproperties.com"
   },
   {
     "Symbol": "FL",
@@ -467,7 +475,8 @@
     "SharesOutstanding": 93924000,
     "DividendDate": "2023-07-28",
     "ExDividendDate": "2023-07-13",
-    "Bruchwert52Week": 15.29
+    "Bruchwert52Week": 15.29,
+    "LogoURL": "https://api.twelvedata.com/logo/footlocker-inc.com"
   },
   {
     "Symbol": "PFE",
@@ -519,6 +528,7 @@
     "SharesOutstanding": 5645310000,
     "DividendDate": "2023-06-09",
     "ExDividendDate": "2023-05-11",
-    "Bruchwert52Week": 17.93
+    "Bruchwert52Week": 17.93,
+    "LogoURL": "https://api.twelvedata.com/logo/pfizer.com"
   }
 ]
