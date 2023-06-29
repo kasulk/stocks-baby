@@ -1,13 +1,12 @@
 import useSWR from "swr";
 import StocksList from "../components/StocksList";
-import { SortParamType, StockType } from "../../types";
+import { SortParamType, Stock } from "../../types";
 import SortDropdown from "../components/SortDropdown";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import sortStocksList from "../utils/SortUtils";
-import {
-  addBruchwertPropertyToArrOfObjs,
-  convertNumberStringPropertiesToNumbers,
-} from "@/utils/DataUtils";
+import useSWRMutation from "swr/mutation";
+
+// const currentUsername = "icke";
 
 export default function Home() {
   const [sortParam, setSortParam] = useState<SortParamType>({
@@ -16,30 +15,39 @@ export default function Home() {
     sortDirection: "ascending",
   });
 
-  //? move swr to StockListItem?
-  const { data: stocks, isLoading } = useSWR("/api/demostocks", {
+  // useSWR only fetches data, useSWRMutation also mutates it
+  const { data: stocks, isLoading } = useSWR<Stock[]>("/api/demostocks", {
     fallbackData: [],
   });
 
-  // useEffect(() => {
-  //   const oldStocks = stocks;
-  //   // ? runs every time the comp rerenders...
-  //   // ? should only run one time after the data is fetched...
-  //   convertNumberStringPropertiesToNumbers(stocks);
-  //   addBruchwertPropertyToArrOfObjs(stocks);
-  //   console.log(stocks);
+  // @patchrequest, step3
+  const { trigger } = useSWRMutation(
+    `/api/demostocks`,
+    updateFavoriteStockToggle // sendRequest
+  );
 
-  //   // cleanup
-  //   return () => {
-  //     // undo stocks manipulation by setting the old stocks values again
-  //     stocks = oldStocks;
-  //   };
-  // }, []);
+  // @patchrequest, step2
+  async function updateFavoriteStockToggle(
+    url: string,
+    { arg }: { arg: object }
+  ) {
+    const response = await fetch(url, {
+      method: "PATCH",
+      body: JSON.stringify(arg),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      await response.json();
+    } else {
+      console.error(`Error (Response not ok): ${response.status}`);
+      console.error(response);
+    }
+  }
 
-  if (!stocks) return "Fetching stocks...";
-  if (isLoading) return "Loading...";
-
-  // addBruchwertPropertyToArrOfObjs(stocks);
+  if (!stocks) return <h1>Fetching stocks...</h1>;
+  if (isLoading) return <h1>Loading...</h1>;
 
   function handleSort(event: React.FormEvent) {
     const sortOption = event.target as HTMLSelectElement;
@@ -50,12 +58,70 @@ export default function Home() {
     });
   }
 
+  type FavoriteMutation = {
+    // TS: Yair
+    id: string;
+    Favorites: string;
+  };
+
+  function mutateFavoriteData( // Yair
+    currentData: Stock[],
+    mutation: FavoriteMutation
+  ) {
+    const stockToUpdate = currentData?.find(
+      (stock) => stock._id === mutation.id
+    );
+    const mutatedStock = { ...stockToUpdate }; // copy stockToUpdate
+
+    if (mutatedStock.Favorites?.includes(mutation.Favorites)) {
+      mutatedStock.Favorites = mutatedStock.Favorites.filter(
+        (userId) => userId !== mutation.Favorites
+      );
+    } else {
+      mutatedStock.Favorites = [
+        ...(mutatedStock.Favorites as string[]), // TS: Yair
+        mutation.Favorites,
+      ];
+    }
+
+    return currentData.map((stock) =>
+      stock._id === mutatedStock._id ? mutatedStock : stock
+    );
+  }
+
+  // @patchrequest, step1
+  async function handleToggleFavorite(
+    stockId: string,
+    userId: string
+  ): Promise<void> {
+    //
+    const favoriteData = {
+      id: stockId,
+      Favorites: userId,
+    };
+
+    await trigger(favoriteData, {
+      // optimisticData updates UI instantly and mutates db (afterwards) in the background
+      optimisticData: (currentData) => {
+        return mutateFavoriteData(
+          currentData as unknown as Stock[], // TS: Yair
+          favoriteData
+        );
+      },
+      // if the db mutation fails, rollback local changes
+      rollbackOnError: true,
+    });
+  }
+
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
 
   return (
     <>
       <SortDropdown onSort={handleSort} />
-      <StocksList stocks={stocks}></StocksList>
+      <StocksList
+        stocks={stocks}
+        onToggleFavorite={handleToggleFavorite}
+      ></StocksList>
     </>
   );
 }

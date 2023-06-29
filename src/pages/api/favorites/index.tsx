@@ -1,5 +1,6 @@
+//! not used so far
 import dbConnect from "../../../../db/connect";
-import Stock from "../../../../db/models/Stock";
+import Favorite from "../../../../db/models/Favorite";
 
 // TS: NextApiRequest and NextApiResponse types from next,
 // TS: provide type checking for the request and response objects.
@@ -21,8 +22,8 @@ export default async function handler(
   await dbConnect();
 
   if (request.method === "GET") {
-    const stocks = await Stock.find();
-    return response.status(200).json(stocks);
+    const favorites = await Favorite.find();
+    return response.status(200).json(favorites);
   } else {
     return response.status(405).json({ message: "HTTP Method not allowed" });
   }

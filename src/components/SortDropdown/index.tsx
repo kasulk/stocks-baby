@@ -1,6 +1,8 @@
-import { SortProps } from "../../../types";
+type Props = {
+  onSort: (event: React.FormEvent) => void;
+};
 
-export default function SortDropdown({ onSort }: SortProps) {
+export default function SortDropdown({ onSort }: Props) {
   return (
     <div className="flex justify-end">
       <form method="post">

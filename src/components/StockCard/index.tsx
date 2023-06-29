@@ -1,6 +1,29 @@
-import { StockType } from "../../../types";
+import FavoriteButton from "../FavoriteButton";
+import FavoriteButtonIcon from "../FavoriteButtonIcon";
+
+type Props = {
+  _id: string;
+  Symbol: string;
+  Name: string;
+  Exchange: string;
+  Sector: string;
+  Industry: string;
+  DividendPerShare: number;
+  DividendYield: number;
+  EPS: number;
+  EPSx15: number;
+  BookValue: number;
+  _52WeekHigh: number;
+  _52WeekLow: number;
+  AnalystTargetPrice: number;
+  Price: number;
+  Bruchwert52Week: number;
+  onToggleFavorite: (id: string, user: string) => void;
+  Favorites: string[];
+};
 
 export default function StockCard({
+  _id,
   Symbol,
   Name,
   Exchange,
@@ -16,22 +39,31 @@ export default function StockCard({
   AnalystTargetPrice,
   Price,
   Bruchwert52Week,
-}: StockType) {
+  onToggleFavorite,
+  Favorites,
+}: Props) {
   //
 
   return (
     <article
-      className={`m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] hover:shadow-lg hover:shadow-gray-500`}
+      className={`relative m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] hover:shadow-lg hover:shadow-gray-500`}
     >
       <p className="text-xs">
         <span>{Symbol}</span>:<span>{Exchange}</span>
       </p>
-      <h1 className="font-bold text-xl">{Name}</h1>
+      <h1 className="font-bold text-xl">
+        {Name}
+        <FavoriteButton
+          onToggleFavorite={onToggleFavorite}
+          _id={_id}
+          Favorites={Favorites}
+        />
+      </h1>
       <div className="text-xs">
         <p>{Sector}</p>
         <p>{Industry}</p>
       </div>
-      {/* Numbers */}
+      {/*     >>> Numbers <<<     */}
       <p>
         <span className="text-sm text-slate-400">Dividend: </span>
         <span>
