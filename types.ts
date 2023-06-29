@@ -16,6 +16,7 @@ export type Stock = {
   Price: number;
   Bruchwert52Week: number;
   Favorites?: string[];
+  LogoURL: string;
 };
 
 // TS: Yair
