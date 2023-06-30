@@ -20,28 +20,19 @@ export default function StockListItem({
   if (isShowFavoriteStocks) {
     stocks = stocks.filter((stock) => stock.Favorites?.includes(currentUser));
   }
-  // filter stocks that match the search term
+  // filter stocks with a name and/or ticker symbol that match the search term
   if (searchTerm) {
-    // stocks = stocks.filter(
-    //   (stock) => stock.Name.toLowerCase().includes(searchTerm.toLowerCase()) // works
-    // stock.Symbol.toLowerCase().includes(searchTerm.toLowerCase()) // works
-    // );
-    const filteredNames = stocks.filter((stock) =>
+    const filteredStocksByName = stocks.filter((stock) =>
       stock.Name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    const filteredSymbols = stocks.filter((stock) =>
+    const filteredStocksBySymbol = stocks.filter((stock) =>
       stock.Symbol.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    // for every element of filtered names
-    // check if it is also included in filtered symbols
-    // if yes, remove it
-    stocks = filteredNames.filter((stock) => filteredSymbols.includes(stock));
-    // stocks = beste;
-    // stocks = [];
-    // stocks = [...filteredNames, ...filteredSymbols];
-    // // todo: filter (show) all stocks that have the search term either in the name or the ticker
-    // step:
+    stocks = filteredStocksByName.filter((stock) =>
+      filteredStocksBySymbol.includes(stock)
+    );
   }
+
   return (
     <>
       {stocks.map((stock) => (
