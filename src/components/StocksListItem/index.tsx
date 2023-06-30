@@ -6,6 +6,7 @@ type Props = {
   onToggleFavorite: (id: string, user: string) => void;
   isShowFavoriteStocks: boolean;
   currentUser: string;
+  searchTerm: string;
 };
 
 export default function StockListItem({
@@ -13,9 +14,19 @@ export default function StockListItem({
   onToggleFavorite,
   isShowFavoriteStocks,
   currentUser,
+  searchTerm,
 }: Props) {
+  // filter favorite stocks
   if (isShowFavoriteStocks) {
     stocks = stocks.filter((stock) => stock.Favorites?.includes(currentUser));
+  }
+  // filter stocks that match the search term
+  if (searchTerm) {
+    stocks = stocks.filter((stock) =>
+      stock.Name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    // todo: filter (show) all stocks that have the search term either in the name or the ticker
+    // step:
   }
   return (
     <>

@@ -7,12 +7,14 @@ import { Dispatch, SetStateAction, useState } from "react";
 import sortStocksList from "../utils/SortUtils";
 import useSWRMutation from "swr/mutation";
 import Heart from "../../_ressources/heart.svg";
+import SearchForm from "@/components/SearchForm";
 
 // const currentUsername = "icke";
 const currentUser = "icke";
 
 export default function Home() {
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const [sortParam, setSortParam] = useState<SortParamType>({
     // TS: Yair
     sortBy: "Symbol",
@@ -119,6 +121,15 @@ export default function Home() {
 
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
 
+  function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
+    event.preventDefault();
+    // const searchTerm = event.target.value;
+    console.log(event.target.value);
+    setSearchTerm(event.target.value);
+
+    // stocks = stocks?.filter((stock) => stock.Name.includes(search));
+  }
+
   return (
     <>
       <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
@@ -128,11 +139,13 @@ export default function Home() {
         />
         <SortDropdown onSort={handleSort} />
       </div>
+      <SearchForm onChange={handleSearch} />
       <StocksList
         stocks={stocks}
         onToggleFavorite={handleToggleFavorite}
         currentUser={currentUser}
         isShowFavoriteStocks={isShowFavoriteStocks}
+        searchTerm={searchTerm}
       ></StocksList>
     </>
   );

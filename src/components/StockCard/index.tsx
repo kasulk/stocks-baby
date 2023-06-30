@@ -2,6 +2,8 @@ import Image from "next/image";
 import InfoButton from "../InfoButton";
 import FavoriteButton from "../FavoriteButton";
 
+const logoSize = 64;
+
 type Props = {
   _id: string;
   Symbol: string;
@@ -25,8 +27,6 @@ type Props = {
   currentUser: string;
   LogoURL: string;
 };
-
-const logoSize = 64;
 
 export default function StockCard({
   _id,
