@@ -1,3 +1,4 @@
+import { removeDoublesfromArray } from "@/utils/DataUtils";
 import { Stock } from "../../../types";
 import StockCard from "../StockCard";
 
@@ -17,61 +18,25 @@ export default function StockListItem({
   searchTerm,
 }: Props) {
   //
+
   // filter favorite stocks
   if (isShowFavoriteStocks) {
     stocks = stocks.filter((stock) => stock.Favorites?.includes(currentUser));
   }
+
   // filter stocks with a name and/or ticker symbol that match the search term
   if (searchTerm) {
-    const filteredStocksByName = stocks.filter((stock) =>
+    const foundStocksByName = stocks.filter((stock) =>
       stock.Name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    console.log(
-      "stocksbyname:",
-      filteredStocksByName.map((e) => e.Symbol)
-    );
 
-    const filteredStocksBySymbol = stocks.filter((stock) =>
+    const foundStocksBySymbol = stocks.filter((stock) =>
       stock.Symbol.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    console.log(
-      "stocksbysymbol:",
-      filteredStocksBySymbol.map((e) => e.Symbol)
-    );
-    // remove doubles
-    // stocks = filteredStocksByName.filter((stock) =>
-    //   filteredStocksBySymbol.includes(stock)
-    // );
 
-    // stocks = filteredStocksByName;
-    // stocks = [...filteredStocksByName, ...filteredStocksBySymbol];
-    const mergedSearchResults = [
-      ...filteredStocksByName,
-      ...filteredStocksBySymbol,
-    ];
-    console.log(
-      "merged Results:",
-      mergedSearchResults.map((e) => e.Symbol)
-    );
+    const mergedSearchResults = [...foundStocksByName, ...foundStocksBySymbol];
 
     stocks = removeDoublesfromArray(mergedSearchResults);
-    console.log(
-      "single Results:",
-      stocks.map((e) => e.Symbol)
-    );
-
-    // if (filteredStocksByName.length === 0) {
-    //   stocks = filteredStocksBySymbol;
-    // } else if (filteredStocksBySymbol.length === 0) {
-    //   stocks = filteredStocksByName;
-    // } else {
-    //   stocks = filteredStocksByName.filter((stock) =>
-    //     filteredStocksBySymbol.includes(stock)
-    //   );
-    // }
-  }
-  function removeDoublesfromArray(arr: Stock[]): Stock[] {
-    return [...new Set(arr)]; // Set object is ES6
   }
 
   return (
