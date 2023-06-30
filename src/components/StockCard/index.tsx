@@ -97,14 +97,12 @@ export default function StockCard({
         <span>
           {/* {DividendPerShare != "0" ? Number(DividendPerShare).toFixed(2) : "-"} */}
           {/* {Number(DividendPerShare) ? Number(DividendPerShare).toFixed(2) : "-"} */}
-          {Number(DividendPerShare).toFixed(2)}
+          {DividendPerShare.toFixed(2)}
         </span>
       </p>
       <p>
         <span className="text-sm text-slate-400">Dividend %: </span>
-        <span>
-          {Number(DividendYield) ? `${Number(DividendYield).toFixed(2)}%` : "-"}
-        </span>
+        <span>{DividendYield ? `${DividendYield.toFixed(2)}%` : "-"}</span>
       </p>
       <p>
         <span className="text-sm text-slate-400">EPS: </span>
@@ -118,7 +116,7 @@ export default function StockCard({
             ? `+${distFairValue.toFixed(0)}`
             : distFairValue.toFixed(0)
         }% `}</span>
-        <span>{Number(EPSx15).toFixed(2)}</span>
+        <span>{EPSx15.toFixed(2)}</span>
       </p>
       {/* <p title="FairValue: EPS x 15">
         <span className="text-sm text-slate-400">FairValue (EPS): </span>
@@ -131,18 +129,16 @@ export default function StockCard({
             ? `+${distBookValue.toFixed(0)}`
             : distBookValue.toFixed(0)
         }% `}</span>
-        <span>{Number(BookValue).toFixed(2)}</span>
+        <span>{BookValue.toFixed(2)}</span>
         {/* <span>{BookValue.toFixed(2)}</span> */}
       </p>
       <p>
         <span className="text-sm text-slate-400">52W Range: </span>
         <span className="text-xs bg-rose-500 text-rose-950 rounded px-0.5">
-          {Number(Bruchwert52Week)
-            ? Number(Bruchwert52Week).toFixed(0) + "%"
-            : "-"}
+          {Bruchwert52Week ? Bruchwert52Week.toFixed(0) + "%" : "-"}
         </span>
         <span>
-          {Number(_52WeekLow).toFixed(2)} - {Number(_52WeekHigh).toFixed(2)}
+          {_52WeekLow.toFixed(2)} - {_52WeekHigh.toFixed(2)}
         </span>
       </p>
       <p
@@ -150,11 +146,7 @@ export default function StockCard({
         title="Bruchwert: Current distance from 52Week Low in %"
       >
         <span className="text-sm text-slate-400">52W Bruchwert: </span>
-        <span>
-          {Number(Bruchwert52Week)
-            ? Number(Bruchwert52Week).toFixed(2) + "%"
-            : "-"}
-        </span>
+        <span>{Bruchwert52Week ? Bruchwert52Week.toFixed(2) + "%" : "-"}</span>
       </p>
       <p>
         {/* <span className="text-sm text-slate-400">Analyst Target Price: </span> */}
@@ -164,11 +156,11 @@ export default function StockCard({
             ? `+${distAnalystTarget.toFixed(0)}`
             : distAnalystTarget.toFixed(0)
         }% `}</span>
-        <span>{Number(AnalystTargetPrice).toFixed(2)}</span>
+        <span>{AnalystTargetPrice.toFixed(2)}</span>
       </p>
       <p>
         <span className="text-sm text-slate-400">Price: </span>
-        <span>{Number(Price).toFixed(2)}</span>
+        <span>{Price.toFixed(2)}</span>
       </p>
     </article>
   );
