@@ -1,6 +1,7 @@
 import Image from "next/image";
 import InfoButton from "../InfoButton";
 import FavoriteButton from "../FavoriteButton";
+import StockCardValue from "../StockCardValue";
 
 const logoSize = 64;
 
@@ -160,7 +161,8 @@ export default function StockCard({
       </p>
       <p>
         <span className="text-sm text-slate-400">Price: </span>
-        <span>{Price.toFixed(2)}</span>
+        {/* <span>{Price.toFixed(2)}</span> */}
+        <StockCardValue>{Price.toFixed(2)}</StockCardValue>
       </p>
     </article>
   );
