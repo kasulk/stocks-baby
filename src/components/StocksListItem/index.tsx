@@ -4,9 +4,19 @@ import StockCard from "../StockCard";
 type Props = {
   stocks: Stock[];
   onToggleFavorite: (id: string, user: string) => void;
+  isShowFavoriteStocks: boolean;
+  currentUser: string;
 };
 
-export default function StockListItem({ stocks, onToggleFavorite }: Props) {
+export default function StockListItem({
+  stocks,
+  onToggleFavorite,
+  isShowFavoriteStocks,
+  currentUser,
+}: Props) {
+  if (isShowFavoriteStocks) {
+    stocks = stocks.filter((stock) => stock.Favorites?.includes(currentUser));
+  }
   return (
     <>
       {stocks.map((stock) => (
@@ -31,6 +41,7 @@ export default function StockListItem({ stocks, onToggleFavorite }: Props) {
             Bruchwert52Week={stock.Bruchwert52Week}
             onToggleFavorite={onToggleFavorite}
             Favorites={stock.Favorites}
+            currentUser={currentUser}
             LogoURL={stock.LogoURL}
           />
         </li>

@@ -2,13 +2,17 @@ import useSWR from "swr";
 import StocksList from "../components/StocksList";
 import { SortParamType, Stock } from "../../types";
 import SortDropdown from "../components/SortDropdown";
-import { useState } from "react";
+import ShowFavoriteStocksToggle from "@/components/ShowFavoriteStocksToggle";
+import { Dispatch, SetStateAction, useState } from "react";
 import sortStocksList from "../utils/SortUtils";
 import useSWRMutation from "swr/mutation";
+import Heart from "../../_ressources/heart.svg";
 
 // const currentUsername = "icke";
+const currentUser = "icke";
 
 export default function Home() {
+  const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [sortParam, setSortParam] = useState<SortParamType>({
     // TS: Yair
     sortBy: "Symbol",
@@ -49,8 +53,8 @@ export default function Home() {
   if (!stocks) return <h1>Fetching stocks...</h1>;
   if (isLoading) return <h1>Loading...</h1>;
 
-  function handleSort(event: React.FormEvent) {
-    const sortOption = event.target as HTMLSelectElement;
+  function handleSort(event: React.ChangeEvent<HTMLSelectElement>) {
+    const sortOption = event.target;
     const sortOptionValues = sortOption.value.split("-");
     setSortParam({
       sortBy: sortOptionValues[0] as "Symbol", // TS: Yair
@@ -117,10 +121,18 @@ export default function Home() {
 
   return (
     <>
-      <SortDropdown onSort={handleSort} />
+      <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
+        <ShowFavoriteStocksToggle
+          isShowFavoriteStocks={isShowFavoriteStocks}
+          setIsShowFavoriteStocks={setIsShowFavoriteStocks}
+        />
+        <SortDropdown onSort={handleSort} />
+      </div>
       <StocksList
         stocks={stocks}
         onToggleFavorite={handleToggleFavorite}
+        currentUser={currentUser}
+        isShowFavoriteStocks={isShowFavoriteStocks}
       ></StocksList>
     </>
   );

@@ -1,8 +1,6 @@
-import { StockType } from "../../types";
+import { Stock } from "../../types";
 
-export function addBruchwertPropertyToArrOfObjs(
-  arrOfObjects: StockType[]
-): void {
+export function addBruchwertPropertyToArrOfObjs(arrOfObjects: Stock[]): void {
   arrOfObjects.forEach((object) => {
     object["Bruchwert52Week"] = calc52WeekBruchwert(
       object.Price,
@@ -23,7 +21,7 @@ export function calc52WeekBruchwert(
 }
 
 export function convertNumberStringPropertiesToNumbers(
-  arrOfObjects: StockType[]
+  arrOfObjects: Stock[]
 ): void {
   // arrOfObjects.forEach((object) => {
   // TS: type object so it can accept indexes of type string

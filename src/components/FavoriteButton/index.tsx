@@ -2,15 +2,17 @@ type Props = {
   _id: string;
   onToggleFavorite: (id: string, user: string) => void;
   Favorites?: string[];
+  currentUser: string;
 };
 
 export default function FavoriteButton({
   _id,
   onToggleFavorite,
   Favorites,
+  currentUser,
 }: Props) {
   const size = 32;
-  const currentUser = "icke";
+  // const currentUser = "icke";
   const isFavorite = Favorites?.includes(currentUser);
 
   return (
