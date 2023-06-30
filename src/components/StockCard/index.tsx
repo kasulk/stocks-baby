@@ -53,6 +53,8 @@ export default function StockCard({
 }: Props) {
   //
 
+  const distFairValue = (100 * (Price - EPSx15)) / Price;
+
   return (
     <article
       className={`relative m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] hover:shadow-lg hover:shadow-gray-500`}
@@ -108,7 +110,13 @@ export default function StockCard({
       </p>
       <p title="FairValue: EPS x 15">
         <span className="text-sm text-slate-400">FairValue: </span>
-        <span>{`${Number(EPSx15).toFixed(2)}`}</span>
+        {/* <span className="text-xs">{`${ */}
+        <span className="text-xs bg-rose-500 text-rose-950 rounded px-0.5">{`${
+          distFairValue > 0
+            ? `+${distFairValue.toFixed(0)}`
+            : distFairValue.toFixed(0)
+        }% `}</span>
+        <span>{Number(EPSx15).toFixed(2)}</span>
       </p>
       {/* <p title="FairValue: EPS x 15">
         <span className="text-sm text-slate-400">FairValue (EPS): </span>
