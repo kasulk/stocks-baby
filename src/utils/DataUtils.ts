@@ -38,3 +38,7 @@ export function convertNumberStringPropertiesToNumbers(
     }
   });
 }
+
+export function removeDoublesfromArray(arr: Stock[]): Stock[] {
+  return [...new Set(arr)]; // Set object is ES6
+}

@@ -1,3 +1,4 @@
+import { removeDoublesfromArray } from "@/utils/DataUtils";
 import { Stock } from "../../../types";
 import StockCard from "../StockCard";
 
@@ -6,6 +7,7 @@ type Props = {
   onToggleFavorite: (id: string, user: string) => void;
   isShowFavoriteStocks: boolean;
   currentUser: string;
+  searchTerm: string;
 };
 
 export default function StockListItem({
@@ -13,10 +15,30 @@ export default function StockListItem({
   onToggleFavorite,
   isShowFavoriteStocks,
   currentUser,
+  searchTerm,
 }: Props) {
+  //
+
+  // filter favorite stocks
   if (isShowFavoriteStocks) {
     stocks = stocks.filter((stock) => stock.Favorites?.includes(currentUser));
   }
+
+  // filter stocks with a name and/or ticker symbol that match the search term
+  if (searchTerm) {
+    const foundStocksByName = stocks.filter((stock) =>
+      stock.Name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    const foundStocksBySymbol = stocks.filter((stock) =>
+      stock.Symbol.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    const mergedSearchResults = [...foundStocksByName, ...foundStocksBySymbol];
+
+    stocks = removeDoublesfromArray(mergedSearchResults);
+  }
+
   return (
     <>
       {stocks.map((stock) => (

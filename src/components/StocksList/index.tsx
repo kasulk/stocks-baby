@@ -6,6 +6,7 @@ type Props = {
   onToggleFavorite: (id: string, user: string) => void;
   isShowFavoriteStocks: boolean;
   currentUser: string;
+  searchTerm: string;
 };
 
 export default function StocksList({
@@ -13,6 +14,7 @@ export default function StocksList({
   onToggleFavorite,
   isShowFavoriteStocks,
   currentUser,
+  searchTerm,
 }: Props) {
   return (
     <ul>
@@ -21,6 +23,7 @@ export default function StocksList({
         onToggleFavorite={onToggleFavorite}
         isShowFavoriteStocks={isShowFavoriteStocks}
         currentUser={currentUser}
+        searchTerm={searchTerm}
       ></StocksListItem>
     </ul>
   );

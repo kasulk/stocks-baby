@@ -7,12 +7,14 @@ import { Dispatch, SetStateAction, useState } from "react";
 import sortStocksList from "../utils/SortUtils";
 import useSWRMutation from "swr/mutation";
 import Heart from "../../_ressources/heart.svg";
+import SearchForm from "@/components/SearchForm";
 
 // const currentUsername = "icke";
 const currentUser = "icke";
 
 export default function Home() {
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const [sortParam, setSortParam] = useState<SortParamType>({
     // TS: Yair
     sortBy: "Symbol",
@@ -60,6 +62,11 @@ export default function Home() {
       sortBy: sortOptionValues[0] as "Symbol", // TS: Yair
       sortDirection: sortOptionValues[1] as "ascending", // TS: Yair
     });
+  }
+
+  function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
+    event.preventDefault();
+    setSearchTerm(event.target.value);
   }
 
   type FavoriteMutation = {
@@ -112,8 +119,7 @@ export default function Home() {
           favoriteData
         );
       },
-      // if the db mutation fails, rollback local changes
-      rollbackOnError: true,
+      rollbackOnError: true, // if db mutation fails, rollback local changes
     });
   }
 
@@ -122,6 +128,7 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
+        <SearchForm onChange={handleSearch} />
         <ShowFavoriteStocksToggle
           isShowFavoriteStocks={isShowFavoriteStocks}
           setIsShowFavoriteStocks={setIsShowFavoriteStocks}
@@ -133,6 +140,7 @@ export default function Home() {
         onToggleFavorite={handleToggleFavorite}
         currentUser={currentUser}
         isShowFavoriteStocks={isShowFavoriteStocks}
+        searchTerm={searchTerm}
       ></StocksList>
     </>
   );
