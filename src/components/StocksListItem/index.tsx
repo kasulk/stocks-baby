@@ -16,6 +16,7 @@ export default function StockListItem({
   currentUser,
   searchTerm,
 }: Props) {
+  //
   // filter favorite stocks
   if (isShowFavoriteStocks) {
     stocks = stocks.filter((stock) => stock.Favorites?.includes(currentUser));
@@ -25,12 +26,52 @@ export default function StockListItem({
     const filteredStocksByName = stocks.filter((stock) =>
       stock.Name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    console.log(
+      "stocksbyname:",
+      filteredStocksByName.map((e) => e.Symbol)
+    );
+
     const filteredStocksBySymbol = stocks.filter((stock) =>
       stock.Symbol.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    stocks = filteredStocksByName.filter((stock) =>
-      filteredStocksBySymbol.includes(stock)
+    console.log(
+      "stocksbysymbol:",
+      filteredStocksBySymbol.map((e) => e.Symbol)
     );
+    // remove doubles
+    // stocks = filteredStocksByName.filter((stock) =>
+    //   filteredStocksBySymbol.includes(stock)
+    // );
+
+    // stocks = filteredStocksByName;
+    // stocks = [...filteredStocksByName, ...filteredStocksBySymbol];
+    const mergedSearchResults = [
+      ...filteredStocksByName,
+      ...filteredStocksBySymbol,
+    ];
+    console.log(
+      "merged Results:",
+      mergedSearchResults.map((e) => e.Symbol)
+    );
+
+    stocks = removeDoublesfromArray(mergedSearchResults);
+    console.log(
+      "single Results:",
+      stocks.map((e) => e.Symbol)
+    );
+
+    // if (filteredStocksByName.length === 0) {
+    //   stocks = filteredStocksBySymbol;
+    // } else if (filteredStocksBySymbol.length === 0) {
+    //   stocks = filteredStocksByName;
+    // } else {
+    //   stocks = filteredStocksByName.filter((stock) =>
+    //     filteredStocksBySymbol.includes(stock)
+    //   );
+    // }
+  }
+  function removeDoublesfromArray(arr: Stock[]): Stock[] {
+    return [...new Set(arr)]; // Set object is ES6
   }
 
   return (
