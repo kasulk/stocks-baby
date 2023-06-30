@@ -54,6 +54,8 @@ export default function StockCard({
   //
 
   const distFairValue = (100 * (Price - EPSx15)) / Price;
+  const distBookValue = (100 * (Price - BookValue)) / Price;
+  const distAnalystTarget = (100 * (Price - AnalystTargetPrice)) / Price;
 
   return (
     <article
@@ -124,16 +126,29 @@ export default function StockCard({
       </p> */}
       <p>
         <span className="text-sm text-slate-400">BookValue: </span>
+        <span className="text-xs bg-rose-500 text-rose-950 rounded px-0.5">{`${
+          distBookValue > 0
+            ? `+${distBookValue.toFixed(0)}`
+            : distBookValue.toFixed(0)
+        }% `}</span>
         <span>{Number(BookValue).toFixed(2)}</span>
         {/* <span>{BookValue.toFixed(2)}</span> */}
       </p>
       <p>
         <span className="text-sm text-slate-400">52W Range: </span>
+        <span className="text-xs bg-rose-500 text-rose-950 rounded px-0.5">
+          {Number(Bruchwert52Week)
+            ? Number(Bruchwert52Week).toFixed(0) + "%"
+            : "-"}
+        </span>
         <span>
           {Number(_52WeekLow).toFixed(2)} - {Number(_52WeekHigh).toFixed(2)}
         </span>
       </p>
-      <p title="Bruchwert: Current distance from 52Week Low in %">
+      <p
+        className="line-through"
+        title="Bruchwert: Current distance from 52Week Low in %"
+      >
         <span className="text-sm text-slate-400">52W Bruchwert: </span>
         <span>
           {Number(Bruchwert52Week)
@@ -142,7 +157,13 @@ export default function StockCard({
         </span>
       </p>
       <p>
-        <span className="text-sm text-slate-400">Analyst Target Price: </span>
+        {/* <span className="text-sm text-slate-400">Analyst Target Price: </span> */}
+        <span className="text-sm text-slate-400">Analyst Target: </span>
+        <span className="text-xs bg-green-500 text-green-950 rounded px-0.5">{`${
+          distAnalystTarget > 0
+            ? `+${distAnalystTarget.toFixed(0)}`
+            : distAnalystTarget.toFixed(0)
+        }% `}</span>
         <span>{Number(AnalystTargetPrice).toFixed(2)}</span>
       </p>
       <p>
