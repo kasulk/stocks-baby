@@ -64,6 +64,11 @@ export default function Home() {
     });
   }
 
+  function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
+    event.preventDefault();
+    setSearchTerm(event.target.value);
+  }
+
   type FavoriteMutation = {
     // TS: Yair
     id: string;
@@ -114,21 +119,11 @@ export default function Home() {
           favoriteData
         );
       },
-      // if the db mutation fails, rollback local changes
-      rollbackOnError: true,
+      rollbackOnError: true, // if db mutation fails, rollback local changes
     });
   }
 
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
-
-  function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
-    event.preventDefault();
-    // const searchTerm = event.target.value;
-    console.log(event.target.value);
-    setSearchTerm(event.target.value);
-
-    // stocks = stocks?.filter((stock) => stock.Name.includes(search));
-  }
 
   return (
     <>
