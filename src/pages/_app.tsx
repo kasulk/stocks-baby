@@ -6,7 +6,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <SWRConfig
       value={{
-        fetcher: async (...args) => {
+        // fetcher: async (...args) => {
+        fetcher: async (...args: Parameters<typeof fetch>) => {
           const response = await fetch(...args);
           if (!response.ok) {
             throw new Error(`Request with ${JSON.stringify(args)} failed.`);
