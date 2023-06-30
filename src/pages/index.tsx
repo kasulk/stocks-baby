@@ -133,13 +133,13 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
+        <SearchForm onChange={handleSearch} />
         <ShowFavoriteStocksToggle
           isShowFavoriteStocks={isShowFavoriteStocks}
           setIsShowFavoriteStocks={setIsShowFavoriteStocks}
         />
         <SortDropdown onSort={handleSort} />
       </div>
-      <SearchForm onChange={handleSearch} />
       <StocksList
         stocks={stocks}
         onToggleFavorite={handleToggleFavorite}
