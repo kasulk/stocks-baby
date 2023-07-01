@@ -2,8 +2,9 @@ import Image from "next/image";
 import InfoButton from "../InfoButton";
 import FavoriteButton from "../FavoriteButton";
 import StockCardValue from "../StockCardValue";
+import StockCardHeader from "../StockCardHeader";
 
-const logoSize = 64;
+// const logoSize = 64;
 
 type Props = {
   _id: string;
@@ -54,6 +55,24 @@ export default function StockCard({
 }: Props) {
   //
 
+  const stockNumbersToRender = [
+    {
+      Symbol: `${Symbol}:${Exchange}`,
+    styles: 'text-xs'
+    },
+    {
+      LogoURL,
+          styles:"w-auto h-auto rounded-full mt-4 object-scale-down"
+    },
+    {
+      EPSx15,
+      styles: 'text-md',
+      distFairValue: (100 * (Price - EPSx15)) / Price
+    }
+  ]
+  console.log(stockNumbersToRender);
+  
+
   const distFairValue = (100 * (Price - EPSx15)) / Price;
   const distBookValue = (100 * (Price - BookValue)) / Price;
   const distAnalystTarget = (100 * (Price - AnalystTargetPrice)) / Price;
@@ -68,10 +87,10 @@ export default function StockCard({
         Favorites={Favorites}
         currentUser={currentUser}
       />
+      {/* <header>
       <p className="text-xs">
         <span>{Symbol}</span>:<span>{Exchange}</span>
       </p>
-      <header>
         <Image
           className="w-auto h-auto rounded-full mt-4 object-scale-down"
           src={LogoURL}
@@ -91,8 +110,11 @@ export default function StockCard({
           <p className="my-1 font-bold">{Sector}</p>
           <p>{Industry}</p>
         </div>
-      </header>
+      </header> */}
+      <StockCardHeader Symbol={Symbol} Exchange={Exchange} LogoURL={LogoURL} Name={Name} Description={Description} Sector={Sector} Industry={Industry}/>
+      
       {/*     >>> Numbers <<<     */}
+
       <p>
         <span className="text-sm text-slate-400">Dividend: </span>
         <span>
