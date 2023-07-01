@@ -63,6 +63,12 @@ export default function StockCard({
 
   const stockNumbersToRender = [
     {
+      title: 'Price',
+      value: Price.toFixed(2),
+      // value: Price,
+      styles: "text-sm text-slate-400",
+    },
+    {
       title: 'Dividend',
       value: DividendPerShare.toFixed(2),
       // DividendPerShare,
@@ -84,35 +90,30 @@ export default function StockCard({
       title: 'FairValue',
       value: EPSx15.toFixed(2),
       styles: "text-sm text-slate-400",
-      distToPrice: ((100 * (Price - EPSx15)) / Price).toFixed(0)
+      // distToPrice: ((100 * (Price - EPSx15)) / Price).toFixed(0)
+      distToPrice: ((100 * (Price - EPSx15)) / Price)
     },
     {
       title: 'BookValue',
       value: BookValue.toFixed(2),
       styles: "text-sm text-slate-400",
-      distToPrice: ((100 * (Price - BookValue)) / Price).toFixed(0)
+      distToPrice: ((100 * (Price - BookValue)) / Price)
+      // distToPrice: ((100 * (Price - BookValue)) / Price).toFixed(0)
     },
     {
       title: '52W Range',
       value: `${_52WeekLow.toFixed(2)} - ${_52WeekHigh.toFixed(2)}`,
       styles: "text-sm text-slate-400",
-      // distToPrice: (100 * (Price - Bruchwert52Week)) / Price
-      distToPrice: ((100 * (Price - calc52WeekBruchwert(Price,_52WeekHigh,_52WeekLow))) / Price).toFixed(0)              //?  distToPrice && `${distToPrice}%`
-      // distToPrice: `${((100 * (Price - calc52WeekBruchwert(Price,_52WeekHigh,_52WeekLow))) / Price).toFixed(0)}%`
+      distToPrice: ((100 * (calc52WeekBruchwert(Price,_52WeekHigh,_52WeekLow)))),              //?  distToPrice && `${distToPrice}%`
     },
     {
       title: 'Analyst Target',
       value: AnalystTargetPrice.toFixed(2),
       styles: "text-sm text-slate-400",
-      distToPrice: ((100 * (Price - AnalystTargetPrice)) / Price).toFixed(0)
-    },
-    {
-      title: 'Price',
-      value: Price.toFixed(2),
-      styles: "text-sm text-slate-400",
+      // distToPrice: ((100 * (Price - AnalystTargetPrice)) / Price).toFixed(0)
+      distToPrice: ((100 * (Price - AnalystTargetPrice)) / Price)
     },
   ]
-  console.log(stockNumbersToRender);
   
   return (
     <article
@@ -173,7 +174,8 @@ export default function StockCard({
       <p>
         <span className="text-sm text-slate-400">52W Range: </span>
         <span className="text-xs bg-rose-500 text-rose-950 rounded px-0.5">
-          {Bruchwert52Week ? Bruchwert52Week.toFixed(0) + "%" : "-"}
+          {/* {Bruchwert52Week ? Bruchwert52Week.toFixed(0) + "%" : "-"} */}
+          {Bruchwert52Week ? Bruchwert52Week + "%" : "-"}
         </span>
         <span>
           {_52WeekLow.toFixed(2)} - {_52WeekHigh.toFixed(2)}
@@ -184,7 +186,8 @@ export default function StockCard({
         title="Bruchwert: Current distance from 52Week Low in %"
       >
         <span className="text-sm text-slate-400">52W Bruchwert: </span>
-        <span>{Bruchwert52Week ? Bruchwert52Week.toFixed(2) + "%" : "-"}</span>
+        {/* <span>{Bruchwert52Week ? Bruchwert52Week.toFixed(2) + "%" : "-"}</span> */}
+        <span>{Bruchwert52Week ? Bruchwert52Week + "%" : "-"}</span>
       </p>
       <p>
         {/* <span className="text-sm text-slate-400">Analyst Target Price: </span> */}
