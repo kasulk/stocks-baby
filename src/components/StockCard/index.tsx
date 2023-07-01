@@ -3,6 +3,7 @@ import InfoButton from "../InfoButton";
 import FavoriteButton from "../FavoriteButton";
 import StockCardValue from "../StockCardValue";
 import StockCardHeader from "../StockCardHeader";
+import StockCardBody from "../StockCardBody";
 import { calc52WeekBruchwert } from "@/utils/DataUtils";
 
 // const logoSize = 64;
@@ -96,8 +97,8 @@ export default function StockCard({
       value: `${_52WeekLow.toFixed(2)} - ${_52WeekHigh.toFixed(2)}`,
       styles: "text-sm text-slate-400",
       // distToPrice: (100 * (Price - Bruchwert52Week)) / Price
-      // distToPrice: ((100 * (Price - calc52WeekBruchwert(Price,_52WeekHigh,_52WeekLow))) / Price).toFixed(0)
-      distToPrice: `${((100 * (Price - calc52WeekBruchwert(Price,_52WeekHigh,_52WeekLow))) / Price).toFixed(0)}%`
+      distToPrice: ((100 * (Price - calc52WeekBruchwert(Price,_52WeekHigh,_52WeekLow))) / Price).toFixed(0)              //?  distToPrice && `${distToPrice}%`
+      // distToPrice: `${((100 * (Price - calc52WeekBruchwert(Price,_52WeekHigh,_52WeekLow))) / Price).toFixed(0)}%`
     },
     {
       title: 'Analyst Target',
@@ -119,11 +120,13 @@ export default function StockCard({
     >
       <FavoriteButton onToggleFavorite={onToggleFavorite} _id={_id} Favorites={Favorites} currentUser={currentUser} />
       <StockCardHeader Symbol={Symbol} Exchange={Exchange} LogoURL={LogoURL} Name={Name} Description={Description} Sector={Sector} Industry={Industry}/>
+      <StockCardBody stockNumbersToRender={stockNumbersToRender}/>
+      {/* <StockCardBody> */}
 {/* 
-      <StockCardBody />
         <StockCardNumberTitle />
         <StockCardNumberValue />
  */}
+      {/* </StockCardBody> */}
 
       {/*     >>> Numbers <<<     */}
 
