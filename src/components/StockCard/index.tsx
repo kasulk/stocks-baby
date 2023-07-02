@@ -1,7 +1,4 @@
-import Image from "next/image";
-import InfoButton from "../InfoButton";
 import FavoriteButton from "../FavoriteButton";
-import StockCardValue from "../StockCardValue";
 import StockCardHeader from "../StockCardHeader";
 import StockCardBody from "../StockCardBody";
 import { calc52WeekBruchwert } from "@/utils/DataUtils";
@@ -122,88 +119,10 @@ export default function StockCard({
       <FavoriteButton onToggleFavorite={onToggleFavorite} _id={_id} Favorites={Favorites} currentUser={currentUser} />
       <StockCardHeader Symbol={Symbol} Exchange={Exchange} LogoURL={LogoURL} Name={Name} Description={Description} Sector={Sector} Industry={Industry}/>
       <StockCardBody stockNumbersToRender={stockNumbersToRender}/>
-      {/* <StockCardBody> */}
 {/* 
         <StockCardNumberTitle />
         <StockCardNumberValue />
  */}
-      {/* </StockCardBody> */}
-
-      {/*     >>> Numbers <<<     */}
-
-      <p>
-        <span className="text-sm text-slate-400">Dividend: </span>
-        <span>
-          {/* {DividendPerShare != "0" ? Number(DividendPerShare).toFixed(2) : "-"} */}
-          {/* {Number(DividendPerShare) ? Number(DividendPerShare).toFixed(2) : "-"} */}
-          {DividendPerShare.toFixed(2)}
-        </span>
-      </p>
-      <p>
-        <span className="text-sm text-slate-400">Dividend %: </span>
-        <span>{DividendYield ? `${DividendYield.toFixed(2)}%` : "-"}</span>
-      </p>
-      <p>
-        <span className="text-sm text-slate-400">EPS: </span>
-        <span>{EPS}</span>
-      </p>
-      <p title="FairValue: EPS x 15">
-        <span className="text-sm text-slate-400">FairValue: </span>
-        {/* <span className="text-xs">{`${ */}
-        <span className="text-xs bg-rose-500 text-rose-950 rounded px-0.5">{`${
-          distFairValue > 0
-            ? `+${distFairValue.toFixed(0)}`
-            : distFairValue.toFixed(0)
-        }% `}</span>
-        <span>{EPSx15.toFixed(2)}</span>
-      </p>
-      {/* <p title="FairValue: EPS x 15">
-        <span className="text-sm text-slate-400">FairValue (EPS): </span>
-        <span>{`${Number(EPSx15).toFixed(2)} (${Number(EPS).toFixed( 2)})`}</span>
-      </p> */}
-      <p>
-        <span className="text-sm text-slate-400">BookValue: </span>
-        <span className="text-xs bg-rose-500 text-rose-950 rounded px-0.5">{`${
-          distBookValue > 0
-            ? `+${distBookValue.toFixed(0)}`
-            : distBookValue.toFixed(0)
-        }% `}</span>
-        <span>{BookValue.toFixed(2)}</span>
-        {/* <span>{BookValue.toFixed(2)}</span> */}
-      </p>
-      <p>
-        <span className="text-sm text-slate-400">52W Range: </span>
-        <span className="text-xs bg-rose-500 text-rose-950 rounded px-0.5">
-          {/* {Bruchwert52Week ? Bruchwert52Week.toFixed(0) + "%" : "-"} */}
-          {Bruchwert52Week ? Bruchwert52Week + "%" : "-"}
-        </span>
-        <span>
-          {_52WeekLow.toFixed(2)} - {_52WeekHigh.toFixed(2)}
-        </span>
-      </p>
-      <p
-        className="line-through"
-        title="Bruchwert: Current distance from 52Week Low in %"
-      >
-        <span className="text-sm text-slate-400">52W Bruchwert: </span>
-        {/* <span>{Bruchwert52Week ? Bruchwert52Week.toFixed(2) + "%" : "-"}</span> */}
-        <span>{Bruchwert52Week ? Bruchwert52Week + "%" : "-"}</span>
-      </p>
-      <p>
-        {/* <span className="text-sm text-slate-400">Analyst Target Price: </span> */}
-        <span className="text-sm text-slate-400">Analyst Target: </span>
-        <span className="text-xs bg-green-500 text-green-950 rounded px-0.5">{`${
-          distAnalystTarget > 0
-            ? `+${distAnalystTarget.toFixed(0)}`
-            : distAnalystTarget.toFixed(0)
-        }% `}</span>
-        <span>{AnalystTargetPrice.toFixed(2)}</span>
-      </p>
-      <p>
-        <span className="text-sm text-slate-400">Price: </span>
-        {/* <span>{Price.toFixed(2)}</span> */}
-        <StockCardValue>{Price.toFixed(2)}</StockCardValue>
-      </p>
     </article>
   );
 }
