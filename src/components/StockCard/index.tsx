@@ -3,8 +3,6 @@ import StockCardHeader from "../StockCardHeader";
 import StockCardBody from "../StockCardBody";
 import { calc52WeekBruchwert } from "@/utils/DataUtils";
 
-// const logoSize = 64;
-
 type Props = {
   _id: string;
   Symbol: string;
@@ -53,76 +51,73 @@ export default function StockCard({
   LogoURL,
 }: Props) {
   //
-  const distFairValue = (100 * (Price - EPSx15)) / Price;
-  const distBookValue = (100 * (Price - BookValue)) / Price;
-  const distAnalystTarget = (100 * (Price - AnalystTargetPrice)) / Price;
-
-
   const stockNumbersToRender = [
     {
-      title: 'Price',
+      title: "Price",
       value: Price.toFixed(2),
-      // value: Price,
       styles: "text-sm text-slate-400",
     },
     {
-      title: 'Dividend',
+      title: "Dividend",
       value: DividendPerShare.toFixed(2),
-      // DividendPerShare,
-      // Dividend: DividendPerShare,
-      styles: "text-sm text-slate-400"
+      styles: "text-sm text-slate-400",
     },
     {
-      title: 'Dividend%',
-      // DividendYield: DividendYield ? `${DividendYield.toFixed(2)}%` : "-",
+      title: "Dividend%",
       value: DividendYield ? `${DividendYield.toFixed(2)}%` : "-",
-      styles: "text-sm text-slate-400"
+      styles: "text-sm text-slate-400",
     },
     {
-      title: 'EPS',
+      title: "EPS",
       value: EPS.toFixed(2),
-      styles: "text-sm text-slate-400"
+      styles: "text-sm text-slate-400",
     },
     {
-      title: 'FairValue',
+      title: "FairValue",
       value: EPSx15.toFixed(2),
       styles: "text-sm text-slate-400",
-      // distToPrice: ((100 * (Price - EPSx15)) / Price).toFixed(0)
-      distToPrice: ((100 * (Price - EPSx15)) / Price)
+      distToPrice: (100 * (Price - EPSx15)) / Price,
     },
     {
-      title: 'BookValue',
+      title: "BookValue",
       value: BookValue.toFixed(2),
       styles: "text-sm text-slate-400",
-      distToPrice: ((100 * (Price - BookValue)) / Price)
-      // distToPrice: ((100 * (Price - BookValue)) / Price).toFixed(0)
+      distToPrice: (100 * (Price - BookValue)) / Price,
     },
     {
-      title: '52W Range',
+      title: "52W Range",
       value: `${_52WeekLow.toFixed(2)} - ${_52WeekHigh.toFixed(2)}`,
       styles: "text-sm text-slate-400",
-      distToPrice: ((100 * (calc52WeekBruchwert(Price,_52WeekHigh,_52WeekLow)))),              //?  distToPrice && `${distToPrice}%`
+      distToPrice: 100 * calc52WeekBruchwert(Price, _52WeekHigh, _52WeekLow),
     },
     {
-      title: 'Analyst Target',
+      title: "Analyst Target",
       value: AnalystTargetPrice.toFixed(2),
       styles: "text-sm text-slate-400",
-      // distToPrice: ((100 * (Price - AnalystTargetPrice)) / Price).toFixed(0)
-      distToPrice: ((100 * (Price - AnalystTargetPrice)) / Price)
+      distToPrice: (100 * (Price - AnalystTargetPrice)) / Price,
     },
-  ]
-  
+  ];
+
   return (
     <article
-      className={`relative m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] hover:shadow-lg hover:shadow-gray-500`}
+      className={`relative m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] md:hover:scale-x-[1.01] hover:shadow-lg hover:shadow-gray-500`}
     >
-      <FavoriteButton onToggleFavorite={onToggleFavorite} _id={_id} Favorites={Favorites} currentUser={currentUser} />
-      <StockCardHeader Symbol={Symbol} Exchange={Exchange} LogoURL={LogoURL} Name={Name} Description={Description} Sector={Sector} Industry={Industry}/>
-      <StockCardBody stockNumbersToRender={stockNumbersToRender}/>
-{/* 
-        <StockCardNumberTitle />
-        <StockCardNumberValue />
- */}
+      <FavoriteButton
+        onToggleFavorite={onToggleFavorite}
+        _id={_id}
+        Favorites={Favorites}
+        currentUser={currentUser}
+      />
+      <StockCardHeader
+        Symbol={Symbol}
+        Exchange={Exchange}
+        LogoURL={LogoURL}
+        Name={Name}
+        Description={Description}
+        Sector={Sector}
+        Industry={Industry}
+      />
+      <StockCardBody stockNumbersToRender={stockNumbersToRender} />
     </article>
   );
 }
