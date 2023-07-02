@@ -59,7 +59,8 @@ export default function StockCard({
     },
     {
       title: "Dividend",
-      value: DividendPerShare.toFixed(2),
+      value: DividendPerShare ? `${DividendPerShare.toFixed(2)}` : "-",
+      // value: DividendPerShare.toFixed(2),
       styles: "text-sm text-slate-400",
     },
     {
