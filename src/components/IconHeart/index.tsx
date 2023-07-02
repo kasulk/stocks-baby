@@ -4,7 +4,7 @@ type Props = {
   onClick?: () => void;
 };
 
-export default function Heart({ size, className, onClick }: Props) {
+export default function IconHeart({ size, className, onClick }: Props) {
   return (
     <svg
       className={className}

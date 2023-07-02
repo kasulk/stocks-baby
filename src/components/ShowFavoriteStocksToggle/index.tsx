@@ -1,5 +1,5 @@
 // import Heart from "../../../_ressources/heart.svg";
-import Heart from "@/components/Heart";
+import IconHeart from "@/components/IconHeart";
 
 type Props = {
   isShowFavoriteStocks: boolean;
@@ -20,7 +20,7 @@ export default function ShowFavoriteStocksToggle({
         "Show All"
       ) : (
         <span className="flex items-center">
-          <Heart size={20} className="fill-rose-700 mr-1" />
+          <IconHeart size={20} className="fill-rose-700 mr-1" />
           <span>Favorites</span>
         </span>
       )}

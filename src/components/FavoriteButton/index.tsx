@@ -1,4 +1,4 @@
-import Heart from "../Heart";
+import IconHeart from "../IconHeart";
 
 type Props = {
   _id: string;
@@ -17,7 +17,7 @@ export default function FavoriteButton({
   const isFavorite = Favorites?.includes(currentUser);
 
   return (
-    <Heart
+    <IconHeart
       size={32}
       className={`absolute top-4 right-4 cursor-pointer transition active:fill-slate-100 active:stroke-slate-100 active:transition-none hover:scale-125  ${
         isFavorite
