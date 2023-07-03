@@ -10,6 +10,7 @@ import SearchForm from "@/components/SearchForm";
 import LoginButton from "@/components/LoginButton";
 import { useSession } from "next-auth/react";
 import useLocalStorageState from "use-local-storage-state";
+import DarkmodeToggle from "@/components/DarkmodeToggle";
 
 // const currentUser = "icke";
 
@@ -137,6 +138,15 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
+        {/* <DarkmodeToggle onClick={() => setIsDark()} /> */}
+        {/* <DarkmodeToggle onClick={() => console.log("geil!")} /> */}
+        <DarkmodeToggle
+          onClick={() => {
+            setIsDark({ theme: "dark" });
+            // console.log("geil!");
+            console.log(isDark);
+          }}
+        />
         <LoginButton />
         <SearchForm onChange={handleSearch} />
         {/* show favorites view button only when user is logged in */}
@@ -159,9 +169,3 @@ export default function Home() {
     </>
   );
 }
-// function useLocalStorageState(
-//   arg0: string,
-//   arg1: { defaultValue: {} }
-// ): [any, any] {
-//   throw new Error("Function not implemented.");
-// }
