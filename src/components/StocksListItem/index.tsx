@@ -20,8 +20,10 @@ export default function StockListItem({
   //
 
   // filter favorite stocks
-  if (isShowFavoriteStocks) {
-    stocks = stocks.filter((stock) => stock.Favorites?.includes(currentUser));
+  if (currentUser) {
+    if (isShowFavoriteStocks) {
+      stocks = stocks.filter((stock) => stock.Favorites?.includes(currentUser));
+    }
   }
 
   // filter stocks with a name and/or ticker symbol that match the search term

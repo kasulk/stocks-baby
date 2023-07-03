@@ -15,6 +15,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 export default function Home() {
   const { data: session } = useSession();
   const currentUser = session?.user.name;
+  // const currentUser = session.user.name ? session?.user.name : null;
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortParam, setSortParam] = useState<SortParamType>({
@@ -135,7 +136,8 @@ export default function Home() {
         <LoginButton />
         <SearchForm onChange={handleSearch} />
         {/* show favorites view button only when user is logged in */}
-        {session && (
+        {/* {session && ( */}
+        {currentUser && (
           <ShowFavoriteStocksToggle
             isShowFavoriteStocks={isShowFavoriteStocks}
             setIsShowFavoriteStocks={setIsShowFavoriteStocks}
