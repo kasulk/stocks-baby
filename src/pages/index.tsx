@@ -7,11 +7,15 @@ import { Dispatch, SetStateAction, useState } from "react";
 import sortStocksList from "../utils/SortUtils";
 import useSWRMutation from "swr/mutation";
 import SearchForm from "@/components/SearchForm";
+import LoginButton from "@/components/LoginButton";
+import { useSession, signIn, signOut } from "next-auth/react";
 
-// const currentUsername = "icke";
-const currentUser = "icke";
+// const currentUser = "icke";
 
 export default function Home() {
+  const { data: session } = useSession();
+  const currentUser = session?.user.name;
+  // const currentUser = session.user.name ? session?.user.name : null;
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortParam, setSortParam] = useState<SortParamType>({
@@ -54,7 +58,7 @@ export default function Home() {
   if (!stocks) return <h1>Fetching stocks...</h1>;
   if (isLoading) return <h1>Loading...</h1>;
 
-  function handleSort(event: React.ChangeEvent<HTMLSelectElement>) {
+  function handleSort(event: React.ChangeEvent<HTMLSelectElement>): void {
     const sortOption = event.target;
     const sortOptionValues = sortOption.value.split("-");
     setSortParam({
@@ -63,7 +67,7 @@ export default function Home() {
     });
   }
 
-  function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleSearch(event: React.ChangeEvent<HTMLInputElement>): void {
     event.preventDefault();
     setSearchTerm(event.target.value);
   }
@@ -124,14 +128,21 @@ export default function Home() {
 
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
 
+  console.log(currentUser);
+
   return (
     <>
       <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
+        <LoginButton />
         <SearchForm onChange={handleSearch} />
-        <ShowFavoriteStocksToggle
-          isShowFavoriteStocks={isShowFavoriteStocks}
-          setIsShowFavoriteStocks={setIsShowFavoriteStocks}
-        />
+        {/* show favorites view button only when user is logged in */}
+        {/* {session && ( */}
+        {currentUser && (
+          <ShowFavoriteStocksToggle
+            isShowFavoriteStocks={isShowFavoriteStocks}
+            setIsShowFavoriteStocks={setIsShowFavoriteStocks}
+          />
+        )}
         <SortDropdown onSort={handleSort} />
       </div>
       <StocksList

@@ -27,13 +27,16 @@ export default function StockCardHeader({
       <p className="text-xs">
         <span>{Symbol}</span>:<span>{Exchange}</span>
       </p>
-      <Image
-        className="w-auto h-auto rounded-full mt-4 object-scale-down"
-        src={LogoURL}
-        width={logoSize}
-        height={logoSize}
-        alt={`Logo of ${Name}`}
-      />
+      <a href={`https://finviz.com/quote.ashx?t=${Symbol}&p=w`} target="_blank">
+        <Image
+          className="inline rounded-full mt-4 object-scale-down"
+          // className={`rounded-full mt-4 object-scale-down w-${logoSize} h-${logoSize}`}
+          src={LogoURL}
+          width={logoSize}
+          height={logoSize}
+          alt={`Logo of ${Name}`}
+        />
+      </a>
       <h1 className="my-2 font-bold text-xl">
         <span>{Name}</span>
         {Description && (

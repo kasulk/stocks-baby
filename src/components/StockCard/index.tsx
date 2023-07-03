@@ -2,6 +2,7 @@ import FavoriteButton from "../FavoriteButton";
 import StockCardHeader from "../StockCardHeader";
 import StockCardBody from "../StockCardBody";
 import { calc52WeekBruchwert } from "@/utils/DataUtils";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 type Props = {
   _id: string;
@@ -23,7 +24,7 @@ type Props = {
   Bruchwert52Week: number;
   onToggleFavorite: (id: string, user: string) => void;
   Favorites?: string[];
-  currentUser: string;
+  currentUser?: string | null;
   LogoURL: string;
 };
 
@@ -51,6 +52,7 @@ export default function StockCard({
   LogoURL,
 }: Props) {
   //
+  const { data: session } = useSession();
   const stockNumbersToRender = [
     {
       title: "Price",
@@ -102,12 +104,16 @@ export default function StockCard({
     <article
       className={`relative m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] md:hover:scale-x-[1.01] hover:shadow-lg hover:shadow-gray-500`}
     >
-      <FavoriteButton
-        _id={_id}
-        currentUser={currentUser}
-        Favorites={Favorites}
-        onToggleFavorite={onToggleFavorite}
-      />
+      {/* show favorite button only when user is logged in */}
+      {/* {session && ( */}
+      {currentUser && (
+        <FavoriteButton
+          _id={_id}
+          currentUser={currentUser}
+          Favorites={Favorites}
+          onToggleFavorite={onToggleFavorite}
+        />
+      )}
       <StockCardHeader
         Symbol={Symbol}
         Exchange={Exchange}
