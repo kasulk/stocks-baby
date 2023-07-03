@@ -18,8 +18,11 @@ export default function Home() {
   const { data: session } = useSession();
   const currentUser = session?.user.name;
   // const currentUser = session.user.name ? session?.user.name : null;
-  const [isDark, setIsDark] = useLocalStorageState("UserSettings", {
-    defaultValue: {},
+  // const [isDark, setIsDark] = useLocalStorageState("userSettings", {
+  const [isDark, setIsDark] = useState(false);
+  const [userSettings, setUserSettings] = useLocalStorageState("userSettings", {
+    // defaultValue: {},
+    defaultValue: { darkTheme: isDark },
   });
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -133,7 +136,7 @@ export default function Home() {
 
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
 
-  console.log(currentUser);
+  // console.log(currentUser);
 
   return (
     <>
@@ -142,10 +145,14 @@ export default function Home() {
         {/* <DarkmodeToggle onClick={() => console.log("geil!")} /> */}
         <DarkmodeToggle
           onClick={() => {
-            setIsDark({ theme: "dark" });
+            // setIsDark({ theme: "dark" });
+            setIsDark(!isDark);
+            setUserSettings({ darkTheme: isDark });
             // console.log("geil!");
             console.log(isDark);
+            console.log(userSettings);
           }}
+          // isDark={isDark}
         />
         <LoginButton />
         <SearchForm onChange={handleSearch} />
