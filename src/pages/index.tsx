@@ -6,7 +6,6 @@ import ShowFavoriteStocksToggle from "@/components/ShowFavoriteStocksToggle";
 import { Dispatch, SetStateAction, useState } from "react";
 import sortStocksList from "../utils/SortUtils";
 import useSWRMutation from "swr/mutation";
-import Heart from "../../_ressources/heart.svg";
 import SearchForm from "@/components/SearchForm";
 
 // const currentUsername = "icke";
