@@ -8,6 +8,11 @@ const nextConfig = {
         hostname: "api.twelvedata.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        port: "",
+      },
     ],
   },
 };
