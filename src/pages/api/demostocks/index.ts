@@ -18,6 +18,7 @@ export default async function handler(
   if (request.method === "GET") {
     const demostocks = await Demostock.find();
     return response.status(200).json(demostocks);
+    // response.status(200).json(demostocks);
   }
 
   // @patchrequest, step3
