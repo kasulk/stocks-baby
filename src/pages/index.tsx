@@ -7,6 +7,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import sortStocksList from "../utils/SortUtils";
 import useSWRMutation from "swr/mutation";
 import SearchForm from "@/components/SearchForm";
+import LoginButton from "@/components/LoginButton";
 
 // const currentUsername = "icke";
 const currentUser = "icke";
@@ -127,6 +128,7 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
+        <LoginButton />
         <SearchForm onChange={handleSearch} />
         <ShowFavoriteStocksToggle
           isShowFavoriteStocks={isShowFavoriteStocks}
