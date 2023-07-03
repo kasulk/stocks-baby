@@ -8,11 +8,13 @@ import sortStocksList from "../utils/SortUtils";
 import useSWRMutation from "swr/mutation";
 import SearchForm from "@/components/SearchForm";
 import LoginButton from "@/components/LoginButton";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 // const currentUsername = "icke";
 const currentUser = "icke";
 
 export default function Home() {
+  const { data: session } = useSession();
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortParam, setSortParam] = useState<SortParamType>({
@@ -130,10 +132,13 @@ export default function Home() {
       <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
         <LoginButton />
         <SearchForm onChange={handleSearch} />
-        <ShowFavoriteStocksToggle
-          isShowFavoriteStocks={isShowFavoriteStocks}
-          setIsShowFavoriteStocks={setIsShowFavoriteStocks}
-        />
+        {/* show favorites view button only when user is logged in */}
+        {session && (
+          <ShowFavoriteStocksToggle
+            isShowFavoriteStocks={isShowFavoriteStocks}
+            setIsShowFavoriteStocks={setIsShowFavoriteStocks}
+          />
+        )}
         <SortDropdown onSort={handleSort} />
       </div>
       <StocksList

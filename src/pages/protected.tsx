@@ -1,3 +1,4 @@
+// note: this is a protected demofile
 import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Protected() {
