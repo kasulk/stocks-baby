@@ -9,7 +9,6 @@ export default function LoginButton() {
       <div className="flex items-center">
         {/* Signed in as {session.user?.email} <br /> */}
         <span>{session.user?.name}</span>
-        {/* <br /> */}
         <Image
           className="rounded-full mx-2"
           src={session.user?.image ? session.user?.image : ""}
@@ -17,7 +16,6 @@ export default function LoginButton() {
           height={24}
           alt={`Profile picture of ${session.user?.name}`}
         />
-        {/* <br /> */}
         <button className="ml-2" onClick={() => signOut()}>
           Sign out
         </button>
@@ -26,7 +24,7 @@ export default function LoginButton() {
   }
   return (
     <>
-      Not signed in <br />
+      {/* Not signed in <br /> */}
       <button onClick={() => signIn()}>Sign in</button>
     </>
   );

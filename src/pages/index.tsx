@@ -11,10 +11,11 @@ import LoginButton from "@/components/LoginButton";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 // const currentUsername = "icke";
-const currentUser = "icke";
+// const currentUser = "icke";
 
 export default function Home() {
   const { data: session } = useSession();
+  const currentUser = session?.user.name;
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortParam, setSortParam] = useState<SortParamType>({
