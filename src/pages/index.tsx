@@ -3,12 +3,12 @@ import StocksList from "../components/StocksList";
 import { SortParamType, Stock } from "../../types";
 import SortDropdown from "../components/SortDropdown";
 import ShowFavoriteStocksToggle from "@/components/ShowFavoriteStocksToggle";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import sortStocksList from "../utils/SortUtils";
 import useSWRMutation from "swr/mutation";
 import SearchForm from "@/components/SearchForm";
 import LoginButton from "@/components/LoginButton";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 // const currentUser = "icke";
 
@@ -16,6 +16,9 @@ export default function Home() {
   const { data: session } = useSession();
   const currentUser = session?.user.name;
   // const currentUser = session.user.name ? session?.user.name : null;
+  const [isDark, setIsDark] = useLocalStorageState("UserSettings", {
+    defaultValue: {},
+  });
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortParam, setSortParam] = useState<SortParamType>({
@@ -154,4 +157,10 @@ export default function Home() {
       ></StocksList>
     </>
   );
+}
+function useLocalStorageState(
+  arg0: string,
+  arg1: { defaultValue: {} }
+): [any, any] {
+  throw new Error("Function not implemented.");
 }
