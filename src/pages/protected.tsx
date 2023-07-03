@@ -10,7 +10,7 @@ export default function Protected() {
       <div>
         <h1>Protected Content</h1>
         <p>
-          Congratulations, {session.user.name}, you are successfully logged in!
+          Congratulations, {session.user?.name}, you are successfully logged in!
         </p>
         <button onClick={() => signOut()}>Sign Out</button>
       </div>
