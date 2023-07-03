@@ -24,7 +24,7 @@ type Props = {
   Bruchwert52Week: number;
   onToggleFavorite: (id: string, user: string) => void;
   Favorites?: string[];
-  currentUser?: string;
+  currentUser?: string | null;
   LogoURL: string;
 };
 

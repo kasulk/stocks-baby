@@ -5,7 +5,7 @@ type Props = {
   stocks: Stock[];
   onToggleFavorite: (id: string, user: string) => void;
   isShowFavoriteStocks: boolean;
-  currentUser?: string;
+  currentUser?: string | null;
   searchTerm: string;
 };
 
