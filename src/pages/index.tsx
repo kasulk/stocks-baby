@@ -9,6 +9,7 @@ import useSWRMutation from "swr/mutation";
 import SearchForm from "@/components/SearchForm";
 import LoginButton from "@/components/LoginButton";
 import { useSession } from "next-auth/react";
+import useLocalStorageState from "use-local-storage-state";
 
 // const currentUser = "icke";
 
@@ -158,9 +159,9 @@ export default function Home() {
     </>
   );
 }
-function useLocalStorageState(
-  arg0: string,
-  arg1: { defaultValue: {} }
-): [any, any] {
-  throw new Error("Function not implemented.");
-}
+// function useLocalStorageState(
+//   arg0: string,
+//   arg1: { defaultValue: {} }
+// ): [any, any] {
+//   throw new Error("Function not implemented.");
+// }
