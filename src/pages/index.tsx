@@ -10,7 +10,6 @@ import SearchForm from "@/components/SearchForm";
 import LoginButton from "@/components/LoginButton";
 import { useSession, signIn, signOut } from "next-auth/react";
 
-// const currentUsername = "icke";
 // const currentUser = "icke";
 
 export default function Home() {
@@ -58,7 +57,7 @@ export default function Home() {
   if (!stocks) return <h1>Fetching stocks...</h1>;
   if (isLoading) return <h1>Loading...</h1>;
 
-  function handleSort(event: React.ChangeEvent<HTMLSelectElement>) {
+  function handleSort(event: React.ChangeEvent<HTMLSelectElement>): void {
     const sortOption = event.target;
     const sortOptionValues = sortOption.value.split("-");
     setSortParam({
@@ -67,7 +66,7 @@ export default function Home() {
     });
   }
 
-  function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleSearch(event: React.ChangeEvent<HTMLInputElement>): void {
     event.preventDefault();
     setSearchTerm(event.target.value);
   }
@@ -127,6 +126,8 @@ export default function Home() {
   }
 
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
+
+  console.log(currentUser);
 
   return (
     <>

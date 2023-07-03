@@ -24,7 +24,7 @@ type Props = {
   Bruchwert52Week: number;
   onToggleFavorite: (id: string, user: string) => void;
   Favorites?: string[];
-  currentUser: string;
+  currentUser?: string;
   LogoURL: string;
 };
 
@@ -105,7 +105,8 @@ export default function StockCard({
       className={`relative m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] md:hover:scale-x-[1.01] hover:shadow-lg hover:shadow-gray-500`}
     >
       {/* show favorite button only when user is logged in */}
-      {session && (
+      {/* {session && ( */}
+      {currentUser && (
         <FavoriteButton
           _id={_id}
           currentUser={currentUser}
