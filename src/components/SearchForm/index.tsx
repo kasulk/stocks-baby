@@ -14,10 +14,17 @@ export default function SearchForm({ onChange }: Props) {
       <input
         id="search"
         className="px-4 outline-none bg-slate-200"
-        type="text"
+        // type="text"
+        type="search"
         onChange={(event) => onChange(event)}
         placeholder="company name / symbol"
       />
+      {/* <input
+        className="border border-black h-8 w-8 flex justify-center items-center rounded-full"
+        type="reset"
+        value="x"
+        alt="Clear the search form"
+      /> */}
     </form>
   );
 }
