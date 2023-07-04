@@ -54,7 +54,8 @@ body {
       --color-content: 241 245 249; /* slate-100 */
       /* --color-content: 255 0 0; */
       --color-accent1: 51 65 85; /* slate-700 */
-      --color-accent2: 30 41 59; /* slate-800 */
+      /* --color-accent2: 30 41 59; /* slate-800 */
+      --color-accent2: 71 85 105; /* slate-600 */
       --color-accent3: 203 213 225; /* slate-300 */
     }
   }
