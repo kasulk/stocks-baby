@@ -103,7 +103,7 @@ export default function StockCard({
   return (
     <article
       // className={`relative m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] md:hover:scale-x-[1.01] hover:shadow-lg hover:shadow-gray-500`}
-      className={`relative m-6 p-6 rounded-2xl shadow-md shadow-accent-2 text-content bg-accent-4 transition-all hover:scale-x-[1.02] md:hover:scale-x-[1.01] hover:shadow-lg hover:shadow-accent-1`}
+      className={`relative m-6 p-6 rounded-2xl shadow-sm shadow-accent-1 text-content bg-accent-4 transition-all hover:scale-x-[1.02] md:hover:scale-x-[1.01] hover:shadow-md hover:shadow-accent-2`}
     >
       {/* show favorite button only when user is logged in */}
       {/* {session && ( */}
