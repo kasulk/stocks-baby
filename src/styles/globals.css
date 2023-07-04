@@ -40,21 +40,19 @@ body {
 
 @layer base {
   :root {
-    /* --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255; */
-    --color-background: "#FFFFFF";
-    --color-content: "#000000";
-    --color-accent1: "#FF0000";
-    --color-accent2: "#FFFF00";
+    /* For rgb(100 100 100 / <alpha-value>) */
+    --color-background: 100 100 100;
+    --color-content: 0 0 0;
+    --color-accent1: 255 0 0;
+    --color-accent2: 0 255 0;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --color-background: "#000000";
-      --color-content: "#FFFFFF";
-      --color-accent1: "#FF0000";
-      --color-accent2: "#FFFF00";
+      --color-background: 15 23 42;
+      --color-content: 100 100 100;
+      --color-accent1: 255 0 0;
+      --color-accent2: 0 255 0;
     }
   }
 }

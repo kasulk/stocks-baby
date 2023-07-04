@@ -14,11 +14,11 @@ module.exports = {
       // },
       colors: {
         accent: {
-          1: "#FF0000",
-          2: "#FFFF00",
+          1: "rgb(var(--color-accent1) / <alpha-value>)",
+          2: "rgb(var(--color-accent2) / <alpha-value>)",
         },
-        background: "#FFFFFF",
-        content: "#000000",
+        custombgcolor: "rgb(var(--color-background) / <alpha-value>)",
+        customcontentcolor: "rgb(var(--color-content) / <alpha-value>)",
       },
       strokeWidth: {
         3: "3px",
