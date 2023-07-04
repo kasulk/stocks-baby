@@ -41,24 +41,13 @@ export default function Home() {
     updateFavoriteStockToggle // sendRequest
   );
 
-  // note: dark mode start
-  // useEffect(() => {
-  //   if (window.matchMedia("(prefers-color-scheme: dark").matches) {
-  //     // console.log("theme in useEffect:", theme);
-  //     setTheme("dark");
-  //   } else {
-  //     setTheme("light");
-  //   }
-  // }, []);
-
+  // dark mode start
   function setThemeToUserSystemTheme() {
     if (typeof window !== "undefined") {
       if (window.matchMedia("(prefers-color-scheme: dark").matches) {
         return "dark";
       }
-      // else {
       return "light";
-      // }
     }
   }
 
@@ -75,7 +64,7 @@ export default function Home() {
   function handleThemeSwitch() {
     setTheme(theme === "dark" ? "light" : "dark");
   }
-  // note: dark mode end
+  // dark mode end
 
   // @patchrequest, step2
   async function updateFavoriteStockToggle(

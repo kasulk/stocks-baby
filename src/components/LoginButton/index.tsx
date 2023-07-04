@@ -12,11 +12,15 @@ export default function LoginButton() {
         <Image
           className="rounded-full mx-2"
           src={session.user?.image ? session.user?.image : ""}
-          width={24}
-          height={24}
+          width={40}
+          height={40}
           alt={`Profile picture of ${session.user?.name}`}
         />
-        <button className="ml-2" onClick={() => signOut()}>
+        <button
+          // className="ml-2"
+          className="transition hover:scale-x-105 bg-accent-1 hover:bg-accent-2 active:bg-accent-3 shadow-sm shadow-accent-1 hover:shadow-md hover:shadow-accent-1 active:shadow-none rounded-md py-2 px-4 m-2 md:mr-4 mr-0"
+          onClick={() => signOut()}
+        >
           Sign out
         </button>
       </div>
