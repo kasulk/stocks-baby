@@ -22,8 +22,8 @@ export default function Home() {
   // const [isDark, setIsDark] = useState(false);
   const [theme, setTheme] = useLocalStorageState<string | null>("theme", {
     defaultValue: null,
-    // defaultValue: { darkTheme: isDark },
   });
+  const [themeIcon, setThemeIcon] = useState(theme === "dark" ? "☀" : "🌙");
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortParam, setSortParam] = useState<SortParamType>({
@@ -64,6 +64,7 @@ export default function Home() {
 
   function handleThemeSwitch() {
     setTheme(theme === "dark" ? "light" : "dark");
+    setThemeIcon(theme === "dark" ? "🌙" : "☀");
   }
 
   // @patchrequest, step2
@@ -174,6 +175,7 @@ export default function Home() {
             // console.log("geil!");
             handleThemeSwitch();
           }}
+          themeIcon={themeIcon}
           // isDark={isDark}
         />
         <LoginButton />
