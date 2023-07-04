@@ -17,13 +17,12 @@ import DarkmodeToggle from "@/components/DarkmodeToggle";
 export default function Home() {
   const { data: session } = useSession();
   const currentUser = session?.user.name;
-  // const currentUser = session.user.name ? session?.user.name : null;
-  // const [isDark, setIsDark] = useLocalStorageState("userSettings", {
-  // const [isDark, setIsDark] = useState(false);
+
   const [theme, setTheme] = useLocalStorageState<string | null>("theme", {
     defaultValue: null,
   });
   const [themeIcon, setThemeIcon] = useState(theme === "dark" ? "☀" : "🌙");
+
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortParam, setSortParam] = useState<SortParamType>({
@@ -44,12 +43,16 @@ export default function Home() {
   );
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-color-scheme: dark").matches) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
+    if (theme === null) {
+      if (window.matchMedia("(prefers-color-scheme: dark").matches) {
+        setTheme("dark");
+      } else {
+        setTheme("light");
+      }
     }
   }, []);
+
+  // const test = window.matchMedia("(prefers-color-scheme: dark").matches;
 
   useEffect(() => {
     if (theme === "dark") {
@@ -63,9 +66,17 @@ export default function Home() {
   }, [theme]);
 
   function handleThemeSwitch() {
+    // console.log("themeBefore:", theme);
     setTheme(theme === "dark" ? "light" : "dark");
-    setThemeIcon(theme === "dark" ? "🌙" : "☀");
+    // console.log("themeAfter:", theme);
+    // setThemeIcon(theme === "dark" ? "☀" : "🌙");
+    setThemeIcon(
+      document.documentElement.classList.contains("dark") ? "☀" : "🌙"
+    );
   }
+
+  // console.log("theme:", theme);
+  // console.log("themeIcon:", themeIcon);
 
   // @patchrequest, step2
   async function updateFavoriteStockToggle(
@@ -160,23 +171,15 @@ export default function Home() {
 
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
 
-  // console.log(currentUser);
-
   return (
     <>
       <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
-        {/* <DarkmodeToggle onClick={() => setIsDark()} /> */}
-        {/* <DarkmodeToggle onClick={() => console.log("geil!")} /> */}
         <DarkmodeToggle
           onClick={() => {
-            // setIsDark({ theme: "dark" });
-            // setIsDark(!isDark);
-            // setUserSettings({ darkTheme: isDark });
-            // console.log("geil!");
             handleThemeSwitch();
           }}
-          themeIcon={themeIcon}
-          // isDark={isDark}
+          // themeIcon={themeIcon}
+          theme={theme}
         />
         <LoginButton />
         <SearchForm onChange={handleSearch} />

@@ -5,14 +5,11 @@ type Props = {
   // isDark: boolean;
   // setIsDark: () => React.Dispatch<React.SetStateAction>;
   onClick: () => void;
-  themeIcon: string;
+  theme?: string | null;
 };
 
 // export default function DarkmodeToggle({ isDark, setIsDark }: Props) {
-export default function DarkmodeToggle({ onClick, themeIcon }: Props) {
-  return (
-    // <button onClick={()=> setIsDark({true})}/>test</button>
-    <button onClick={onClick}>{themeIcon}</button>
-  );
+export default function DarkmodeToggle({ onClick, theme }: Props) {
+  return <button onClick={onClick}>{theme === "dark" ? "☀" : "🌙"}</button>;
 }
 //
