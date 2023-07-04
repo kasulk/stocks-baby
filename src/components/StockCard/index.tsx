@@ -57,45 +57,45 @@ export default function StockCard({
     {
       title: "Price",
       value: Price.toFixed(2),
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "Dividend",
       value: DividendPerShare ? `${DividendPerShare.toFixed(2)}` : "-",
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "Dividend%",
       value: DividendYield ? `${DividendYield.toFixed(2)}%` : "-",
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "EPS",
       value: EPS.toFixed(2),
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "FairValue",
       value: EPSx15.toFixed(2),
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice: (100 * (Price - EPSx15)) / Price,
     },
     {
       title: "BookValue",
       value: BookValue.toFixed(2),
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice: (100 * (Price - BookValue)) / Price,
     },
     {
       title: "52W Range",
       value: `${_52WeekLow.toFixed(2)} - ${_52WeekHigh.toFixed(2)}`,
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice: 100 * calc52WeekBruchwert(Price, _52WeekHigh, _52WeekLow),
     },
     {
       title: "Analyst Target",
       value: AnalystTargetPrice.toFixed(2),
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice: (100 * (Price - AnalystTargetPrice)) / Price,
     },
   ];

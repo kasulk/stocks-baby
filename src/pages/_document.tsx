@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="en" data-theme="light">
       <Head />
       <body className="mx-auto p-4 bg-custombgcolor text-customcontentcolor">
         <Main />
