@@ -61,7 +61,8 @@ body {
       --color-accent4: 30 41 59; /* slate-800 */
     }
   }
-  :root[data-theme="light"] {
+  /* :root[data-theme="light"] { */
+  :root.light {
     --color-background: 241 245 249; /* slate-100 */
     --color-content: 2 6 23; /* slate-950 */
     --color-accent1: 226 232 240; /* slate-200 */
@@ -69,7 +70,8 @@ body {
     --color-accent3: 148 163 184; /* slate-400 */
     --color-accent4: 203 213 225; /* slate-300 */
   }
-  :root[data-theme="dark"] {
+  /* :root[data-theme="dark"] { */
+  :root.dark {
     --color-background: 15 23 42; /* slate-900 */
     --color-content: 241 245 249; /* slate-100 */
     --color-accent1: 51 65 85; /* slate-700 */

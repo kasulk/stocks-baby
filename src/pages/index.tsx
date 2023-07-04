@@ -20,7 +20,7 @@ export default function Home() {
   // const currentUser = session.user.name ? session?.user.name : null;
   // const [isDark, setIsDark] = useLocalStorageState("userSettings", {
   // const [isDark, setIsDark] = useState(false);
-  const [theme, setTheme] = useLocalStorageState("theme", {
+  const [theme, setTheme] = useLocalStorageState<string | null>("theme", {
     defaultValue: null,
     // defaultValue: { darkTheme: isDark },
   });
@@ -42,6 +42,29 @@ export default function Home() {
     `/api/demostocks`,
     updateFavoriteStockToggle // sendRequest
   );
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-color-scheme: dark").matches) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (theme === "dark") {
+      // document.documentElement.classList.add("dark");
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
+    }
+  }, [theme]);
+
+  function handleThemeSwitch() {
+    setTheme(theme === "dark" ? "light" : "dark");
+  }
 
   // @patchrequest, step2
   async function updateFavoriteStockToggle(
@@ -138,26 +161,6 @@ export default function Home() {
 
   // console.log(currentUser);
 
-  useEffect(() => {
-    if (window.matchMedia("(prefers-color-scheme: dark").matches) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  }, []);
-
-  useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
-
-  function handleThemeSwitch() {
-    setTheme(theme === "dark" ? "light" : "dark");
-  }
-
   return (
     <>
       <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
@@ -169,7 +172,7 @@ export default function Home() {
             // setIsDark(!isDark);
             // setUserSettings({ darkTheme: isDark });
             // console.log("geil!");
-            setTheme();
+            handleThemeSwitch();
           }}
           // isDark={isDark}
         />
