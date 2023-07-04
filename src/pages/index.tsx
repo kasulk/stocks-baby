@@ -16,10 +16,15 @@ export default function Home() {
   const { data: session } = useSession();
   const currentUser = session?.user.name;
 
-  const [theme, setTheme] = useLocalStorageState<string | null>("theme", {
-    defaultValue: null,
+  const [theme, setTheme] = useLocalStorageState<string | null>(
+    "theme",
+    { defaultValue: initialize() }
+    // , {
+    //   defaultValue: null,
     // defaultValue: "",
-  });
+    // defaultValue:
+  );
+  const [test, setTest] = useLocalStorageState("test", { defaultValue: null });
 
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -40,18 +45,31 @@ export default function Home() {
     updateFavoriteStockToggle // sendRequest
   );
 
-  // note: dark mode start
-  useEffect(() => {
-    if (theme === null) {
-      // console.log("theme in useEffect:", theme);
-
+  function initialize() {
+    if (typeof window !== "undefined") {
       if (window.matchMedia("(prefers-color-scheme: dark").matches) {
-        setTheme("dark");
+        // console.log("theme in useEffect:", theme);
+        return "dark";
       } else {
-        setTheme("light");
+        return "light";
       }
     }
-  }, []);
+  }
+  // console.log("theme before useEffect:", theme);
+  // note: dark mode start
+  // useEffect(() => {
+  //   // if (theme === null) {
+  //   console.log("theme in useEffect:", theme);
+
+  //   if (!theme) {
+  //     if (window.matchMedia("(prefers-color-scheme: dark").matches) {
+  //       // console.log("theme in useEffect:", theme);
+  //       setTheme("dark");
+  //     } else {
+  //       setTheme("light");
+  //     }
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (theme === "dark") {
