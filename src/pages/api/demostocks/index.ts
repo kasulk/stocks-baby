@@ -47,5 +47,8 @@ async function toggleUserToStockFavorites(
     }
   } catch (error) {
     console.error("Error updating the Favorites Array...", error);
+    response
+      .status(500)
+      .json({ message: "Error updating favorites in the database..." });
   }
 }
