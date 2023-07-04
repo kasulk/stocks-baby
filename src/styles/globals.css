@@ -4,7 +4,7 @@
 
 * {
   /* //! for production only */
-  /* outline: 1px dashed darkred; */
+  outline: 1px dashed darkred;
 }
 
 :root {
