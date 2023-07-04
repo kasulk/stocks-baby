@@ -41,18 +41,21 @@ body {
 @layer base {
   :root {
     /* For rgb(100 100 100 / <alpha-value>) */
-    --color-background: 100 100 100;
-    --color-content: 0 0 0;
-    --color-accent1: 255 0 0;
-    --color-accent2: 0 255 0;
+    --color-background: 241 245 249; /* slate-100 */
+    --color-content: 2 6 23; /* slate-950 */
+    --color-accent1: 226 232 240; /* slate-200 */
+    --color-accent2: 203 213 225; /* slate-300 */
+    --color-accent3: 148 163 184; /* slate-400 */
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --color-background: 15 23 42;
-      --color-content: 100 100 100;
-      --color-accent1: 255 0 0;
-      --color-accent2: 0 255 0;
+      --color-background: 15 23 42; /* slate-900 */
+      --color-content: 241 245 249; /* slate-100 */
+      /* --color-content: 255 0 0; */
+      --color-accent1: 51 65 85; /* slate-700 */
+      --color-accent2: 30 41 59; /* slate-800 */
+      --color-accent3: 203 213 225; /* slate-300 */
     }
   }
 }
