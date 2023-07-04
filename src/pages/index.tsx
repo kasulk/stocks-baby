@@ -12,16 +12,14 @@ import { useSession } from "next-auth/react";
 import useLocalStorageState from "use-local-storage-state";
 import DarkmodeToggle from "@/components/DarkmodeToggle";
 
-// const currentUser = "icke";
-
 export default function Home() {
   const { data: session } = useSession();
   const currentUser = session?.user.name;
 
   const [theme, setTheme] = useLocalStorageState<string | null>("theme", {
     defaultValue: null,
+    // defaultValue: "",
   });
-  const [themeIcon, setThemeIcon] = useState(theme === "dark" ? "☀" : "🌙");
 
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -42,8 +40,11 @@ export default function Home() {
     updateFavoriteStockToggle // sendRequest
   );
 
+  // note: dark mode start
   useEffect(() => {
     if (theme === null) {
+      // console.log("theme in useEffect:", theme);
+
       if (window.matchMedia("(prefers-color-scheme: dark").matches) {
         setTheme("dark");
       } else {
@@ -52,11 +53,8 @@ export default function Home() {
     }
   }, []);
 
-  // const test = window.matchMedia("(prefers-color-scheme: dark").matches;
-
   useEffect(() => {
     if (theme === "dark") {
-      // document.documentElement.classList.add("dark");
       document.documentElement.classList.add("dark");
       document.documentElement.classList.remove("light");
     } else {
@@ -66,17 +64,9 @@ export default function Home() {
   }, [theme]);
 
   function handleThemeSwitch() {
-    // console.log("themeBefore:", theme);
     setTheme(theme === "dark" ? "light" : "dark");
-    // console.log("themeAfter:", theme);
-    // setThemeIcon(theme === "dark" ? "☀" : "🌙");
-    setThemeIcon(
-      document.documentElement.classList.contains("dark") ? "☀" : "🌙"
-    );
   }
-
-  // console.log("theme:", theme);
-  // console.log("themeIcon:", themeIcon);
+  // note: dark mode end
 
   // @patchrequest, step2
   async function updateFavoriteStockToggle(
@@ -178,7 +168,6 @@ export default function Home() {
           onClick={() => {
             handleThemeSwitch();
           }}
-          // themeIcon={themeIcon}
           theme={theme}
         />
         <LoginButton />
