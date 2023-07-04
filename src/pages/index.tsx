@@ -18,13 +18,9 @@ export default function Home() {
 
   const [theme, setTheme] = useLocalStorageState<string | null>(
     "theme",
-    { defaultValue: initialize() }
-    // , {
-    //   defaultValue: null,
-    // defaultValue: "",
-    // defaultValue:
+    { defaultValue: setThemeToUserSystemTheme() }
+    // { defaultValue: null }
   );
-  const [test, setTest] = useLocalStorageState("test", { defaultValue: null });
 
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -45,31 +41,26 @@ export default function Home() {
     updateFavoriteStockToggle // sendRequest
   );
 
-  function initialize() {
-    if (typeof window !== "undefined") {
-      if (window.matchMedia("(prefers-color-scheme: dark").matches) {
-        // console.log("theme in useEffect:", theme);
-        return "dark";
-      } else {
-        return "light";
-      }
-    }
-  }
-  // console.log("theme before useEffect:", theme);
   // note: dark mode start
   // useEffect(() => {
-  //   // if (theme === null) {
-  //   console.log("theme in useEffect:", theme);
-
-  //   if (!theme) {
-  //     if (window.matchMedia("(prefers-color-scheme: dark").matches) {
-  //       // console.log("theme in useEffect:", theme);
-  //       setTheme("dark");
-  //     } else {
-  //       setTheme("light");
-  //     }
+  //   if (window.matchMedia("(prefers-color-scheme: dark").matches) {
+  //     // console.log("theme in useEffect:", theme);
+  //     setTheme("dark");
+  //   } else {
+  //     setTheme("light");
   //   }
   // }, []);
+
+  function setThemeToUserSystemTheme() {
+    if (typeof window !== "undefined") {
+      if (window.matchMedia("(prefers-color-scheme: dark").matches) {
+        return "dark";
+      }
+      // else {
+      return "light";
+      // }
+    }
+  }
 
   useEffect(() => {
     if (theme === "dark") {
