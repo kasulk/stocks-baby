@@ -161,7 +161,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
+      <header className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
         <DarkmodeToggle
           onClick={() => {
             handleThemeSwitch();
@@ -179,14 +179,17 @@ export default function Home() {
           />
         )}
         <SortDropdown onSort={handleSort} />
-      </div>
-      <StocksList
-        stocks={stocks}
-        onToggleFavorite={handleToggleFavorite}
-        currentUser={currentUser}
-        isShowFavoriteStocks={isShowFavoriteStocks}
-        searchTerm={searchTerm}
-      ></StocksList>
+      </header>
+      <main>
+        <StocksList
+          stocks={stocks}
+          onToggleFavorite={handleToggleFavorite}
+          currentUser={currentUser}
+          isShowFavoriteStocks={isShowFavoriteStocks}
+          searchTerm={searchTerm}
+        ></StocksList>
+      </main>
+      <footer>test</footer>
     </>
   );
 }
