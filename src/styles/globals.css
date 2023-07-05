@@ -4,7 +4,7 @@
 
 * {
   /* //! for production only */
-  /* outline: 1px dashed darkred; */
+  outline: 1px dashed darkred;
 }
 
 :root {
@@ -13,13 +13,13 @@
   --background-end-rgb: 255, 255, 255; */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* --foreground-rgb: 255, 255, 255;
+/* @media (prefers-color-scheme: dark) { */
+/* :root { */
+/* --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0; */
-  }
-}
+/* } */
+/* } */
 
 body {
   /* color: rgb(var(--foreground-rgb));
@@ -36,4 +36,47 @@ body {
   /* .production-outline {
     @apply outline-1 outline-rose-950 outline-dashed;
   } */
+}
+
+@layer base {
+  :root {
+    /* For rgb(100 100 100 / <alpha-value>) */
+    --color-background: 241 245 249; /* slate-100 */
+    --color-content: 2 6 23; /* slate-950 */
+    --color-accent1: 226 232 240; /* slate-200 */
+    --color-accent2: 203 213 225; /* slate-300 */
+    --color-accent3: 148 163 184; /* slate-400 */
+    --color-accent4: 226 232 240; /* slate-200 */
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-background: 15 23 42; /* slate-900 */
+      --color-content: 241 245 249; /* slate-100 */
+      /* --color-content: 255 0 0; */
+      --color-accent1: 51 65 85; /* slate-700 */
+      /* --color-accent2: 30 41 59; /* slate-800 */
+      --color-accent2: 71 85 105; /* slate-600 */
+      --color-accent3: 203 213 225; /* slate-300 */
+      --color-accent4: 30 41 59; /* slate-800 */
+    }
+  }
+  /* :root[data-theme="light"] { */
+  :root.light {
+    --color-background: 241 245 249; /* slate-100 */
+    --color-content: 2 6 23; /* slate-950 */
+    --color-accent1: 226 232 240; /* slate-200 */
+    --color-accent2: 203 213 225; /* slate-300 */
+    --color-accent3: 148 163 184; /* slate-400 */
+    --color-accent4: 203 213 225; /* slate-300 */
+  }
+  /* :root[data-theme="dark"] { */
+  :root.dark {
+    --color-background: 15 23 42; /* slate-900 */
+    --color-content: 241 245 249; /* slate-100 */
+    --color-accent1: 51 65 85; /* slate-700 */
+    --color-accent2: 71 85 105; /* slate-600 */
+    --color-accent3: 203 213 225; /* slate-300 */
+    --color-accent4: 30 41 59; /* slate-800 */
+  }
 }

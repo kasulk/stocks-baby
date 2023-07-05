@@ -21,8 +21,8 @@ export default function FavoriteButton({
       size={32}
       className={`absolute top-4 right-4 cursor-pointer transition active:fill-slate-100 active:stroke-slate-100 active:transition-none hover:scale-125  ${
         isFavorite
-          ? `fill-rose-900 scale-110 hover:fill-slate-500`
-          : `fill-transparent stroke-slate-300 stroke-2 scale-90 hover:fill-rose-900 hover:stroke-none`
+          ? `fill-rose-700 scale-110 hover:fill-slate-500`
+          : `fill-transparent stroke-slate-100 stroke-2 scale-90 hover:fill-rose-700 hover:stroke-none`
       }`}
       onClick={() => onToggleFavorite(_id, currentUser)}
     />

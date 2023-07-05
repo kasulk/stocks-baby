@@ -57,52 +57,53 @@ export default function StockCard({
     {
       title: "Price",
       value: Price.toFixed(2),
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "Dividend",
       value: DividendPerShare ? `${DividendPerShare.toFixed(2)}` : "-",
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "Dividend%",
       value: DividendYield ? `${DividendYield.toFixed(2)}%` : "-",
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "EPS",
       value: EPS.toFixed(2),
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "FairValue",
       value: EPSx15.toFixed(2),
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice: (100 * (Price - EPSx15)) / Price,
     },
     {
       title: "BookValue",
       value: BookValue.toFixed(2),
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice: (100 * (Price - BookValue)) / Price,
     },
     {
       title: "52W Range",
       value: `${_52WeekLow.toFixed(2)} - ${_52WeekHigh.toFixed(2)}`,
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice: 100 * calc52WeekBruchwert(Price, _52WeekHigh, _52WeekLow),
     },
     {
       title: "Analyst Target",
       value: AnalystTargetPrice.toFixed(2),
-      styles: "text-sm text-slate-400",
+      styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice: (100 * (Price - AnalystTargetPrice)) / Price,
     },
   ];
 
   return (
     <article
-      className={`relative m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] md:hover:scale-x-[1.01] hover:shadow-lg hover:shadow-gray-500`}
+      // className={`relative m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] md:hover:scale-x-[1.01] hover:shadow-lg hover:shadow-gray-500`}
+      className={`relative m-6 p-6 rounded-2xl shadow-sm shadow-accent-1 text-content bg-accent-4 transition-all hover:scale-x-[1.02] md:hover:scale-x-[1.01] hover:shadow-md hover:shadow-accent-2`}
     >
       {/* show favorite button only when user is logged in */}
       {/* {session && ( */}

@@ -13,7 +13,7 @@ export default function ShowFavoriteStocksToggle({
 }: Props) {
   return (
     <button
-      className="transition hover:scale-x-105 bg-slate-200 hover:bg-slate-300 active:bg-slate-400 shadow-md hover:shadow-lg active:shadow-none rounded-md py-2 px-4 m-2 md:mr-4 mr-0"
+      className="transition hover:scale-x-105 bg-accent-1 hover:bg-accent-2 active:bg-accent-3 shadow-sm shadow-accent-1 hover:shadow-md hover:shadow-accent-1 active:shadow-none rounded-md py-2 px-4 m-2 md:mr-4 mr-0"
       onClick={() => setIsShowFavoriteStocks(!isShowFavoriteStocks)}
     >
       {isShowFavoriteStocks ? (

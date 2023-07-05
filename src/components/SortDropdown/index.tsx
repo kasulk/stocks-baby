@@ -11,7 +11,7 @@ export default function SortDropdown({ onSort }: Props) {
         <select
           name="sort"
           id="sort"
-          className="transition shadow-md hover:shadow-lg active:shadow-none py-2 px-4 rounded-md bg-slate-200 hover:bg-slate-300"
+          className="transition shadow-sm shadow-accent-1 hover:shadow-md hover:shadow-accent-1 active:shadow-none py-2 px-4 rounded-md bg-accent-1 hover:bg-accent-2"
           onChange={onSort}
         >
           <option className="italic" value="0" disabled>

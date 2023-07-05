@@ -3,19 +3,25 @@ import StocksList from "../components/StocksList";
 import { SortParamType, Stock } from "../../types";
 import SortDropdown from "../components/SortDropdown";
 import ShowFavoriteStocksToggle from "@/components/ShowFavoriteStocksToggle";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useEffect, useState } from "react";
 import sortStocksList from "../utils/SortUtils";
 import useSWRMutation from "swr/mutation";
 import SearchForm from "@/components/SearchForm";
 import LoginButton from "@/components/LoginButton";
-import { useSession, signIn, signOut } from "next-auth/react";
-
-// const currentUser = "icke";
+import { useSession } from "next-auth/react";
+import useLocalStorageState from "use-local-storage-state";
+import DarkmodeToggle from "@/components/DarkmodeToggle";
 
 export default function Home() {
   const { data: session } = useSession();
   const currentUser = session?.user.name;
-  // const currentUser = session.user.name ? session?.user.name : null;
+
+  const [theme, setTheme] = useLocalStorageState<string | null>(
+    "theme",
+    { defaultValue: setThemeToUserSystemTheme() }
+    // { defaultValue: null }
+  );
+
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortParam, setSortParam] = useState<SortParamType>({
@@ -34,6 +40,31 @@ export default function Home() {
     `/api/demostocks`,
     updateFavoriteStockToggle // sendRequest
   );
+
+  // dark mode start
+  function setThemeToUserSystemTheme() {
+    if (typeof window !== "undefined") {
+      if (window.matchMedia("(prefers-color-scheme: dark").matches) {
+        return "dark";
+      }
+      return "light";
+    }
+  }
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
+    }
+  }, [theme]);
+
+  function handleThemeSwitch() {
+    setTheme(theme === "dark" ? "light" : "dark");
+  }
+  // dark mode end
 
   // @patchrequest, step2
   async function updateFavoriteStockToggle(
@@ -128,11 +159,15 @@ export default function Home() {
 
   sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
 
-  console.log(currentUser);
-
   return (
     <>
       <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
+        <DarkmodeToggle
+          onClick={() => {
+            handleThemeSwitch();
+          }}
+          theme={theme}
+        />
         <LoginButton />
         <SearchForm onChange={handleSearch} />
         {/* show favorites view button only when user is logged in */}
