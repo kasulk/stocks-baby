@@ -54,7 +54,7 @@ export default function StockCardHeader({
       </h1>
       <div className="my-2 text-xs text-right">
         <p className="my-1 font-bold">{Sector}</p>
-        <p>{Industry}</p>
+        <p className="h-10">{Industry}</p>
       </div>
     </header>
   );
