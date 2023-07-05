@@ -18,7 +18,7 @@ export default function LoginButton() {
         />
         <button
           // className="ml-2"
-          className="transition hover:scale-x-105 bg-accent-1 hover:bg-accent-2 active:bg-accent-3 shadow-sm shadow-accent-1 hover:shadow-md hover:shadow-accent-1 active:shadow-none rounded-md py-2 px-4 m-2 md:mr-4 mr-0"
+          className="transition hover:scale-x-105 bg-accent-1 hover:bg-accent-2 active:bg-accent-3 shadow-sm shadow-accent-1 hover:shadow-md hover:shadow-accent-1 active:shadow-none rounded-md py-2 px-4 m-2"
           onClick={() => signOut()}
         >
           Sign out
@@ -29,7 +29,12 @@ export default function LoginButton() {
   return (
     <>
       {/* Not signed in <br /> */}
-      <button onClick={() => signIn()}>Sign in</button>
+      <button
+        className="transition hover:scale-x-105 bg-accent-1 hover:bg-accent-2 active:bg-accent-3 shadow-sm shadow-accent-1 hover:shadow-md hover:shadow-accent-1 active:shadow-none rounded-md py-2 px-4 m-2 md:mr-4 mr-0"
+        onClick={() => signIn()}
+      >
+        Sign in
+      </button>
     </>
   );
 }

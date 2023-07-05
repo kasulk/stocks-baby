@@ -14,24 +14,30 @@ export default function StockCardBody({ stockNumbersToRender }: Props) {
       {stockNumbersToRender.map(
         (number, index) =>
           number.value && (
-            <div key={index} className="flex justify-between items-center">
+            // <div key={index} className="flex justify-between items-center">
+            <div
+              key={index}
+              className="grid grid-cols-3 transition-all hover:bg-accent-1"
+            >
               {/* //? grid? */}
               <span className={number.styles}>{number.title}: </span>
-              {number.distToPrice && (
-                <span
-                  className={` text-xs rounded px-0.5 
+              <div className="text-center">
+                {number.distToPrice && (
+                  <span
+                    className={` text-xs rounded px-0.5 
    ${
      number.distToPrice > 0
        ? "bg-red-500 text-red-950"
        : "bg-green-500 text-green-950"
    } `}
-                >
-                  {`${
-                    number.distToPrice > 0 ? "+" : ""
-                  }${number.distToPrice.toFixed(0)}%`}
-                </span>
-              )}
-              <span>{number.value}</span>
+                  >
+                    {`${
+                      number.distToPrice > 0 ? "+" : ""
+                    }${number.distToPrice.toFixed(0)}%`}
+                  </span>
+                )}
+              </div>
+              <span className="text-right">{number.value}</span>
             </div>
           )
       )}

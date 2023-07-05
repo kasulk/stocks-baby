@@ -11,6 +11,7 @@ import LoginButton from "@/components/LoginButton";
 import { useSession } from "next-auth/react";
 import useLocalStorageState from "use-local-storage-state";
 import DarkmodeToggle from "@/components/DarkmodeToggle";
+import Link from "next/link";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -161,32 +162,50 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
-        <DarkmodeToggle
-          onClick={() => {
-            handleThemeSwitch();
-          }}
-          theme={theme}
-        />
-        <LoginButton />
-        <SearchForm onChange={handleSearch} />
-        {/* show favorites view button only when user is logged in */}
-        {/* {session && ( */}
-        {currentUser && (
-          <ShowFavoriteStocksToggle
-            isShowFavoriteStocks={isShowFavoriteStocks}
-            setIsShowFavoriteStocks={setIsShowFavoriteStocks}
-          />
-        )}
-        <SortDropdown onSort={handleSort} />
-      </div>
-      <StocksList
-        stocks={stocks}
-        onToggleFavorite={handleToggleFavorite}
-        currentUser={currentUser}
-        isShowFavoriteStocks={isShowFavoriteStocks}
-        searchTerm={searchTerm}
-      ></StocksList>
+      {/* <header className="fixed top-0 z-10 flex flex-col-reverse items-end w-full bg-accent-4 bg-opacity-90 p-6 md:flex-row md:justify-end md:items-center"> */}
+      <header className="fixed top-0 z-10 flex flex-col w-full bg-accent-4 bg-opacity-90 p-4 pb-2">
+        <div className="flex flex-wrap justify-center sm:justify-between items-center">
+          {/* <div className="block sm:flex sm:flex-wrap justify-center sm:justify-between items-center"> */}
+          {/* <h1 className="font-serif font-black italic text-4xl sm:text-6xl text-accent-3 mr-4"> */}
+          <h1 className="font-serif font-black italic text-4xl sm:text-5xl md:text-6xl text-customcontentcolor mr-4">
+            Ursula
+          </h1>
+          <div className="flex items-center m-2 ml-4">
+            <LoginButton />
+            <DarkmodeToggle
+              onClick={() => {
+                handleThemeSwitch();
+              }}
+              theme={theme}
+            />
+          </div>
+        </div>
+        {/* <div className="flex flex-wrap-reverse justify-center items-center mt-2"> */}
+        <div className="flex flex-col-reverse items-center sm:flex-row sm:flex-wrap-reverse sm:items-center sm:justify-center mt-2">
+          <SortDropdown onSort={handleSort} />
+          <SearchForm onChange={handleSearch} />
+          {/* show favorites view button only when user is logged in */}
+          {/* {session && ( */}
+          {currentUser && (
+            <ShowFavoriteStocksToggle
+              isShowFavoriteStocks={isShowFavoriteStocks}
+              setIsShowFavoriteStocks={setIsShowFavoriteStocks}
+            />
+          )}
+        </div>
+      </header>
+      <main className="pb-20 pt-72 sm:pt-52 md:pt-40">
+        <StocksList
+          stocks={stocks}
+          onToggleFavorite={handleToggleFavorite}
+          currentUser={currentUser}
+          isShowFavoriteStocks={isShowFavoriteStocks}
+          searchTerm={searchTerm}
+        ></StocksList>
+      </main>
+      <footer className="fixed bottom-0 z-10 w-full text-center p-6 bg-accent-4 bg-opacity-90">
+        <span>Made with 🍕 in Berlin</span>
+      </footer>
     </>
   );
 }

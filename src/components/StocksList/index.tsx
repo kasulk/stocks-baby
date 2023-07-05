@@ -17,7 +17,7 @@ export default function StocksList({
   searchTerm,
 }: Props) {
   return (
-    <ul>
+    <ul className="flex flex-wrap justify-center sm:px-12 lg:px-24">
       <StocksListItem
         stocks={stocks}
         onToggleFavorite={onToggleFavorite}
