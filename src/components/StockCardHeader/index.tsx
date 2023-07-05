@@ -32,10 +32,10 @@ export default function StockCardHeader({
         <a
           href={`https://finviz.com/quote.ashx?t=${Symbol}&p=w`}
           target="_blank"
-          className="h-full"
+          // className="bg-green-500"
         >
           <Image
-            className="inline rounded-full mt-4 object-scale-down"
+            className="inline rounded-full mt-4 object-scale-down bg-accent-3"
             // className={`rounded-full mt-4 object-scale-down w-${logoSize} h-${logoSize}`}
             src={LogoURL}
             width={logoSize}
