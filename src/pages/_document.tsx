@@ -5,7 +5,7 @@ export default function Document() {
     // <Html lang="en" data-theme="light">
     <Html lang="en">
       <Head />
-      <body className="mx-auto p-4 bg-custombgcolor text-customcontentcolor transition-all">
+      <body className="mx-auto  bg-custombgcolor text-customcontentcolor transition-all">
         <Main />
         <NextScript />
       </body>

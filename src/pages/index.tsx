@@ -162,6 +162,9 @@ export default function Home() {
   return (
     <>
       <header className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
+        <h1 className="font-serif font-black italic text-6xl text-accent-3">
+          Ursula
+        </h1>
         <DarkmodeToggle
           onClick={() => {
             handleThemeSwitch();
@@ -180,7 +183,7 @@ export default function Home() {
         )}
         <SortDropdown onSort={handleSort} />
       </header>
-      <main>
+      <main className="pb-20">
         <StocksList
           stocks={stocks}
           onToggleFavorite={handleToggleFavorite}
@@ -189,7 +192,9 @@ export default function Home() {
           searchTerm={searchTerm}
         ></StocksList>
       </main>
-      <footer>test</footer>
+      <footer className="fixed bottom-0 w-full text-center p-6 bg-accent-4 bg-opacity-50">
+        <span>Made with 🍕 in Berlin</span>
+      </footer>
     </>
   );
 }
