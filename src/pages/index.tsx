@@ -11,6 +11,7 @@ import LoginButton from "@/components/LoginButton";
 import { useSession } from "next-auth/react";
 import useLocalStorageState from "use-local-storage-state";
 import DarkmodeToggle from "@/components/DarkmodeToggle";
+import Link from "next/link";
 
 export default function Home() {
   const { data: session } = useSession();
