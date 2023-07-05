@@ -163,11 +163,11 @@ export default function Home() {
   return (
     <>
       {/* <header className="fixed top-0 z-10 flex flex-col-reverse items-end w-full bg-accent-4 bg-opacity-90 p-6 md:flex-row md:justify-end md:items-center"> */}
-      <header className="fixed top-0 z-10 flex flex-col w-full bg-accent-4 bg-opacity-90 p-4 pb-0">
+      <header className="fixed top-0 z-10 flex flex-col w-full bg-accent-4 bg-opacity-90 p-4 pb-2">
         <div className="flex flex-wrap justify-center sm:justify-between items-center">
           {/* <div className="block sm:flex sm:flex-wrap justify-center sm:justify-between items-center"> */}
           {/* <h1 className="font-serif font-black italic text-4xl sm:text-6xl text-accent-3 mr-4"> */}
-          <h1 className="font-serif font-black italic text-4xl sm:text-6xl text-customcontentcolor mr-4">
+          <h1 className="font-serif font-black italic text-4xl sm:text-5xl md:text-6xl text-customcontentcolor mr-4">
             Ursula
           </h1>
           <div className="flex items-center m-2 ml-4">
