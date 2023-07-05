@@ -161,7 +161,7 @@ export default function Home() {
 
   return (
     <>
-      <header className="flex flex-col-reverse items-end md:flex-row md:justify-end md:items-center">
+      <header className="fixed top-0 z-10 flex flex-col-reverse items-end w-full bg-accent-4 bg-opacity-90 p-6 md:flex-row md:justify-end md:items-center">
         <h1 className="font-serif font-black italic text-6xl text-accent-3">
           Ursula
         </h1>
@@ -183,7 +183,7 @@ export default function Home() {
         )}
         <SortDropdown onSort={handleSort} />
       </header>
-      <main className="pb-20">
+      <main className="pb-20 pt-32">
         <StocksList
           stocks={stocks}
           onToggleFavorite={handleToggleFavorite}
@@ -192,7 +192,7 @@ export default function Home() {
           searchTerm={searchTerm}
         ></StocksList>
       </main>
-      <footer className="fixed bottom-0 w-full text-center p-6 bg-accent-4 bg-opacity-50">
+      <footer className="fixed bottom-0 z-10 w-full text-center p-6 bg-accent-4 bg-opacity-90">
         <span>Made with 🍕 in Berlin</span>
       </footer>
     </>
