@@ -162,9 +162,10 @@ export default function Home() {
   return (
     <>
       {/* <header className="fixed top-0 z-10 flex flex-col-reverse items-end w-full bg-accent-4 bg-opacity-90 p-6 md:flex-row md:justify-end md:items-center"> */}
-      <header className="fixed top-0 z-10 flex flex-col w-full bg-accent-4 bg-opacity-90 p-4 ">
+      <header className="fixed top-0 z-10 flex flex-col w-full bg-accent-4 bg-opacity-90 p-4 pb-0">
         <div className="flex flex-wrap justify-center sm:justify-between items-center">
-          <h1 className="font-serif font-black italic text-6xl text-accent-3 mr-4">
+          {/* <div className="block sm:flex sm:flex-wrap justify-center sm:justify-between items-center"> */}
+          <h1 className="font-serif font-black italic text-4xl sm:text-6xl text-accent-3 mr-4">
             Ursula
           </h1>
           <div className="flex items-center m-2 ml-4">
@@ -177,7 +178,8 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="flex flex-wrap-reverse justify-center items-center mt-2">
+        {/* <div className="flex flex-wrap-reverse justify-center items-center mt-2"> */}
+        <div className="flex flex-col-reverse items-center sm:flex-row sm:flex-wrap-reverse sm:items-center sm:justify-center mt-2">
           <SortDropdown onSort={handleSort} />
           <SearchForm onChange={handleSearch} />
           {/* show favorites view button only when user is logged in */}
@@ -190,7 +192,7 @@ export default function Home() {
           )}
         </div>
       </header>
-      <main className="pb-20 pt-36">
+      <main className="pb-20 pt-72 sm:pt-52 md:pt-40">
         <StocksList
           stocks={stocks}
           onToggleFavorite={handleToggleFavorite}
