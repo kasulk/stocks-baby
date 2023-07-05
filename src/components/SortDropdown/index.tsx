@@ -5,9 +5,9 @@ type Props = {
 
 export default function SortDropdown({ onSort }: Props) {
   return (
-    <div className="transition hover:scale-x-105">
+    <div className="transition hover:scale-x-105 mx-4">
       <form method="post">
-        <label htmlFor="sort">Sort: </label>
+        {/* <label htmlFor="sort">Sort: </label> */}
         <select
           name="sort"
           id="sort"
