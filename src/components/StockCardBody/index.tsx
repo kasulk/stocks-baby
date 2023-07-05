@@ -15,7 +15,7 @@ export default function StockCardBody({ stockNumbersToRender }: Props) {
         (number, index) =>
           number.value && (
             // <div key={index} className="flex justify-between items-center">
-            <div key={index} className="grid grid-cols-3">
+            <div key={index} className="grid grid-cols-3 hover:bg-accent-1">
               {/* //? grid? */}
               <span className={number.styles}>{number.title}: </span>
               <div className="text-center">
