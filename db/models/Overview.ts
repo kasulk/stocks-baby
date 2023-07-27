@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { NumberOrNull } from "./_customSchemaTypes.js";
+import { NumberOrNull } from "./_customSchemaTypes";
 
 const { Schema } = mongoose;
 
