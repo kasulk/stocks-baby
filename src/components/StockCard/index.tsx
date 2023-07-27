@@ -6,97 +6,110 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 type Props = {
   _id: string;
-  Symbol: string;
-  Name: string;
-  Description: string;
-  Exchange: string;
-  Sector: string;
-  Industry: string;
-  DividendPerShare: number;
-  DividendYield: number;
-  EPS: number;
-  EPSx15: number;
-  BookValue: number;
-  _52WeekHigh: number;
-  _52WeekLow: number;
-  AnalystTargetPrice: number;
-  Price: number;
-  Bruchwert52Week: number;
+  // Symbol: string;
+  ticker: string;
+  name: string;
+  description: string;
+  exchange: string;
+  sector: string;
+  industry: string;
+  dividendPerShare: number;
+  dividendYield: number;
+  eps: number;
+  // EPSx15: number;
+  eps15x: number;
+  bookValue: number;
+  // _52WeekHigh: number;
+  // _52WeekLow: number;
+  fiftyTwoWeekHigh: number;
+  fiftyTwoWeekLow: number;
+  analystTargetPrice: number;
+  price: number;
+  bruchwert52Week: number;
   onToggleFavorite: (id: string, user: string) => void;
   Favorites?: string[];
   currentUser?: string | null;
-  LogoURL: string;
+  logoURL: string;
 };
 
 export default function StockCard({
   _id,
-  Symbol,
-  Name,
-  Description,
-  Exchange,
-  Sector,
-  Industry,
-  DividendPerShare,
-  DividendYield,
-  EPS,
-  EPSx15,
-  BookValue,
-  _52WeekHigh,
-  _52WeekLow,
-  AnalystTargetPrice,
-  Price,
-  Bruchwert52Week,
+  // Symbol,
+  ticker,
+  name,
+  description,
+  exchange,
+  sector,
+  industry,
+  dividendPerShare,
+  dividendYield,
+  eps,
+  // EPSx15,
+  eps15x,
+  bookValue,
+  // _52WeekHigh,
+  // _52WeekLow,
+  fiftyTwoWeekHigh,
+  fiftyTwoWeekLow,
+  analystTargetPrice,
+  price,
+  bruchwert52Week,
   onToggleFavorite,
   Favorites,
   currentUser,
-  LogoURL,
+  logoURL,
 }: Props) {
   //
   const { data: session } = useSession();
   const stockNumbersToRender = [
     {
       title: "Price",
-      value: Price.toFixed(2),
+      // value: Price.toFixed(2),
+      value: "0",
       styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "Dividend",
-      value: DividendPerShare ? `${DividendPerShare.toFixed(2)}` : "-",
+      // value: DividendPerShare ? `${DividendPerShare.toFixed(2)}` : "-",
+      value: dividendPerShare ? `${dividendPerShare.toFixed(2)}` : "-",
       styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "Dividend%",
-      value: DividendYield ? `${DividendYield.toFixed(2)}%` : "-",
+      // value: DividendYield ? `${DividendYield.toFixed(2)}%` : "-",
+      value: dividendYield ? `${dividendYield.toFixed(2)}%` : "-",
       styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "EPS",
-      value: EPS.toFixed(2),
+      value: eps.toFixed(2),
       styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "FairValue",
-      value: EPSx15.toFixed(2),
+      // value: EPSx15.toFixed(2),
+      value: eps15x.toFixed(2),
       styles: "text-sm text-customcontentcolor opacity-70",
-      distToPrice: (100 * (Price - EPSx15)) / Price,
+      distToPrice: (100 * (price - eps15x)) / price,
     },
     {
       title: "BookValue",
-      value: BookValue.toFixed(2),
+      value: bookValue.toFixed(2),
       styles: "text-sm text-customcontentcolor opacity-70",
-      distToPrice: (100 * (Price - BookValue)) / Price,
+      distToPrice: (100 * (price - bookValue)) / price,
     },
     {
       title: "52W Range",
-      value: `${_52WeekLow.toFixed(2)} - ${_52WeekHigh.toFixed(2)}`,
+      value: `${fiftyTwoWeekLow.toFixed(2)} - ${fiftyTwoWeekHigh.toFixed(2)}`,
       styles: "text-sm text-customcontentcolor opacity-70",
-      distToPrice: 100 * calc52WeekBruchwert(Price, _52WeekHigh, _52WeekLow),
+      distToPrice:
+        100 * calc52WeekBruchwert(price, fiftyTwoWeekHigh, fiftyTwoWeekLow),
     },
     {
       title: "Analyst Target",
-      value: AnalystTargetPrice.toFixed(2),
+      value: analystTargetPrice.toFixed(2),
       styles: "text-sm text-customcontentcolor opacity-70",
-      distToPrice: (100 * (Price - AnalystTargetPrice)) / Price,
+      distToPrice: (100 * (price - analystTargetPrice)) / price,
     },
   ];
 
@@ -116,13 +129,14 @@ export default function StockCard({
         />
       )}
       <StockCardHeader
-        Symbol={Symbol}
-        Exchange={Exchange}
-        LogoURL={LogoURL}
-        Name={Name}
-        Description={Description}
-        Sector={Sector}
-        Industry={Industry}
+        // Symbol={Symbol}
+        ticker={ticker}
+        exchange={exchange}
+        logoURL={logoURL}
+        name={name}
+        description={description}
+        sector={sector}
+        industry={industry}
       />
       <StockCardBody stockNumbersToRender={stockNumbersToRender} />
     </article>

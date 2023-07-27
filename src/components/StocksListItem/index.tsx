@@ -29,11 +29,12 @@ export default function StockListItem({
   // filter stocks with a name and/or ticker symbol that match the search term
   if (searchTerm) {
     const foundStocksByName = stocks.filter((stock) =>
-      stock.Name.toLowerCase().includes(searchTerm.toLowerCase())
+      stock.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const foundStocksBySymbol = stocks.filter((stock) =>
-      stock.Symbol.toLowerCase().includes(searchTerm.toLowerCase())
+      // stock.Symbol.toLowerCase().includes(searchTerm.toLowerCase())
+      stock.ticker.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const mergedSearchResults = [...foundStocksByName, ...foundStocksBySymbol];
@@ -47,26 +48,30 @@ export default function StockListItem({
         <li key={stock._id} className="list-none">
           <StockCard
             _id={stock._id}
-            Symbol={stock.Symbol}
-            Name={stock.Name}
-            Description={stock.Description}
-            Exchange={stock.Exchange}
-            Sector={stock.Sector}
-            Industry={stock.Industry}
-            DividendPerShare={stock.DividendPerShare}
-            DividendYield={stock.DividendYield}
-            EPS={stock.EPS}
-            EPSx15={stock.EPSx15}
-            BookValue={stock.BookValue}
-            _52WeekHigh={stock._52WeekHigh}
-            _52WeekLow={stock._52WeekLow}
-            AnalystTargetPrice={stock.AnalystTargetPrice}
-            Price={stock.Price}
-            Bruchwert52Week={stock.Bruchwert52Week}
+            // Symbol={stock.Symbol}
+            ticker={stock.ticker}
+            name={stock.name}
+            description={stock.description}
+            exchange={stock.exchange}
+            sector={stock.sector}
+            industry={stock.industry}
+            dividendPerShare={stock.dividendPerShare}
+            dividendYield={stock.dividendYield}
+            eps={stock.eps}
+            // epsx15={stock.epsx15}
+            eps15x={stock.eps15x}
+            bookValue={stock.bookValue}
+            fiftyTwoWeekHigh={stock.fiftyTwoWeekHigh}
+            fiftyTwoWeekLow={stock.fiftyTwoWeekLow}
+            // _52WeekHigh={stock._52WeekHigh}
+            // _52WeekLow={stock._52WeekLow}
+            analystTargetPrice={stock.analystTargetPrice}
+            price={stock.price}
+            bruchwert52Week={stock.bruchwert52Week}
             onToggleFavorite={onToggleFavorite}
             Favorites={stock.Favorites}
             currentUser={currentUser}
-            LogoURL={stock.LogoURL}
+            logoURL={stock.logoURL}
           />
         </li>
       ))}
