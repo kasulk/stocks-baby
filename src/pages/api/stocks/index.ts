@@ -1,5 +1,6 @@
 import dbConnect from "../../../../db/connect";
 // import Demostock from "../../../../db/models/Demostock";
+import Quote from "../../../../db/models/Quote"; //note:
 import Overview from "../../../../db/models/Overview";
 
 // TS: NextApiRequest and NextApiResponse types from next,
@@ -23,9 +24,11 @@ export default async function handler(
   await dbConnect();
 
   if (request.method === "GET") {
-    const stocks = await Overview.find();
+    //// const stocks = await Overview.find();
+    // request Overviews and combine with Quotes based on the common field 'ticker'
+    const stocks = await Overview.find().populate("quotesData");
     return response.status(200).json(stocks);
-    // response.status(200).json(demostocks);
+    //// response.status(200).json(demostocks);
   }
 
   // @patchrequest, step3
