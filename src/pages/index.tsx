@@ -32,7 +32,8 @@ export default function Home() {
   });
 
   // useSWR only fetches data, useSWRMutation also mutates it
-  const { data: stocks, isLoading } = useSWR<Stock[]>("/api/demostocks", {
+  // const { data: stocks, isLoading } = useSWR<Stock[]>("/api/demostocks", {
+  const { data: stocks, isLoading } = useSWR<Stock[]>("/api/stocks", {
     fallbackData: [],
   });
 
