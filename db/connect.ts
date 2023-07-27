@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import Overview from "./models/Overview"; //note: chatti
+import Quote from "./models/Quote"; //note: chatti
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -46,6 +48,8 @@ export default async function dbConnect() {
     };
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+      Overview; //note: chatti
+      Quote; //note: chatti
       return mongoose;
     });
   }
