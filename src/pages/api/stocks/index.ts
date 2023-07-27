@@ -6,6 +6,13 @@ import Overview from "../../../../db/models/Overview";
 // TS: provide type checking for the request and response objects.
 import { NextApiRequest, NextApiResponse } from "next";
 
+//! doesn't work...
+// export const config = {
+//   api: {
+//     responseLimit: false,
+//   },
+// };
+
 export default async function handler(
   // TS: Type annotation to the handler function, indicating that
   // TS: it expects a NextApiRequest and a NextApiResponse object
