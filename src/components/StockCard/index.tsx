@@ -62,16 +62,16 @@ export default function StockCard({
   //
   const { data: session } = useSession();
 
-  // if (!eps) return <div>nuescht!</div>;
-  if (!eps) return console.log("nuesht!");
+  //// if (!eps) return <div>nuescht!</div>;
+  if (!eps) return console.log("nuesht!"); //note:
 
   // console.log(eps); //note:
 
   const stockNumbersToRender = [
     {
       title: "Price",
-      // value: Price.toFixed(2),
-      value: "0",
+      value: price.toFixed(2),
+      // value: "0",
       styles: "text-sm text-customcontentcolor opacity-70",
     },
     {

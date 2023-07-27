@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { NumberOrNull } from "./_customSchemaTypes";
+import Quote from "./Quote"; //note:
 
 const { Schema } = mongoose;
 
@@ -54,20 +55,26 @@ const overviewSchema = new Schema(
     revenueTTM: NumberOrNull,
     sharesOutstanding: NumberOrNull,
     trailingPE: NumberOrNull,
-    // fiftyTwoWeekRange: string; // 'calculated'
-    // 52WeekHigh: NumberOrNull, //! twelve data
-    // 52WeekLow: NumberOrNull,//! twelve data
-    // 50DayMovingAverage: NumberOrNull, //!twelve data
-    // 200DayMovingAverage: NumberOrNull,//!twelve data
-    //? _50DayMovingAverage: Number,
-    //? _200DayMovingAverage: Number,
     // Bruchwert52Week: Number, // calculated
     // Favorites: [String], // Field "Favorites" is Array of Strings
     // logoURL: String, //! twelve data
   },
   // create timestamps for createdAt and updatedAt
-  { timestamps: true } // https://mongoosejs.com/docs/timestamps.html
+  {
+    timestamps: true,
+    //! StrictPopulateError workaround...
+    strictPopulate: false,
+  } // https://mongoosejs.com/docs/timestamps.html
 );
+
+// Create a virtual reference to the Quote-Model based on 'ticker'
+overviewSchema.virtual("quotesData", {
+  // 'quotesData' is a custom name for the virtual field; used to access the virtual field later with .populate('quotesData')
+  ref: "Quote",
+  localField: "ticker",
+  foreignField: "ticker",
+  justOne: true, // set to true if only one ticker per stock is expected, else false
+});
 
 // check whether the model with this name has already been compiled and if yes, take the already compiled model
 const Overview =
