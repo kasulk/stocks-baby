@@ -31,6 +31,7 @@ type Props = {
   Favorites?: string[];
   currentUser?: string | null;
   logoURL: string;
+  updatedAt: string;
 };
 
 export default function StockCard({
@@ -60,6 +61,7 @@ export default function StockCard({
   Favorites,
   currentUser,
   logoURL,
+  updatedAt,
 }: Props) {
   //
   const { data: session } = useSession();
@@ -174,6 +176,7 @@ export default function StockCard({
       <StockCardBody
         stockNumbersToRender={stockNumbersToRender}
         priceLatestUpdate={priceLatestUpdate}
+        updatedAt={updatedAt}
       />
     </article>
   );

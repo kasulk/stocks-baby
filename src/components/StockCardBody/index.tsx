@@ -7,11 +7,13 @@ type Props = {
     // distToPrice?: number | "-";
   }[];
   priceLatestUpdate: string;
+  updatedAt: string;
 };
 
 export default function StockCardBody({
   stockNumbersToRender,
   priceLatestUpdate,
+  updatedAt,
 }: Props) {
   return (
     <>
@@ -55,6 +57,9 @@ export default function StockCardBody({
             </div>
           )
       )}
+      <span className="flex justify-end text-xs italic">
+        last updated: {updatedAt}
+      </span>
     </>
   );
 }
