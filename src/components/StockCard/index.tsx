@@ -70,7 +70,8 @@ export default function StockCard({
   const stockNumbersToRender = [
     {
       title: "Price",
-      value: price.toFixed(2),
+      // value: price.toFixed(2),
+      value: price ? price.toFixed(2) : "0",
       // value: "0",
       styles: "text-sm text-customcontentcolor opacity-70",
     },

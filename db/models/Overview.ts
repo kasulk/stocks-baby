@@ -62,8 +62,13 @@ const overviewSchema = new Schema(
   // create timestamps for createdAt and updatedAt
   {
     timestamps: true,
+    // If you want populate virtuals to show up when using functions like Express' res.json() function or console.log(),
+    // set the virtuals: true option on your schema's toJSON and toObject() options
+    // https://mongoosejs.com/docs/populate.html#populate-virtuals
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
     //! StrictPopulateError workaround...
-    strictPopulate: false,
+    // strictPopulate: false, //note:
   } // https://mongoosejs.com/docs/timestamps.html
 );
 

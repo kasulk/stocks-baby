@@ -26,7 +26,8 @@ export default async function handler(
   if (request.method === "GET") {
     //// const stocks = await Overview.find();
     // request Overviews and combine with Quotes based on the common field 'ticker'
-    const stocks = await Overview.find().populate("quotesData");
+    // const stocks = await Overview.find().populate("quotesData"); // chatti
+    const stocks = await Overview.find().populate("quotesData"); // note: icke test
     return response.status(200).json(stocks);
     //// response.status(200).json(demostocks);
   }

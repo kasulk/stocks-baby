@@ -66,7 +66,8 @@ export default function StockListItem({
             // _52WeekHigh={stock._52WeekHigh}
             // _52WeekLow={stock._52WeekLow}
             analystTargetPrice={stock.analystTargetPrice}
-            price={stock.price}
+            // price={stock.price}
+            price={stock.quotesData.price}
             bruchwert52Week={stock.bruchwert52Week}
             onToggleFavorite={onToggleFavorite}
             Favorites={stock.Favorites}
