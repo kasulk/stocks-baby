@@ -22,6 +22,17 @@ export type Stock = {
   bruchwert52Week: number;
   Favorites?: string[];
   logoURL: string;
+  quotesData: {
+    _id: string;
+    ticker: string;
+    change: string;
+    changePercent: string;
+    latestTradingDay: string;
+    previousClose: number;
+    price: number;
+    volume: number;
+    updatedAt: string;
+  };
 };
 
 export type DemoStock = {
