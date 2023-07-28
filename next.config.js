@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: "avatars.githubusercontent.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "icon-library.com",
+        port: "",
+      },
     ],
   },
 };

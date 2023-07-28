@@ -34,6 +34,13 @@ export type Stock = {
     volume: number;
     updatedAt: string;
   };
+  logoData: {
+    _id: string;
+    ticker: string;
+    logoURL: string;
+    name: string;
+    updatedAt: string;
+  };
 };
 
 export type DemoStock = {
