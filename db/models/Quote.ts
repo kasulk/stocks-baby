@@ -8,9 +8,6 @@ const quoteSchema = new Schema(
     // ticker: { type: mongoose.Schema.Types.ObjectId, ref: "Daten" },
     ticker: { type: String, required: true },
     //! alphaVantage START
-    // open: NumberOrNull,
-    // high: NumberOrNull,
-    // low: NumberOrNull,
     price: NumberOrNull, // =close
     volume: NumberOrNull,
     latestTradingDay: String,
@@ -19,8 +16,6 @@ const quoteSchema = new Schema(
     changePercent: String,
     // alphaVantage END
     //! twelveData START
-    //   // symbol: "PETS",
-    //   // quotes: Number,
     //   name: String, // e.g. "PetMed Express Inc",
     //   exchange: String, // e.g. "NASDAQ",
     //   mic_code: String, // e.g. "XNGS",

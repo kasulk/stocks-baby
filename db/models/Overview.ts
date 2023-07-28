@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { NumberOrNull } from "./_customSchemaTypes";
-import Quote from "./Quote"; //note:
-import Logourl from "./Logourl"; //note:
+// import Quote from "./Quote"; //note:
+// import Logourl from "./Logourl"; //note:
 
 const { Schema } = mongoose;
 
@@ -9,7 +9,6 @@ const { Schema } = mongoose;
 const overviewSchema = new Schema(
   {
     ticker: { type: String, required: true },
-    // price: NumberOrNull, //! twelve data
     address: String,
     assetType: String,
     cik: String,
@@ -56,11 +55,11 @@ const overviewSchema = new Schema(
     revenueTTM: NumberOrNull,
     sharesOutstanding: NumberOrNull,
     trailingPE: NumberOrNull,
-    // Bruchwert52Week: Number, // calculated
     // Favorites: [String], // Field "Favorites" is Array of Strings
     // logoURL: String, //! twelve data
   },
   // create timestamps for createdAt and updatedAt
+  // https://mongoosejs.com/docs/timestamps.html
   {
     timestamps: true,
     // If you want populate virtuals to show up when using functions like Express' res.json() function or console.log(),
@@ -68,9 +67,7 @@ const overviewSchema = new Schema(
     // https://mongoosejs.com/docs/populate.html#populate-virtuals
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
-    //! StrictPopulateError workaround...
-    // strictPopulate: false, //note:
-  } // https://mongoosejs.com/docs/timestamps.html
+  }
 );
 
 // Create a virtual reference to the Quote-Model based on 'ticker'
@@ -84,11 +81,10 @@ overviewSchema.virtual("quotesData", {
 
 // Create a virtual reference to the Logourl-Model based on 'ticker'
 overviewSchema.virtual("logoData", {
-  // 'logoData' is a custom name for the virtual field; used to access the virtual field later with .populate('logoData')
   ref: "Logourl",
   localField: "ticker",
   foreignField: "ticker",
-  justOne: true, // set to true if only one ticker per stock is expected, else false
+  justOne: true,
 });
 
 // check whether the model with this name has already been compiled and if yes, take the already compiled model
