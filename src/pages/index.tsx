@@ -27,14 +27,17 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortParam, setSortParam] = useState<SortParamType>({
     // TS: Yair
-    sortBy: "Symbol",
+    // sortBy: "Symbol",
+    sortBy: "ticker",
     sortDirection: "ascending",
   });
 
   // useSWR only fetches data, useSWRMutation also mutates it
-  const { data: stocks, isLoading } = useSWR<Stock[]>("/api/demostocks", {
+  // const { data: stocks, isLoading } = useSWR<Stock[]>("/api/demostocks", {
+  const { data: stocks, isLoading } = useSWR<Stock[]>("/api/stocks", {
     fallbackData: [],
   });
+  if (stocks) console.log("stocks:", stocks[0]); //note:
 
   // @patchrequest, step3
   const { trigger } = useSWRMutation(
@@ -94,7 +97,8 @@ export default function Home() {
     const sortOption = event.target;
     const sortOptionValues = sortOption.value.split("-");
     setSortParam({
-      sortBy: sortOptionValues[0] as "Symbol", // TS: Yair
+      // sortBy: sortOptionValues[0] as "Symbol", // TS: Yair
+      sortBy: sortOptionValues[0] as "ticker", // TS: Yair
       sortDirection: sortOptionValues[1] as "ascending", // TS: Yair
     });
   }

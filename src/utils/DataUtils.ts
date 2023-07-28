@@ -2,10 +2,14 @@ import { Stock } from "../../types";
 
 export function addBruchwertPropertyToArrOfObjs(arrOfObjects: Stock[]): void {
   arrOfObjects.forEach((object) => {
-    object["Bruchwert52Week"] = calc52WeekBruchwert(
-      object.Price,
-      object._52WeekHigh,
-      object._52WeekLow
+    // object["Bruchwert52Week"] = calc52WeekBruchwert(
+    object["bruchwert52Week"] = calc52WeekBruchwert(
+      // object.Price,
+      object.price,
+      // object._52WeekHigh,
+      object.fiftyTwoWeekHigh,
+      // object._52WeekLow
+      object.fiftyTwoWeekLow
     );
   });
 }

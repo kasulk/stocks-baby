@@ -3,12 +3,18 @@ type Props = {
     title: string;
     value: string;
     styles: string;
-    // distToPrice?: string
-    distToPrice?: number;
+    distToPrice?: string;
+    // distToPrice?: number | "-";
   }[];
+  priceLatestUpdate: string;
+  updatedAt: string;
 };
 
-export default function StockCardBody({ stockNumbersToRender }: Props) {
+export default function StockCardBody({
+  stockNumbersToRender,
+  priceLatestUpdate,
+  updatedAt,
+}: Props) {
   return (
     <>
       {stockNumbersToRender.map(
@@ -26,21 +32,34 @@ export default function StockCardBody({ stockNumbersToRender }: Props) {
                   <span
                     className={` text-xs rounded px-0.5 
    ${
-     number.distToPrice > 0
+     Number(number.distToPrice) > 0
        ? "bg-red-500 text-red-950"
        : "bg-green-500 text-green-950"
    } `}
                   >
                     {`${
-                      number.distToPrice > 0 ? "+" : ""
-                    }${number.distToPrice.toFixed(0)}%`}
+                      Number(number.distToPrice) > 0 ? "+" : ""
+                      // }${number.distToPrice.toFixed(0)}%`}
+                    }${number.distToPrice}%`}
                   </span>
                 )}
               </div>
-              <span className="text-right">{number.value}</span>
+              <span
+                className="text-right"
+                title={
+                  number.title === "Price"
+                    ? `last updated: ${priceLatestUpdate}`
+                    : ""
+                }
+              >
+                {number.value}
+              </span>
             </div>
           )
       )}
+      <span className="flex justify-end text-xs italic opacity-30">
+        last updated: {updatedAt}
+      </span>
     </>
   );
 }
