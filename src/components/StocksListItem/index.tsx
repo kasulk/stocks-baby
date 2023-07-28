@@ -33,7 +33,6 @@ export default function StockListItem({
     );
 
     const foundStocksBySymbol = stocks.filter((stock) =>
-      // stock.Symbol.toLowerCase().includes(searchTerm.toLowerCase())
       stock.ticker.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -48,7 +47,6 @@ export default function StockListItem({
         <li key={stock._id} className="list-none">
           <StockCard
             _id={stock._id}
-            // Symbol={stock.Symbol}
             ticker={stock.ticker}
             name={stock.name}
             description={stock.description}
@@ -58,23 +56,17 @@ export default function StockListItem({
             dividendPerShare={stock.dividendPerShare}
             dividendYield={stock.dividendYield}
             eps={stock.eps}
-            // epsx15={stock.epsx15}
             eps15x={stock.eps15x}
             bookValue={stock.bookValue}
             fiftyTwoWeekHigh={stock.fiftyTwoWeekHigh}
             fiftyTwoWeekLow={stock.fiftyTwoWeekLow}
-            // _52WeekHigh={stock._52WeekHigh}
-            // _52WeekLow={stock._52WeekLow}
             analystTargetPrice={stock.analystTargetPrice}
-            // price={stock.price}
             price={stock.quotesData.price}
             priceLatestUpdate={stock.quotesData.updatedAt}
             bruchwert52Week={stock.bruchwert52Week}
             onToggleFavorite={onToggleFavorite}
             Favorites={stock.Favorites}
             currentUser={currentUser}
-            // logoURL={stock.logoURL}
-            // logoURL={stock.logoData.logoURL}
             logoURL={stock.logoData ? stock.logoData.logoURL : ""}
             updatedAt={stock.updatedAt}
           />

@@ -1,18 +1,11 @@
 import dbConnect from "../../../../db/connect";
 // import Demostock from "../../../../db/models/Demostock";
-import Quote from "../../../../db/models/Quote"; //note:
+// import Quote from "../../../../db/models/Quote"; //note:
 import Overview from "../../../../db/models/Overview";
 
 // TS: NextApiRequest and NextApiResponse types from next,
 // TS: provide type checking for the request and response objects.
 import { NextApiRequest, NextApiResponse } from "next";
-
-//! doesn't work...
-// export const config = {
-//   api: {
-//     responseLimit: false,
-//   },
-// };
 
 export default async function handler(
   // TS: Type annotation to the handler function, indicating that
@@ -24,14 +17,11 @@ export default async function handler(
   await dbConnect();
 
   if (request.method === "GET") {
-    //// const stocks = await Overview.find();
-    // request Overviews and combine with Quotes based on the common field 'ticker'
-    // const stocks = await Overview.find().populate("quotesData"); // chatti
+    // request Overviews and combine with Quotes and Logourls based on the common field 'ticker'
     const stocks = await Overview.find()
       .populate("quotesData")
       .populate("logoData"); // note: icke test
     return response.status(200).json(stocks);
-    //// response.status(200).json(demostocks);
   }
 
   // @patchrequest, step3

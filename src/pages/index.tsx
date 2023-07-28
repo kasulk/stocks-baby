@@ -27,7 +27,6 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortParam, setSortParam] = useState<SortParamType>({
     // TS: Yair
-    // sortBy: "Symbol",
     sortBy: "ticker",
     sortDirection: "ascending",
   });
@@ -37,8 +36,7 @@ export default function Home() {
   const { data: stocks, isLoading } = useSWR<Stock[]>("/api/stocks", {
     fallbackData: [],
   });
-  // if (stocks) console.log("stocks:", stocks[0], stocks[1], stocks[2]); //note:
-  if (stocks) console.log("stocks:", stocks); //note:
+  // if (stocks) console.log("stocks:", stocks); //note:
 
   // @patchrequest, step3
   const { trigger } = useSWRMutation(
@@ -98,7 +96,6 @@ export default function Home() {
     const sortOption = event.target;
     const sortOptionValues = sortOption.value.split("-");
     setSortParam({
-      // sortBy: sortOptionValues[0] as "Symbol", // TS: Yair
       sortBy: sortOptionValues[0] as "ticker", // TS: Yair
       sortDirection: sortOptionValues[1] as "ascending", // TS: Yair
     });
@@ -167,11 +164,8 @@ export default function Home() {
 
   return (
     <>
-      {/* <header className="fixed top-0 z-10 flex flex-col-reverse items-end w-full bg-accent-4 bg-opacity-90 p-6 md:flex-row md:justify-end md:items-center"> */}
       <header className="fixed top-0 z-10 flex flex-col w-full bg-accent-4 bg-opacity-90 p-4 pb-2">
         <div className="flex flex-wrap justify-center sm:justify-between items-center">
-          {/* <div className="block sm:flex sm:flex-wrap justify-center sm:justify-between items-center"> */}
-          {/* <h1 className="font-serif font-black italic text-4xl sm:text-6xl text-accent-3 mr-4"> */}
           <h1 className="font-serif font-black italic text-4xl sm:text-5xl md:text-6xl text-customcontentcolor mr-4">
             Ursula
           </h1>
@@ -185,12 +179,9 @@ export default function Home() {
             />
           </div>
         </div>
-        {/* <div className="flex flex-wrap-reverse justify-center items-center mt-2"> */}
         <div className="flex flex-col-reverse items-center sm:flex-row sm:flex-wrap-reverse sm:items-center sm:justify-center mt-2">
           <SortDropdown onSort={handleSort} />
           <SearchForm onChange={handleSearch} />
-          {/* show favorites view button only when user is logged in */}
-          {/* {session && ( */}
           {currentUser && (
             <ShowFavoriteStocksToggle
               isShowFavoriteStocks={isShowFavoriteStocks}

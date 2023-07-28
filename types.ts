@@ -1,6 +1,5 @@
 export type Stock = {
   _id: string; // TS: if not set to optional, TS complains when passing the props to Card-Component...
-  // Symbol: string;
   ticker: string;
   name: string;
   description: string;
@@ -10,11 +9,8 @@ export type Stock = {
   dividendPerShare: number;
   dividendYield: number;
   eps: number;
-  // EPSx15: number;
   eps15x: number;
   bookValue: number; // | string
-  // _52WeekHigh: number;
-  // _52WeekLow: number;
   fiftyTwoWeekHigh: number;
   fiftyTwoWeekLow: number;
   analystTargetPrice: number;
