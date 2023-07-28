@@ -71,8 +71,7 @@ export default function StockCard({
     {
       title: "Price",
       // value: price.toFixed(2),
-      value: price ? price.toFixed(2) : "0",
-      // value: "0",
+      value: price ? price.toFixed(2) : "-",
       styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
@@ -89,8 +88,8 @@ export default function StockCard({
     },
     {
       title: "EPS",
-      // value: eps.toFixed(2),
-      value: "0",
+      value: eps.toFixed(2),
+      // value: "0",
       styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
@@ -98,30 +97,36 @@ export default function StockCard({
       // value: EPSx15.toFixed(2),
       value: eps15x.toFixed(2),
       styles: "text-sm text-customcontentcolor opacity-70",
-      // distToPrice: (100 * (price - eps15x)) / price,
-      distToPrice: 0,
+      distToPrice: price && eps15x ? (100 * (price - eps15x)) / price : "-",
+      // distToPrice: 0,
     },
     {
       title: "BookValue",
       value: bookValue.toFixed(2),
       styles: "text-sm text-customcontentcolor opacity-70",
-      // distToPrice: (100 * (price - bookValue)) / price,
-      distToPrice: 0,
+      distToPrice:
+        price && bookValue ? (100 * (price - bookValue)) / price : "-",
+      // distToPrice: 0,
     },
     {
       title: "52W Range",
       value: `${fiftyTwoWeekLow.toFixed(2)} - ${fiftyTwoWeekHigh.toFixed(2)}`,
       styles: "text-sm text-customcontentcolor opacity-70",
-      // distToPrice:
-      //   100 * calc52WeekBruchwert(price, fiftyTwoWeekHigh, fiftyTwoWeekLow),
-      distToPrice: 0,
+      distToPrice:
+        price && fiftyTwoWeekHigh && fiftyTwoWeekLow
+          ? 100 * calc52WeekBruchwert(price, fiftyTwoWeekHigh, fiftyTwoWeekLow)
+          : "-",
+      // distToPrice: 0,
     },
     {
       title: "Analyst Target",
       value: analystTargetPrice.toFixed(2),
       styles: "text-sm text-customcontentcolor opacity-70",
-      // distToPrice: (100 * (price - analystTargetPrice)) / price,
-      distToPrice: 0,
+      distToPrice:
+        price && analystTargetPrice
+          ? (100 * (price - analystTargetPrice)) / price
+          : "-",
+      // distToPrice: 0,
     },
   ];
 
