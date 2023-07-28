@@ -74,7 +74,8 @@ export default function StockListItem({
             Favorites={stock.Favorites}
             currentUser={currentUser}
             // logoURL={stock.logoURL}
-            logoURL={stock.logoData.logoURL}
+            // logoURL={stock.logoData.logoURL}
+            logoURL={stock.logoData ? stock.logoData.logoURL : ""}
             updatedAt={stock.updatedAt}
           />
         </li>
