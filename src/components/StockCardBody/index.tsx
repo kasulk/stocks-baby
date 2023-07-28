@@ -6,9 +6,13 @@ type Props = {
     distToPrice?: string;
     // distToPrice?: number | "-";
   }[];
+  priceLatestUpdate: string;
 };
 
-export default function StockCardBody({ stockNumbersToRender }: Props) {
+export default function StockCardBody({
+  stockNumbersToRender,
+  priceLatestUpdate,
+}: Props) {
   return (
     <>
       {stockNumbersToRender.map(
@@ -38,7 +42,16 @@ export default function StockCardBody({ stockNumbersToRender }: Props) {
                   </span>
                 )}
               </div>
-              <span className="text-right">{number.value}</span>
+              <span
+                className="text-right"
+                title={
+                  number.title === "Price"
+                    ? `last updated: ${priceLatestUpdate}`
+                    : ""
+                }
+              >
+                {number.value}
+              </span>
             </div>
           )
       )}

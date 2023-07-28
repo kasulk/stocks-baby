@@ -171,7 +171,10 @@ export default function StockCard({
         sector={sector}
         industry={industry}
       />
-      <StockCardBody stockNumbersToRender={stockNumbersToRender} />
+      <StockCardBody
+        stockNumbersToRender={stockNumbersToRender}
+        priceLatestUpdate={priceLatestUpdate}
+      />
     </article>
   );
 }
