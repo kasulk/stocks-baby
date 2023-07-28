@@ -68,6 +68,7 @@ export default function StockListItem({
             analystTargetPrice={stock.analystTargetPrice}
             // price={stock.price}
             price={stock.quotesData.price}
+            priceLatestUpdate={stock.quotesData.updatedAt}
             bruchwert52Week={stock.bruchwert52Week}
             onToggleFavorite={onToggleFavorite}
             Favorites={stock.Favorites}
