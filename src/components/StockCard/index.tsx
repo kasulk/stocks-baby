@@ -65,10 +65,18 @@ export default function StockCard({
   const { data: session } = useSession();
 
   //// if (!eps) return <div>nuescht!</div>;
-  if (!eps) return console.log("nuesht!"); //note:
+  // if (!eps) return console.log("nuesht!"); //note:
 
   // console.log(eps); //note:
 
+  // type stockNumbersToRender = {
+  //   title: string;
+  //   value: string;
+  //   styles: string;
+  //   distToPrice?: number | "-";
+  // };
+
+  // const stockNumbersToRender: stockNumbersToRender[] = [
   const stockNumbersToRender = [
     {
       title: "Price",
@@ -99,7 +107,8 @@ export default function StockCard({
       // value: EPSx15.toFixed(2),
       value: eps15x.toFixed(2),
       styles: "text-sm text-customcontentcolor opacity-70",
-      distToPrice: price && eps15x ? (100 * (price - eps15x)) / price : "-",
+      distToPrice:
+        price && eps15x ? ((100 * (price - eps15x)) / price).toFixed(0) : "-",
       // distToPrice: 0,
     },
     {
@@ -107,7 +116,9 @@ export default function StockCard({
       value: bookValue.toFixed(2),
       styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice:
-        price && bookValue ? (100 * (price - bookValue)) / price : "-",
+        price && bookValue
+          ? ((100 * (price - bookValue)) / price).toFixed(0)
+          : "-",
       // distToPrice: 0,
     },
     {
@@ -116,7 +127,10 @@ export default function StockCard({
       styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice:
         price && fiftyTwoWeekHigh && fiftyTwoWeekLow
-          ? 100 * calc52WeekBruchwert(price, fiftyTwoWeekHigh, fiftyTwoWeekLow)
+          ? (
+              100 *
+              calc52WeekBruchwert(price, fiftyTwoWeekHigh, fiftyTwoWeekLow)
+            ).toFixed(0)
           : "-",
       // distToPrice: 0,
     },
@@ -126,7 +140,7 @@ export default function StockCard({
       styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice:
         price && analystTargetPrice
-          ? (100 * (price - analystTargetPrice)) / price
+          ? ((100 * (price - analystTargetPrice)) / price).toFixed(0)
           : "-",
       // distToPrice: 0,
     },

@@ -3,8 +3,8 @@ type Props = {
     title: string;
     value: string;
     styles: string;
-    // distToPrice?: string
-    distToPrice?: number;
+    distToPrice?: string;
+    // distToPrice?: number | "-";
   }[];
 };
 
@@ -26,14 +26,15 @@ export default function StockCardBody({ stockNumbersToRender }: Props) {
                   <span
                     className={` text-xs rounded px-0.5 
    ${
-     number.distToPrice > 0
+     Number(number.distToPrice) > 0
        ? "bg-red-500 text-red-950"
        : "bg-green-500 text-green-950"
    } `}
                   >
                     {`${
-                      number.distToPrice > 0 ? "+" : ""
-                    }${number.distToPrice.toFixed(0)}%`}
+                      Number(number.distToPrice) > 0 ? "+" : ""
+                      // }${number.distToPrice.toFixed(0)}%`}
+                    }${number.distToPrice}%`}
                   </span>
                 )}
               </div>
