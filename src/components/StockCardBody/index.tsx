@@ -57,7 +57,7 @@ export default function StockCardBody({
             </div>
           )
       )}
-      <span className="flex justify-end text-xs italic">
+      <span className="flex justify-end text-xs italic opacity-30">
         last updated: {updatedAt}
       </span>
     </>
