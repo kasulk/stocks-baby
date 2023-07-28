@@ -37,7 +37,8 @@ export default function Home() {
   const { data: stocks, isLoading } = useSWR<Stock[]>("/api/stocks", {
     fallbackData: [],
   });
-  if (stocks) console.log("stocks:", stocks[0]); //note:
+  // if (stocks) console.log("stocks:", stocks[0], stocks[1], stocks[2]); //note:
+  if (stocks) console.log("stocks:", stocks); //note:
 
   // @patchrequest, step3
   const { trigger } = useSWRMutation(

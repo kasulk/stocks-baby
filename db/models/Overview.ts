@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { NumberOrNull } from "./_customSchemaTypes";
 import Quote from "./Quote"; //note:
+import Logourl from "./Logourl"; //note:
 
 const { Schema } = mongoose;
 
@@ -76,6 +77,15 @@ const overviewSchema = new Schema(
 overviewSchema.virtual("quotesData", {
   // 'quotesData' is a custom name for the virtual field; used to access the virtual field later with .populate('quotesData')
   ref: "Quote",
+  localField: "ticker",
+  foreignField: "ticker",
+  justOne: true, // set to true if only one ticker per stock is expected, else false
+});
+
+// Create a virtual reference to the Logourl-Model based on 'ticker'
+overviewSchema.virtual("logoData", {
+  // 'logoData' is a custom name for the virtual field; used to access the virtual field later with .populate('logoData')
+  ref: "Logourl",
   localField: "ticker",
   foreignField: "ticker",
   justOne: true, // set to true if only one ticker per stock is expected, else false
