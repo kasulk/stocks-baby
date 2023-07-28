@@ -59,7 +59,8 @@ export type DemoStock = {
 };
 
 // TS: Yair
-export type SortByType = "Symbol" | "Name";
+// export type SortByType = "Symbol" | "Name";
+export type SortByType = "ticker" | "name";
 
 // TS: Yair
 export type SortDirectionType = "ascending" | "descending";

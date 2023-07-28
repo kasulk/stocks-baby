@@ -27,7 +27,8 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortParam, setSortParam] = useState<SortParamType>({
     // TS: Yair
-    sortBy: "Symbol",
+    // sortBy: "Symbol",
+    sortBy: "ticker",
     sortDirection: "ascending",
   });
 
@@ -96,7 +97,8 @@ export default function Home() {
     const sortOption = event.target;
     const sortOptionValues = sortOption.value.split("-");
     setSortParam({
-      sortBy: sortOptionValues[0] as "Symbol", // TS: Yair
+      // sortBy: sortOptionValues[0] as "Symbol", // TS: Yair
+      sortBy: sortOptionValues[0] as "ticker", // TS: Yair
       sortDirection: sortOptionValues[1] as "ascending", // TS: Yair
     });
   }
