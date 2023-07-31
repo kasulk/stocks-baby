@@ -95,7 +95,7 @@ export default function StockCard({
     {
       title: "Dividend%",
       // value: DividendYield ? `${DividendYield.toFixed(2)}%` : "-",
-      value: dividendYield ? `${dividendYield.toFixed(2)}%` : "-",
+      value: dividendYield ? `${(dividendYield * 100).toFixed(2)}%` : "-",
       styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
