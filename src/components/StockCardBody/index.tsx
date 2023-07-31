@@ -1,3 +1,8 @@
+import {
+  formatTimestampToDate,
+  formatTimestampToDays,
+} from "@/utils/DataUtils";
+
 type Props = {
   stockNumbersToRender: {
     title: string;
@@ -48,7 +53,9 @@ export default function StockCardBody({
                 className="text-right"
                 title={
                   number.title === "Price"
-                    ? `last updated: ${priceLatestUpdate}`
+                    ? `last updated: ${formatTimestampToDays(
+                        priceLatestUpdate
+                      )} - ${formatTimestampToDate(priceLatestUpdate)}`
                     : ""
                 }
               >
@@ -57,8 +64,11 @@ export default function StockCardBody({
             </div>
           )
       )}
-      <span className="flex justify-end text-xs italic opacity-30">
-        last updated: {updatedAt}
+      <span
+        className="flex justify-end text-xs italic opacity-30"
+        title={formatTimestampToDate(updatedAt)}
+      >
+        last updated: {formatTimestampToDays(updatedAt)}
       </span>
     </>
   );
