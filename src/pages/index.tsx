@@ -40,7 +40,8 @@ export default function Home() {
 
   // @patchrequest, step3
   const { trigger } = useSWRMutation(
-    `/api/demostocks`,
+    // `/api/demostocks`,
+    `/api/stocks`,
     updateFavoriteStockToggle // sendRequest
   );
 
