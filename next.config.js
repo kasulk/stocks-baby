@@ -10,6 +10,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "logo.twelvedata.com",
+        port: "",
+      },
+      {
+        protocol: "https",
         hostname: "avatars.githubusercontent.com",
         port: "",
       },
