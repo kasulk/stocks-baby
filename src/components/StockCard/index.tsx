@@ -2,11 +2,10 @@ import FavoriteButton from "../FavoriteButton";
 import StockCardHeader from "../StockCardHeader";
 import StockCardBody from "../StockCardBody";
 import { calc52WeekBruchwert } from "@/utils/DataUtils";
-import { useSession, signIn, signOut } from "next-auth/react";
+// import { useSession, signIn, signOut } from "next-auth/react";
 
 type Props = {
   _id: string;
-  // Symbol: string;
   ticker: string;
   name: string;
   description: string;
@@ -16,27 +15,26 @@ type Props = {
   dividendPerShare: number;
   dividendYield: number;
   eps: number;
-  // EPSx15: number;
   eps15x: number;
   bookValue: number;
-  // _52WeekHigh: number;
-  // _52WeekLow: number;
   fiftyTwoWeekHigh: number;
   fiftyTwoWeekLow: number;
   analystTargetPrice: number;
   price: number;
   priceLatestUpdate: string;
-  bruchwert52Week: number;
-  onToggleFavorite: (id: string, user: string) => void;
-  Favorites?: string[];
-  currentUser?: string | null;
+  // bruchwert52Week: number;
+  //
   logoURL: string;
   updatedAt: string;
+  //
+  onToggleFavorite: (id: string, user: string) => void;
+  Favorites?: string[];
+  //
+  currentUser?: string | null;
 };
 
 export default function StockCard({
   _id,
-  // Symbol,
   ticker,
   name,
   description,
@@ -46,72 +44,52 @@ export default function StockCard({
   dividendPerShare,
   dividendYield,
   eps,
-  // EPSx15,
   eps15x,
   bookValue,
-  // _52WeekHigh,
-  // _52WeekLow,
   fiftyTwoWeekHigh,
   fiftyTwoWeekLow,
   analystTargetPrice,
   price,
   priceLatestUpdate,
-  bruchwert52Week,
-  onToggleFavorite,
-  Favorites,
-  currentUser,
+  //
   logoURL,
   updatedAt,
+  //
+  onToggleFavorite,
+  Favorites,
+  //
+  currentUser,
 }: Props) {
   //
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
-  //// if (!eps) return <div>nuescht!</div>;
-  // if (!eps) return console.log("nuesht!"); //note:
-
-  // console.log(eps); //note:
-
-  // type stockNumbersToRender = {
-  //   title: string;
-  //   value: string;
-  //   styles: string;
-  //   distToPrice?: number | "-";
-  // };
-
-  // const stockNumbersToRender: stockNumbersToRender[] = [
   const stockNumbersToRender = [
     {
       title: "Price",
-      // value: price.toFixed(2),
       value: price ? price.toFixed(2) : "-",
       styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "Dividend",
-      // value: DividendPerShare ? `${DividendPerShare.toFixed(2)}` : "-",
       value: dividendPerShare ? `${dividendPerShare.toFixed(2)}` : "-",
       styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "Dividend%",
-      // value: DividendYield ? `${DividendYield.toFixed(2)}%` : "-",
       value: dividendYield ? `${(dividendYield * 100).toFixed(2)}%` : "-",
       styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "EPS",
       value: eps.toFixed(2),
-      // value: "0",
       styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "FairValue",
-      // value: EPSx15.toFixed(2),
       value: eps15x.toFixed(2),
       styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice:
         price && eps15x ? ((100 * (price - eps15x)) / price).toFixed(0) : "-",
-      // distToPrice: 0,
     },
     {
       title: "BookValue",
@@ -121,7 +99,6 @@ export default function StockCard({
         price && bookValue
           ? ((100 * (price - bookValue)) / price).toFixed(0)
           : "-",
-      // distToPrice: 0,
     },
     {
       title: "52W Range",
@@ -134,7 +111,6 @@ export default function StockCard({
               calc52WeekBruchwert(price, fiftyTwoWeekHigh, fiftyTwoWeekLow)
             ).toFixed(0)
           : "-",
-      // distToPrice: 0,
     },
     {
       title: "Analyst Target",
@@ -144,17 +120,13 @@ export default function StockCard({
         price && analystTargetPrice
           ? ((100 * (price - analystTargetPrice)) / price).toFixed(0)
           : "-",
-      // distToPrice: 0,
     },
   ];
 
   return (
     <article
-      // className={`relative m-6 p-6 rounded-2xl shadow-md shadow-gray-500 text-slate-300 bg-slate-600 transition-all hover:bg-slate-800 hover:scale-x-[1.02] md:hover:scale-x-[1.01] hover:shadow-lg hover:shadow-gray-500`}
       className={`relative m-6 p-6 rounded-2xl shadow-sm shadow-accent-1 text-content bg-accent-4 transition-all hover:scale-x-[1.02] md:hover:scale-x-[1.01] hover:shadow-md hover:shadow-accent-2  min-w-[320px] max-w-xs `}
     >
-      {/* show favorite button only when user is logged in */}
-      {/* {session && ( */}
       {currentUser && (
         <FavoriteButton
           _id={_id}
@@ -164,7 +136,6 @@ export default function StockCard({
         />
       )}
       <StockCardHeader
-        // Symbol={Symbol}
         ticker={ticker}
         exchange={exchange}
         logoURL={logoURL}
