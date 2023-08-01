@@ -12,6 +12,7 @@ import { useSession } from "next-auth/react";
 import useLocalStorageState from "use-local-storage-state";
 import DarkmodeToggle from "@/components/DarkmodeToggle";
 import Link from "next/link";
+import Loader from "@/components/Loader";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -91,7 +92,8 @@ export default function Home() {
   }
 
   if (!stocks) return <h1>Fetching stocks...</h1>;
-  if (isLoading) return <h1>Loading...</h1>;
+  // if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading) return <Loader />;
 
   function handleSort(event: React.ChangeEvent<HTMLSelectElement>): void {
     const sortOption = event.target;
