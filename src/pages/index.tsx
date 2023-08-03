@@ -107,7 +107,8 @@ export default function Home() {
     }
   }
 
-  if (!stocks) return <h1>Fetching stocks...</h1>;
+  // if (!stocks) return <h1>Fetching stocks...</h1>;
+  if (!stocks) return <Loader />;
   // if (isLoading) return <h1>Loading...</h1>;
   if (isLoading) return <Loader />;
 
@@ -115,8 +116,8 @@ export default function Home() {
   // if (stocks) console.log("stocks:", stocks); //note:
   stocks && console.log({ stocks, size });
 
-  const flattenedStocks = stocks.flatMap((page) => page);
-  // const flattenedStocks = stocks[0].stocks.flatMap((page) => page);
+  const flattenedStocks = stocks?.flat();
+  // const flattenedStocks = stocks?.flatMap((page) => page);
   console.log("flattenedStocks:", flattenedStocks);
 
   function handleSort(event: React.ChangeEvent<HTMLSelectElement>): void {
@@ -218,6 +219,8 @@ export default function Home() {
         </div>
       </header>
       <main className="pb-20 pt-72 sm:pt-52 md:pt-40">
+        {error && <p>Something went wrong!</p>}
+        {/* {!flattenedStocks && <Loader />} */}
         <StocksList
           // stocks={stocks}
           stocks={flattenedStocks}
