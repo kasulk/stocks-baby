@@ -9,6 +9,8 @@ export default async function handler(
   await dbConnect();
 
   if (request.method === "GET") {
+    const { page = 1, limit = 12 } = request.query;
+    // Rest des Codes ...
     const posts = await Posts.find().populate("additionalData");
     return response.status(200).json(posts);
   }

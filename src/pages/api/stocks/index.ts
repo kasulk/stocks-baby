@@ -1,6 +1,5 @@
+import { NextApiRequestQuery } from "next/dist/server/api-utils";
 import dbConnect from "../../../../db/connect";
-// import Demostock from "../../../../db/models/Demostock";
-// import Quote from "../../../../db/models/Quote"; //note:
 import Overview from "../../../../db/models/Overview";
 
 // TS: NextApiRequest and NextApiResponse types from next,
@@ -17,11 +16,32 @@ export default async function handler(
   await dbConnect();
 
   if (request.method === "GET") {
+    //! check if paginierung works in the api route
+    //! e.g. http://localhost:3000/data?page=10&limit=5
+    // https://www.golinuxcloud.com/paginate-with-mongoose-in-node-js/
+    const { page = 1, limit = 12 } = request.query as {
+      page?: number;
+      limit?: number;
+    };
+
     // request Overviews and combine with Quotes and Logourls based on the common field 'ticker'
     const stocks = await Overview.find()
+      .sort({ ticker: 1 })
+      // .limit(pageSize)
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
       .populate("quotesData")
       .populate("logoData"); // note: icke test
-    return response.status(200).json(stocks);
+
+    const count = await Overview.count();
+
+    // return response.status(200).json(stocks);
+    return response.status(200).json({
+      stocks,
+      totalPages: Math.ceil(count / limit),
+      currentPage: page,
+    });
+    //
   }
 
   // @patchrequest, step3
