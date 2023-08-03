@@ -13,6 +13,9 @@ import useLocalStorageState from "use-local-storage-state";
 import DarkmodeToggle from "@/components/DarkmodeToggle";
 import Link from "next/link";
 import Loader from "@/components/Loader";
+import useSWRInfinite, { SWRInfiniteKeyLoader } from "swr/infinite";
+
+const PAGE_SIZE = 12; // number of db docs per page
 
 export default function Home() {
   const { data: session } = useSession();
@@ -34,10 +37,25 @@ export default function Home() {
 
   // useSWR only fetches data, useSWRMutation also mutates it
   // const { data: stocks, isLoading } = useSWR<Stock[]>("/api/demostocks", {
-  const { data: stocks, isLoading } = useSWR<Stock[]>("/api/stocks", {
-    fallbackData: [],
-  });
-  // if (stocks) console.log("stocks:", stocks); //note:
+  // const { data: stocks, isLoading } = useSWR<Stock[]>("/api/stocks", {
+  //   fallbackData: [],
+  // });
+  const getKey: SWRInfiniteKeyLoader = (pageIndex, previousPageData) => {
+    pageIndex = pageIndex++;
+    console.log(pageIndex);
+
+    if (previousPageData && !previousPageData.length) return null;
+    // if (pageIndex === 0) return "/api/stocks?limit=8";
+    if (pageIndex === 0) return "/api/stocks?limit=12";
+    return `/api/stocks?page=${pageIndex}&limit=12`;
+  };
+  const {
+    data: stocks,
+    error,
+    isLoading,
+    size,
+    setSize,
+  } = useSWRInfinite(getKey);
 
   // @patchrequest, step3
   const { trigger } = useSWRMutation(
@@ -94,6 +112,14 @@ export default function Home() {
   if (!stocks) return <h1>Fetching stocks...</h1>;
   // if (isLoading) return <h1>Loading...</h1>;
   if (isLoading) return <Loader />;
+
+  //note:
+  // if (stocks) console.log("stocks:", stocks); //note:
+  stocks && console.log({ stocks, size });
+
+  const flattenedStocks = stocks.flatMap((page) => page);
+  // const flattenedStocks = stocks[0].stocks.flatMap((page) => page);
+  console.log("flattenedStocks:", flattenedStocks);
 
   function handleSort(event: React.ChangeEvent<HTMLSelectElement>): void {
     const sortOption = event.target;
@@ -195,12 +221,23 @@ export default function Home() {
       </header>
       <main className="pb-20 pt-72 sm:pt-52 md:pt-40">
         <StocksList
-          stocks={stocks}
+          // stocks={stocks}
+          stocks={flattenedStocks}
           onToggleFavorite={handleToggleFavorite}
           currentUser={currentUser}
           isShowFavoriteStocks={isShowFavoriteStocks}
           searchTerm={searchTerm}
         ></StocksList>
+        {/* Button zum Laden der nächsten Seite */}
+        {size < PAGE_SIZE && (
+          <button
+            className="p-2 bg-red-800"
+            onClick={() => setSize(size + 1)}
+            // disabled={size < PAGE_SIZE}
+          >
+            Weitere laden
+          </button>
+        )}
       </main>
       <footer className="fixed bottom-0 z-10 w-full text-center p-6 bg-accent-4 bg-opacity-90">
         <span>Made with 🍕 in Berlin</span>
