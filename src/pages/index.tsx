@@ -42,13 +42,10 @@ export default function Home() {
   // });
   const getKey: SWRInfiniteKeyLoader = (pageIndex, previousPageData) => {
     pageIndex++;
-    // pageIndex = pageIndex + 1;
     console.log(pageIndex);
 
     if (previousPageData && !previousPageData.length) return null;
-    // if (pageIndex === 0) return "/api/stocks?limit=8";
-    // if (pageIndex === 0) return "/api/stocks?limit=12";
-    return `/api/stocks?page=${pageIndex}&limit=12`;
+    return `/api/stocks?page=${pageIndex}&limit=${PAGE_SIZE}`;
   };
   const {
     data: stocks,
