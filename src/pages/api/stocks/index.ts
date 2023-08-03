@@ -35,12 +35,12 @@ export default async function handler(
 
     const count = await Overview.count();
 
-    // return response.status(200).json(stocks);
-    return response.status(200).json({
-      stocks,
-      totalPages: Math.ceil(count / limit),
-      currentPage: page,
-    });
+    return response.status(200).json(stocks);
+    // return response.status(200).json({
+    //   stocks,
+    //   totalPages: Math.ceil(count / limit),
+    //   currentPage: page,
+    // });
     //
   }
 
