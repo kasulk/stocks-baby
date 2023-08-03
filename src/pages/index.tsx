@@ -120,6 +120,10 @@ export default function Home() {
   // const flattenedStocks = stocks?.flatMap((page) => page);
   console.log("flattenedStocks:", flattenedStocks);
 
+  const isEmpty = stocks?.[0]?.length === 0;
+  const isReachingEnd =
+    isEmpty || (stocks && stocks[stocks.length - 1]?.length < PAGE_SIZE);
+
   function handleSort(event: React.ChangeEvent<HTMLSelectElement>): void {
     const sortOption = event.target;
     const sortOptionValues = sortOption.value.split("-");
@@ -230,7 +234,8 @@ export default function Home() {
           searchTerm={searchTerm}
         ></StocksList>
         {/* Button zum Laden der nächsten Seite */}
-        {size < PAGE_SIZE && (
+        {/* {size < PAGE_SIZE && ( */}
+        {!isReachingEnd && (
           <button
             className="p-2 bg-red-800"
             onClick={() => setSize(size + 1)}
