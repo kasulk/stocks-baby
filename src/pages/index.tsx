@@ -12,6 +12,7 @@ import useLocalStorageState from "use-local-storage-state";
 import DarkmodeToggle from "@/components/DarkmodeToggle";
 import Loader from "@/components/Loader";
 import usePagination from "@/utils/usePagination";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -189,16 +190,24 @@ export default function Home() {
         </div>
       </header>
       <main className="pb-20 pt-72 sm:pt-52 md:pt-40">
-        <StocksList
-          stocks={paginatedStocks}
-          onToggleFavorite={handleToggleFavorite}
-          currentUser={currentUser}
-          isShowFavoriteStocks={isShowFavoriteStocks}
-          searchTerm={searchTerm}
-        ></StocksList>
-        {isLoadingMore && <Loader />}
+        <InfiniteScroll
+          next={() => setSize(size + 1)}
+          hasMore={!isReachingEnd}
+          loader={<Loader />}
+          // endMessage={<p>No more stocks available...</p>}
+          dataLength={paginatedStocks?.length ?? 0}
+        >
+          <StocksList
+            stocks={paginatedStocks}
+            onToggleFavorite={handleToggleFavorite}
+            currentUser={currentUser}
+            isShowFavoriteStocks={isShowFavoriteStocks}
+            searchTerm={searchTerm}
+          ></StocksList>
+        </InfiniteScroll>
+        {/* {isLoadingMore && <Loader />} */}
         {/* Button to load the next page */}
-        {!isReachingEnd && (
+        {/* {!isReachingEnd && (
           <button
             className="p-2 bg-red-800"
             onClick={() => setSize(size + 1)}
@@ -210,7 +219,7 @@ export default function Home() {
               ? "No more stocks"
               : "Load more"}
           </button>
-        )}
+        )} */}
       </main>
       <footer className="fixed bottom-0 z-10 w-full text-center p-6 bg-accent-4 bg-opacity-90">
         <span>Made with 🍕 in Berlin</span>
