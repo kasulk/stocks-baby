@@ -1,5 +1,5 @@
 import StocksList from "../components/StocksList";
-import { SortParamType, Stock } from "../../types";
+import { FavoriteMutation, SortParamType, Stock } from "../../types";
 import SortDropdown from "../components/SortDropdown";
 import ShowFavoriteStocksToggle from "@/components/ShowFavoriteStocksToggle";
 import { useEffect, useState } from "react";
@@ -110,12 +110,6 @@ export default function Home() {
     setSearchTerm(event.target.value);
   }
 
-  type FavoriteMutation = {
-    // TS: Yair
-    id: string;
-    Favorites: string;
-  };
-
   function mutateFavoriteData( // Yair
     currentData: Stock[],
     mutation: FavoriteMutation
@@ -202,6 +196,7 @@ export default function Home() {
           isShowFavoriteStocks={isShowFavoriteStocks}
           searchTerm={searchTerm}
         ></StocksList>
+        {isLoadingMore && <Loader />}
         {/* Button to load the next page */}
         {!isReachingEnd && (
           <button
