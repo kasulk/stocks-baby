@@ -73,3 +73,9 @@ export type SortParamType = {
   sortBy: SortByType;
   sortDirection: SortDirectionType;
 };
+
+export type FavoriteMutation = {
+  // TS: Yair
+  id: string;
+  Favorites: string;
+};

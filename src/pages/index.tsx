@@ -1,6 +1,5 @@
-import useSWR from "swr";
 import StocksList from "../components/StocksList";
-import { SortParamType, Stock } from "../../types";
+import { FavoriteMutation, SortParamType, Stock } from "../../types";
 import SortDropdown from "../components/SortDropdown";
 import ShowFavoriteStocksToggle from "@/components/ShowFavoriteStocksToggle";
 import { useEffect, useState } from "react";
@@ -11,18 +10,17 @@ import LoginButton from "@/components/LoginButton";
 import { useSession } from "next-auth/react";
 import useLocalStorageState from "use-local-storage-state";
 import DarkmodeToggle from "@/components/DarkmodeToggle";
-import Link from "next/link";
 import Loader from "@/components/Loader";
+import usePagination from "@/utils/usePagination";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function Home() {
   const { data: session } = useSession();
   const currentUser = session?.user.name;
 
-  const [theme, setTheme] = useLocalStorageState<string | null>(
-    "theme",
-    { defaultValue: setThemeToUserSystemTheme() }
-    // { defaultValue: null }
-  );
+  const [theme, setTheme] = useLocalStorageState<string | null>("theme", {
+    defaultValue: setThemeToUserSystemTheme(),
+  });
 
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -32,16 +30,19 @@ export default function Home() {
     sortDirection: "ascending",
   });
 
-  // useSWR only fetches data, useSWRMutation also mutates it
-  // const { data: stocks, isLoading } = useSWR<Stock[]>("/api/demostocks", {
-  const { data: stocks, isLoading } = useSWR<Stock[]>("/api/stocks", {
-    fallbackData: [],
-  });
-  // if (stocks) console.log("stocks:", stocks); //note:
+  const {
+    isLoadingMore,
+    isReachingEnd,
+    error,
+    paginatedData: paginatedStocks,
+    // stocks,
+    size,
+    setSize,
+  } = usePagination<Stock>("/api/stocks");
+  // } = usePagination("/api/stocks");
 
   // @patchrequest, step3
   const { trigger } = useSWRMutation(
-    // `/api/demostocks`,
     `/api/stocks`,
     updateFavoriteStockToggle // sendRequest
   );
@@ -91,9 +92,10 @@ export default function Home() {
     }
   }
 
-  if (!stocks) return <h1>Fetching stocks...</h1>;
-  // if (isLoading) return <h1>Loading...</h1>;
-  if (isLoading) return <Loader />;
+  if (error) return <h1>Something went wrong!</h1>;
+  if (!paginatedStocks) return <Loader />;
+
+  paginatedStocks && console.log({ paginatedStocks, size });
 
   function handleSort(event: React.ChangeEvent<HTMLSelectElement>): void {
     const sortOption = event.target;
@@ -108,12 +110,6 @@ export default function Home() {
     event.preventDefault();
     setSearchTerm(event.target.value);
   }
-
-  type FavoriteMutation = {
-    // TS: Yair
-    id: string;
-    Favorites: string;
-  };
 
   function mutateFavoriteData( // Yair
     currentData: Stock[],
@@ -163,7 +159,7 @@ export default function Home() {
     });
   }
 
-  sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
+  sortStocksList(paginatedStocks, sortParam.sortBy, sortParam.sortDirection);
 
   return (
     <>
@@ -194,13 +190,36 @@ export default function Home() {
         </div>
       </header>
       <main className="pb-20 pt-72 sm:pt-52 md:pt-40">
-        <StocksList
-          stocks={stocks}
-          onToggleFavorite={handleToggleFavorite}
-          currentUser={currentUser}
-          isShowFavoriteStocks={isShowFavoriteStocks}
-          searchTerm={searchTerm}
-        ></StocksList>
+        <InfiniteScroll
+          next={() => setSize(size + 1)}
+          hasMore={!isReachingEnd}
+          loader={<Loader />}
+          // endMessage={<p>No more stocks available...</p>}
+          dataLength={paginatedStocks?.length ?? 0}
+        >
+          <StocksList
+            stocks={paginatedStocks}
+            onToggleFavorite={handleToggleFavorite}
+            currentUser={currentUser}
+            isShowFavoriteStocks={isShowFavoriteStocks}
+            searchTerm={searchTerm}
+          ></StocksList>
+        </InfiniteScroll>
+        {/* {isLoadingMore && <Loader />} */}
+        {/* Button to load the next page */}
+        {/* {!isReachingEnd && (
+          <button
+            className="p-2 bg-red-800"
+            onClick={() => setSize(size + 1)}
+            disabled={isLoadingMore || isReachingEnd}
+          >
+            {isLoadingMore
+              ? "Loading..."
+              : isReachingEnd
+              ? "No more stocks"
+              : "Load more"}
+          </button>
+        )} */}
       </main>
       <footer className="fixed bottom-0 z-10 w-full text-center p-6 bg-accent-4 bg-opacity-90">
         <span>Made with 🍕 in Berlin</span>

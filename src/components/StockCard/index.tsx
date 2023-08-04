@@ -81,19 +81,19 @@ export default function StockCard({
     },
     {
       title: "EPS",
-      value: eps.toFixed(2),
+      value: eps ? eps.toFixed(2) : "-",
       styles: "text-sm text-customcontentcolor opacity-70",
     },
     {
       title: "FairValue",
-      value: eps15x.toFixed(2),
+      value: eps15x ? eps15x.toFixed(2) : "-",
       styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice:
         price && eps15x ? ((100 * (price - eps15x)) / price).toFixed(0) : "-",
     },
     {
       title: "BookValue",
-      value: bookValue.toFixed(2),
+      value: bookValue ? bookValue.toFixed(2) : "-",
       styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice:
         price && bookValue
@@ -102,7 +102,10 @@ export default function StockCard({
     },
     {
       title: "52W Range",
-      value: `${fiftyTwoWeekLow.toFixed(2)} - ${fiftyTwoWeekHigh.toFixed(2)}`,
+      value:
+        fiftyTwoWeekHigh && fiftyTwoWeekLow
+          ? `${fiftyTwoWeekLow.toFixed(2)} - ${fiftyTwoWeekHigh.toFixed(2)}`
+          : "-",
       styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice:
         price && fiftyTwoWeekHigh && fiftyTwoWeekLow
@@ -114,7 +117,7 @@ export default function StockCard({
     },
     {
       title: "Analyst Target",
-      value: analystTargetPrice.toFixed(2),
+      value: analystTargetPrice ? analystTargetPrice.toFixed(2) : "-",
       styles: "text-sm text-customcontentcolor opacity-70",
       distToPrice:
         price && analystTargetPrice
