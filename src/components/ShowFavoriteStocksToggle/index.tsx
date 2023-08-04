@@ -1,5 +1,5 @@
-// import Heart from "../../../_ressources/heart.svg";
-import IconHeart from "@/components/IconHeart";
+import React from "react";
+import IconHeart from "../IconHeart";
 
 type Props = {
   isShowFavoriteStocks: boolean;

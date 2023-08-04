@@ -1,5 +1,6 @@
 // note: this is a protected demofile
 import { useSession, signIn, signOut } from "next-auth/react";
+import React from "react";
 
 export default function Protected() {
   const { data: session } = useSession();

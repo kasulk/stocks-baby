@@ -18,10 +18,11 @@
     // "noImplicitAny": false,  // TS: Sven
     "paths": {
       "@/*": ["./src/*"]
+      // "@components/*": ["./components/*"]
     },
     // typeroots: types-folder for next-auth
     "typeRoots": ["./types"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "db/models/Favorite.js"],
-  "exclude": ["node_modules", "_trash"]
+  "exclude": ["node_modules"]
 }

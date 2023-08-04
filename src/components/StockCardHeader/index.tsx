@@ -1,5 +1,6 @@
 import Image from "next/image";
 import InfoButton from "../InfoButton";
+import React from "react";
 
 const logoSize = 64;
 // const logoSize = "4rem";

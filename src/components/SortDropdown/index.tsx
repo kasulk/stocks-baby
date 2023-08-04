@@ -1,3 +1,5 @@
+import React from "react";
+
 type Props = {
   // onSort: (event: React.FormEvent) => void;
   onSort: (event: React.ChangeEvent<HTMLSelectElement>) => void;

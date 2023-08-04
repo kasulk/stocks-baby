@@ -1,7 +1,8 @@
 import {
   formatTimestampToDate,
   formatTimestampToDays,
-} from "@/utils/DataUtils";
+} from "../../utils/DataUtils";
+import React from "react";
 
 type Props = {
   stockNumbersToRender: {

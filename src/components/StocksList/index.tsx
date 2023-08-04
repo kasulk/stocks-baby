@@ -1,5 +1,6 @@
 import StocksListItem from "../StocksListItem";
 import { Stock } from "../../../types";
+import React from "react";
 
 type Props = {
   stocks: Stock[];
