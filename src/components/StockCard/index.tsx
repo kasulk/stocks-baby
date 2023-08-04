@@ -1,7 +1,8 @@
 import FavoriteButton from "../FavoriteButton";
 import StockCardHeader from "../StockCardHeader";
 import StockCardBody from "../StockCardBody";
-import { calc52WeekBruchwert } from "@/utils/DataUtils";
+import { calc52WeekBruchwert } from "../../utils/DataUtils";
+import React from "react";
 // import { useSession, signIn, signOut } from "next-auth/react";
 
 type Props = {

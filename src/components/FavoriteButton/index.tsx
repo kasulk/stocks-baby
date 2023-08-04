@@ -1,3 +1,4 @@
+import React from "react";
 import IconHeart from "../IconHeart";
 
 type Props = {

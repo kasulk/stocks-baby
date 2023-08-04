@@ -1,3 +1,4 @@
+import React from "react";
 import IconMaginifiyingGlass from "../IconMagnifiyingGlass";
 
 type Props = {

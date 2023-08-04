@@ -1,5 +1,4 @@
 import React from "react";
-// import IconHeart from "@/components/IconHeart";
 import IconHeart from "../IconHeart";
 
 type Props = {

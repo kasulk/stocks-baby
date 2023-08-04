@@ -1,6 +1,8 @@
-import { removeDoublesfromArray } from "@/utils/DataUtils";
+// import { removeDoublesfromArray } from "@/utils/DataUtils";
+import { removeDoublesfromArray } from "../../utils/DataUtils";
 import { Stock } from "../../../types";
 import StockCard from "../StockCard";
+import React from "react";
 
 type Props = {
   stocks: Stock[];
