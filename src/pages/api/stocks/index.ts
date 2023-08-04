@@ -1,14 +1,8 @@
-import { NextApiRequestQuery } from "next/dist/server/api-utils";
 import dbConnect from "../../../../db/connect";
 import Overview from "../../../../db/models/Overview";
-
-// TS: NextApiRequest and NextApiResponse types from next,
-// TS: provide type checking for the request and response objects.
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
-  // TS: Type annotation to the handler function, indicating that
-  // TS: it expects a NextApiRequest and a NextApiResponse object
   request: NextApiRequest,
   response: NextApiResponse
 ) {
