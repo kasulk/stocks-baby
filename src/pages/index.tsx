@@ -33,11 +33,12 @@ export default function Home() {
     isLoadingMore,
     isReachingEnd,
     error,
-    paginatedStocks,
+    paginatedData: paginatedStocks,
     // stocks,
     size,
     setSize,
-  } = usePagination("/api/stocks");
+  } = usePagination<Stock>("/api/stocks");
+  // } = usePagination("/api/stocks");
 
   // @patchrequest, step3
   const { trigger } = useSWRMutation(
