@@ -1,4 +1,3 @@
-import useSWR from "swr";
 import StocksList from "../components/StocksList";
 import { SortParamType, Stock } from "../../types";
 import SortDropdown from "../components/SortDropdown";
@@ -11,22 +10,16 @@ import LoginButton from "@/components/LoginButton";
 import { useSession } from "next-auth/react";
 import useLocalStorageState from "use-local-storage-state";
 import DarkmodeToggle from "@/components/DarkmodeToggle";
-import Link from "next/link";
 import Loader from "@/components/Loader";
-import useSWRInfinite, { SWRInfiniteKeyLoader } from "swr/infinite";
 import usePagination from "@/utils/usePagination";
-
-const PAGE_SIZE = 12; // number of db docs per page
 
 export default function Home() {
   const { data: session } = useSession();
   const currentUser = session?.user.name;
 
-  const [theme, setTheme] = useLocalStorageState<string | null>(
-    "theme",
-    { defaultValue: setThemeToUserSystemTheme() }
-    // { defaultValue: null }
-  );
+  const [theme, setTheme] = useLocalStorageState<string | null>("theme", {
+    defaultValue: setThemeToUserSystemTheme(),
+  });
 
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,12 +28,6 @@ export default function Home() {
     sortBy: "ticker",
     sortDirection: "ascending",
   });
-
-  // useSWR only fetches data, useSWRMutation also mutates it
-  // const { data: stocks, isLoading } = useSWR<Stock[]>("/api/demostocks", {
-  // const { data: stocks, isLoading } = useSWR<Stock[]>("/api/stocks", {
-  //   fallbackData: [],
-  // });
 
   const {
     isLoadingMore,
@@ -52,25 +39,8 @@ export default function Home() {
     setSize,
   } = usePagination("/api/stocks");
 
-  //! refactored into usePagination hook
-  // const getKey: SWRInfiniteKeyLoader = (pageIndex, previousPageData) => {
-  //   pageIndex++;
-  //   console.log(pageIndex);
-
-  //   if (previousPageData && !previousPageData.length) return null;
-  //   return `/api/stocks?page=${pageIndex}&limit=${PAGE_SIZE}`;
-  // };
-  // const {
-  //   data: stocks,
-  //   error,
-  //   isLoading,
-  //   size,
-  //   setSize,
-  // } = useSWRInfinite(getKey);
-
   // @patchrequest, step3
   const { trigger } = useSWRMutation(
-    // `/api/demostocks`,
     `/api/stocks`,
     updateFavoriteStockToggle // sendRequest
   );
@@ -120,26 +90,9 @@ export default function Home() {
     }
   }
 
-  // if (!stocks) return <h1>Fetching stocks...</h1>;
-  // if (!stocks) console.log("no stocks....");
-  // if (!stocks) return <Loader />;
   if (!paginatedStocks) return <Loader />;
-  // if (isLoading) return <h1>Loading...</h1>;
-  // if (isLoading) return <Loader />;
 
-  //note:
-  // if (stocks) console.log("stocks:", stocks); //note:
-  // stocks && console.log({ stocks, size });
   paginatedStocks && console.log({ paginatedStocks, size });
-
-  //! refactored into usePagination hook
-  // const flattenedStocks = stocks?.flat();
-  // // const flattenedStocks = stocks?.flatMap((page) => page);
-  // console.log("flattenedStocks:", flattenedStocks);
-
-  // const isEmpty = stocks?.[0]?.length === 0;
-  // const isReachingEnd =
-  //   isEmpty || (stocks && stocks[stocks.length - 1]?.length < PAGE_SIZE);
 
   function handleSort(event: React.ChangeEvent<HTMLSelectElement>): void {
     const sortOption = event.target;
@@ -209,7 +162,6 @@ export default function Home() {
     });
   }
 
-  // sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
   sortStocksList(paginatedStocks, sortParam.sortBy, sortParam.sortDirection);
 
   return (
@@ -242,24 +194,16 @@ export default function Home() {
       </header>
       <main className="pb-20 pt-72 sm:pt-52 md:pt-40">
         {error && <p>Something went wrong!</p>}
-        {/* {!flattenedStocks && <Loader />} */}
         <StocksList
-          // stocks={stocks}
-          // stocks={flattenedStocks}
           stocks={paginatedStocks}
           onToggleFavorite={handleToggleFavorite}
           currentUser={currentUser}
           isShowFavoriteStocks={isShowFavoriteStocks}
           searchTerm={searchTerm}
         ></StocksList>
-        {/* Button zum Laden der nächsten Seite */}
-        {/* {size < PAGE_SIZE && ( */}
+        {/* Button to load the next page */}
         {!isReachingEnd && (
-          <button
-            className="p-2 bg-red-800"
-            onClick={() => setSize(size + 1)}
-            // disabled={size < PAGE_SIZE}
-          >
+          <button className="p-2 bg-red-800" onClick={() => setSize(size + 1)}>
             Load more
           </button>
         )}
