@@ -204,7 +204,11 @@ export default function Home() {
         {/* Button to load the next page */}
         {!isReachingEnd && (
           <button className="p-2 bg-red-800" onClick={() => setSize(size + 1)}>
-            Load more
+            {isLoadingMore
+              ? "Loading..."
+              : isReachingEnd
+              ? "No more stocks"
+              : "Load more"}
           </button>
         )}
       </main>
