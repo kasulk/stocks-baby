@@ -14,6 +14,7 @@ import DarkmodeToggle from "@/components/DarkmodeToggle";
 import Link from "next/link";
 import Loader from "@/components/Loader";
 import useSWRInfinite, { SWRInfiniteKeyLoader } from "swr/infinite";
+import usePagination from "@/utils/usePagination";
 
 const PAGE_SIZE = 12; // number of db docs per page
 
@@ -40,20 +41,32 @@ export default function Home() {
   // const { data: stocks, isLoading } = useSWR<Stock[]>("/api/stocks", {
   //   fallbackData: [],
   // });
-  const getKey: SWRInfiniteKeyLoader = (pageIndex, previousPageData) => {
-    pageIndex++;
-    console.log(pageIndex);
 
-    if (previousPageData && !previousPageData.length) return null;
-    return `/api/stocks?page=${pageIndex}&limit=${PAGE_SIZE}`;
-  };
   const {
-    data: stocks,
+    isLoadingMore,
+    isReachingEnd,
     error,
-    isLoading,
+    paginatedStocks,
+    // stocks,
     size,
     setSize,
-  } = useSWRInfinite(getKey);
+  } = usePagination("/api/stocks");
+
+  //! refactored into usePagination hook
+  // const getKey: SWRInfiniteKeyLoader = (pageIndex, previousPageData) => {
+  //   pageIndex++;
+  //   console.log(pageIndex);
+
+  //   if (previousPageData && !previousPageData.length) return null;
+  //   return `/api/stocks?page=${pageIndex}&limit=${PAGE_SIZE}`;
+  // };
+  // const {
+  //   data: stocks,
+  //   error,
+  //   isLoading,
+  //   size,
+  //   setSize,
+  // } = useSWRInfinite(getKey);
 
   // @patchrequest, step3
   const { trigger } = useSWRMutation(
@@ -108,21 +121,25 @@ export default function Home() {
   }
 
   // if (!stocks) return <h1>Fetching stocks...</h1>;
-  if (!stocks) return <Loader />;
+  // if (!stocks) console.log("no stocks....");
+  // if (!stocks) return <Loader />;
+  if (!paginatedStocks) return <Loader />;
   // if (isLoading) return <h1>Loading...</h1>;
-  if (isLoading) return <Loader />;
+  // if (isLoading) return <Loader />;
 
   //note:
   // if (stocks) console.log("stocks:", stocks); //note:
-  stocks && console.log({ stocks, size });
+  // stocks && console.log({ stocks, size });
+  paginatedStocks && console.log({ paginatedStocks, size });
 
-  const flattenedStocks = stocks?.flat();
-  // const flattenedStocks = stocks?.flatMap((page) => page);
-  console.log("flattenedStocks:", flattenedStocks);
+  //! refactored into usePagination hook
+  // const flattenedStocks = stocks?.flat();
+  // // const flattenedStocks = stocks?.flatMap((page) => page);
+  // console.log("flattenedStocks:", flattenedStocks);
 
-  const isEmpty = stocks?.[0]?.length === 0;
-  const isReachingEnd =
-    isEmpty || (stocks && stocks[stocks.length - 1]?.length < PAGE_SIZE);
+  // const isEmpty = stocks?.[0]?.length === 0;
+  // const isReachingEnd =
+  //   isEmpty || (stocks && stocks[stocks.length - 1]?.length < PAGE_SIZE);
 
   function handleSort(event: React.ChangeEvent<HTMLSelectElement>): void {
     const sortOption = event.target;
@@ -192,7 +209,8 @@ export default function Home() {
     });
   }
 
-  sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
+  // sortStocksList(stocks, sortParam.sortBy, sortParam.sortDirection);
+  sortStocksList(paginatedStocks, sortParam.sortBy, sortParam.sortDirection);
 
   return (
     <>
@@ -227,7 +245,8 @@ export default function Home() {
         {/* {!flattenedStocks && <Loader />} */}
         <StocksList
           // stocks={stocks}
-          stocks={flattenedStocks}
+          // stocks={flattenedStocks}
+          stocks={paginatedStocks}
           onToggleFavorite={handleToggleFavorite}
           currentUser={currentUser}
           isShowFavoriteStocks={isShowFavoriteStocks}
