@@ -22,7 +22,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function Home() {
   const { data: session } = useSession();
-  const currentUser = session?.user.name;
+  // const currentUser = session?.user.name;
+  const currentUser = session?.user?.name ?? null;
 
   const [theme, setTheme] = useLocalStorageState<string | null>("theme", {
     defaultValue: setThemeToUserSystemTheme(),
