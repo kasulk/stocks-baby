@@ -90,6 +90,7 @@ export default function Home() {
     }
   }
 
+  if (error) return <h1>Something went wrong!</h1>;
   if (!paginatedStocks) return <Loader />;
 
   paginatedStocks && console.log({ paginatedStocks, size });
@@ -193,7 +194,6 @@ export default function Home() {
         </div>
       </header>
       <main className="pb-20 pt-72 sm:pt-52 md:pt-40">
-        {error && <p>Something went wrong!</p>}
         <StocksList
           stocks={paginatedStocks}
           onToggleFavorite={handleToggleFavorite}
@@ -203,7 +203,11 @@ export default function Home() {
         ></StocksList>
         {/* Button to load the next page */}
         {!isReachingEnd && (
-          <button className="p-2 bg-red-800" onClick={() => setSize(size + 1)}>
+          <button
+            className="p-2 bg-red-800"
+            onClick={() => setSize(size + 1)}
+            disabled={isLoadingMore || isReachingEnd}
+          >
             {isLoadingMore
               ? "Loading..."
               : isReachingEnd
