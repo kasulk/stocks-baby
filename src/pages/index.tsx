@@ -1,24 +1,18 @@
-import StocksList from "../components/StocksList";
-import { FavoriteMutation, SortParamType, Stock } from "../../types";
-import SortDropdown from "../components/SortDropdown";
-// import ShowFavoriteStocksToggle from "@/components/ShowFavoriteStocksToggle";
-import ShowFavoriteStocksToggle from "../components/ShowFavoriteStocksToggle";
 import React, { useEffect, useState } from "react";
-import sortStocksList from "../utils/SortUtils";
-import useSWRMutation from "swr/mutation";
-// import SearchForm from "@/components/SearchForm";
-import SearchForm from "../components/SearchForm";
-// import LoginButton from "@/components/LoginButton";
+import { FavoriteMutation, SortParamType, Stock } from "../../types";
+import DarkmodeToggle from "../components/DarkmodeToggle";
+import Loader from "../components/Loader";
 import LoginButton from "../components/LoginButton";
+import SearchForm from "../components/SearchForm";
+import ShowFavoriteStocksToggle from "../components/ShowFavoriteStocksToggle";
+import StocksList from "../components/StocksList";
+import SortDropdown from "../components/SortDropdown";
+import useSWRMutation from "swr/mutation";
 import { useSession } from "next-auth/react";
 import useLocalStorageState from "use-local-storage-state";
-// import DarkmodeToggle from "@/components/DarkmodeToggle";
-import DarkmodeToggle from "../components/DarkmodeToggle";
-// import Loader from "@/components/Loader";
-import Loader from "../components/Loader";
-// import usePagination from "@/utils/usePagination";
-import usePagination from "../utils/usePagination";
 import InfiniteScroll from "react-infinite-scroll-component";
+import sortStocksList from "../utils/SortUtils";
+import usePagination from "../utils/usePagination";
 
 export default function Home() {
   const { data: session } = useSession();
