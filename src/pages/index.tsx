@@ -40,10 +40,7 @@ export default function Home() {
     // stocks,
     size,
     setSize,
-    // } = usePagination<Stock>("/api/stocks");
-  } = usePagination<Stock>(
-    searchQuery ? `/api/stocks?query=${searchQuery}` : `/api/stocks`
-  ); // new:
+  } = usePagination<Stock>("/api/stocks", searchQuery);
 
   // @patchrequest, step3
   const { trigger } = useSWRMutation(

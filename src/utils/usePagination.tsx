@@ -1,8 +1,10 @@
 import useSWRInfinite, { SWRInfiniteKeyLoader } from "swr/infinite";
 
-export default function usePagination<T>(url: string) {
+// export default function usePagination<T>(url: string) {
+export default function usePagination<T>(url: string, searchQuery: string) {
   // export default function usePagination(url: string) {
   const ITEMS_PER_PAGE = 12;
+  console.log(url);
 
   // const getKey: SWRInfiniteKeyLoader = (pageIndex, previousPageData) => {
   function getKey(pageIndex: number, previousPageData: T[]) {
@@ -10,6 +12,11 @@ export default function usePagination<T>(url: string) {
     // console.log(pageIndex);
 
     if (previousPageData && !previousPageData.length) return null;
+    if (searchQuery)
+      return `${url}?page=${pageIndex}&limit=${ITEMS_PER_PAGE}&query=${searchQuery}`;
+
+    // console.log(url);
+    console.log(`${url}?page=${pageIndex}&limit=${ITEMS_PER_PAGE}`);
     return `${url}?page=${pageIndex}&limit=${ITEMS_PER_PAGE}`;
   }
   const {
