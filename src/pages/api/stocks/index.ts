@@ -10,30 +10,29 @@ export default async function handler(
   await dbConnect();
 
   if (request.method === "GET") {
-    // const { page = 1, limit = 12 } = request.query as {
     const {
       page = 1,
       limit = 12,
-      query, //new:
+      query,
     } = request.query as {
       page?: number;
       limit?: number;
-      query?: string; //new:
+      query?: string;
     };
 
-    //new:
     if (query) {
       // Do a search if there is a search query
       const searchQuery = {
         $or: [
-          // { ticker: { $regex: query, $options: "i" } },
+          { ticker: { $regex: query, $options: "i" } },
           { name: { $regex: query, $options: "i" } },
         ],
       };
-      // with search
       // request Overviews and combine with Quotes and Logourls based on the common field 'ticker'
+      // with search
       const stocks = await Overview.find(searchQuery)
         .sort({ ticker: 1 })
+        // .sort({ marketCapitalization: -1 })
         .limit(limit * 1)
         .skip((page - 1) * limit)
         .populate("quotesData")
@@ -44,9 +43,9 @@ export default async function handler(
       return response.status(200).json(stocks);
     } else {
       // without search
-      // request Overviews and combine with Quotes and Logourls based on the common field 'ticker'
       const stocks = await Overview.find()
         .sort({ ticker: 1 })
+        // .sort({ marketCapitalization: -1 })
         .limit(limit * 1)
         .skip((page - 1) * limit)
         .populate("quotesData")
@@ -80,18 +79,14 @@ async function toggleUserToStockFavorites(
 ) {
   const { id, Favorites } = request.body;
   try {
-    // const demostockToUpdate = await Overview.findById(id);
     const stockToUpdate = await Overview.findById(id);
-    // if (demostockToUpdate.Favorites.includes(Favorites)) {
     if (stockToUpdate.Favorites.includes(Favorites)) {
       await Overview.findOneAndUpdate({ _id: id }, { $pull: { Favorites } });
       // console.log(`User '${Favorites}' removed from Favorites array`);
-      // response.status(200).json(demostockToUpdate);
       response.status(200).json(stockToUpdate);
     } else {
       await Overview.findOneAndUpdate({ _id: id }, { $push: { Favorites } });
       // console.log(`User '${Favorites}' added to Favorites array`);
-      // response.status(200).json(demostockToUpdate);
       response.status(200).json(stockToUpdate);
     }
   } catch (error) {
