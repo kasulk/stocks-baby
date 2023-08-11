@@ -1,15 +1,11 @@
-// import { removeDoublesfromArray } from "@/utils/DataUtils";
-import { removeDoublesfromArray } from "../../utils/DataUtils";
 import { Stock } from "../../../types";
 import StockCard from "../StockCard";
-// import React from "react";
 
 type Props = {
   stocks: Stock[];
   onToggleFavorite: (id: string, user: string) => void;
   isShowFavoriteStocks: boolean;
   currentUser?: string | null;
-  // searchTerm: string;
 };
 
 export default function StockListItem({
@@ -17,31 +13,14 @@ export default function StockListItem({
   onToggleFavorite,
   isShowFavoriteStocks,
   currentUser,
-}: // searchTerm,
-Props) {
+}: Props) {
   //
-
   // filter favorite stocks
   if (currentUser) {
     if (isShowFavoriteStocks) {
       stocks = stocks.filter((stock) => stock.Favorites?.includes(currentUser));
     }
   }
-
-  // filter stocks with a name and/or ticker symbol that match the search term
-  // if (searchTerm) {
-  //   const foundStocksByName = stocks.filter((stock) =>
-  //     stock.name.toLowerCase().includes(searchTerm.toLowerCase())
-  //   );
-
-  //   const foundStocksBySymbol = stocks.filter((stock) =>
-  //     stock.ticker.toLowerCase().includes(searchTerm.toLowerCase())
-  //   );
-
-  //   const mergedSearchResults = [...foundStocksByName, ...foundStocksBySymbol];
-
-  //   stocks = removeDoublesfromArray(mergedSearchResults);
-  // }
 
   return (
     <>
@@ -65,7 +44,6 @@ Props) {
             analystTargetPrice={stock.analystTargetPrice}
             price={stock.quotesData?.price}
             priceLatestUpdate={stock.quotesData?.updatedAt}
-            // bruchwert52Week={stock.bruchwert52Week}
             onToggleFavorite={onToggleFavorite}
             Favorites={stock.Favorites}
             currentUser={currentUser}
