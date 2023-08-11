@@ -1,15 +1,15 @@
 import useSWRInfinite, { SWRInfiniteKeyLoader } from "swr/infinite";
 
-export default function usePagination<T>(url: string) {
-  // export default function usePagination(url: string) {
+export default function usePagination<T>(url: string, searchQuery: string) {
   const ITEMS_PER_PAGE = 12;
 
-  // const getKey: SWRInfiniteKeyLoader = (pageIndex, previousPageData) => {
   function getKey(pageIndex: number, previousPageData: T[]) {
     pageIndex++;
-    // console.log(pageIndex);
 
     if (previousPageData && !previousPageData.length) return null;
+    if (searchQuery)
+      return `${url}?page=${pageIndex}&limit=${ITEMS_PER_PAGE}&query=${searchQuery}`;
+
     return `${url}?page=${pageIndex}&limit=${ITEMS_PER_PAGE}`;
   }
   const {
@@ -23,7 +23,6 @@ export default function usePagination<T>(url: string) {
 
   // const paginatedData: T[] = stocks?.flat();
   const paginatedData: T[] = stocks ? stocks.flat() : [];
-  // console.log("paginatedData :", paginatedData);
 
   const isLoadingMore =
     isLoading ||

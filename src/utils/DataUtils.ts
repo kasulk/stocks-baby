@@ -2,13 +2,9 @@ import { Stock } from "../../types";
 
 export function addBruchwertPropertyToArrOfObjs(arrOfObjects: Stock[]): void {
   arrOfObjects.forEach((object) => {
-    // object["Bruchwert52Week"] = calc52WeekBruchwert(
     object["bruchwert52Week"] = calc52WeekBruchwert(
-      // object.Price,
       object.price,
-      // object._52WeekHigh,
       object.fiftyTwoWeekHigh,
-      // object._52WeekLow
       object.fiftyTwoWeekLow
     );
   });
@@ -40,10 +36,6 @@ export function convertNumberStringPropertiesToNumbers(
       }
     }
   });
-}
-
-export function removeDoublesfromArray(arr: Stock[]): Stock[] {
-  return [...new Set(arr)]; // Set object is ES6
 }
 
 // if today, return 'today, 14:21 (UTC)'
