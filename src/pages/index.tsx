@@ -24,8 +24,7 @@ export default function Home() {
   });
 
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
-  // const [searchTerm, setSearchTerm] = useState("");
-  const [searchQuery, setSearchQuery] = useState(""); //new:
+  const [searchQuery, setSearchQuery] = useState("");
   const [sortParam, setSortParam] = useState<SortParamType>({
     // TS: Yair
     sortBy: "ticker",
@@ -108,9 +107,7 @@ export default function Home() {
   }
 
   function handleSearch(event: React.ChangeEvent<HTMLInputElement>): void {
-    event.preventDefault();
-    // setSearchTerm(event.target.value);
-    // new:
+    // event.preventDefault();
     setSearchQuery(event.target.value);
   }
 
