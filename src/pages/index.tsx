@@ -25,6 +25,7 @@ export default function Home() {
 
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchQuery, setSearchQuery] = useState(""); //new:
   const [sortParam, setSortParam] = useState<SortParamType>({
     // TS: Yair
     sortBy: "ticker",
@@ -39,8 +40,10 @@ export default function Home() {
     // stocks,
     size,
     setSize,
-  } = usePagination<Stock>("/api/stocks");
-  // } = usePagination("/api/stocks");
+    // } = usePagination<Stock>("/api/stocks");
+  } = usePagination<Stock>(
+    searchQuery ? `/api/stocks?query=${searchQuery}` : `/api/stocks`
+  ); // new:
 
   // @patchrequest, step3
   const { trigger } = useSWRMutation(
@@ -109,7 +112,12 @@ export default function Home() {
 
   function handleSearch(event: React.ChangeEvent<HTMLInputElement>): void {
     event.preventDefault();
-    setSearchTerm(event.target.value);
+    // setSearchTerm(event.target.value);
+    // new:
+    // console.log(event.target.value);
+
+    setSearchQuery(event.target.value);
+    console.log(searchQuery);
   }
 
   function mutateFavoriteData( // Yair
