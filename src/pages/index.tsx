@@ -180,7 +180,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col-reverse items-center sm:flex-row sm:flex-wrap-reverse sm:items-center sm:justify-center mt-2">
           <SortDropdown onSort={handleSort} />
-          <SearchForm onChange={handleSearch} />
+          <SearchForm onChange={handleSearch} searchQuery={searchQuery} />
           {currentUser && (
             <ShowFavoriteStocksToggle
               isShowFavoriteStocks={isShowFavoriteStocks}
