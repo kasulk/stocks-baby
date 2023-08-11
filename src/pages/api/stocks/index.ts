@@ -10,28 +10,58 @@ export default async function handler(
   await dbConnect();
 
   if (request.method === "GET") {
-    const { page = 1, limit = 12 } = request.query as {
+    // const { page = 1, limit = 12 } = request.query as {
+    const {
+      page = 1,
+      limit = 12,
+      query, //new:
+    } = request.query as {
       page?: number;
       limit?: number;
+      query?: string; //new:
     };
 
-    // request Overviews and combine with Quotes and Logourls based on the common field 'ticker'
-    const stocks = await Overview.find()
-      .sort({ ticker: 1 })
-      .limit(limit * 1)
-      .skip((page - 1) * limit)
-      .populate("quotesData")
-      .populate("logoData");
+    //new:
+    if (query) {
+      // Do a search if there is a search query
+      const searchQuery = {
+        $or: [
+          // { ticker: { $regex: query, $options: "i" } },
+          { name: { $regex: query, $options: "i" } },
+        ],
+      };
+      // with search
+      // request Overviews and combine with Quotes and Logourls based on the common field 'ticker'
+      const stocks = await Overview.find(searchQuery)
+        .sort({ ticker: 1 })
+        .limit(limit * 1)
+        .skip((page - 1) * limit)
+        .populate("quotesData")
+        .populate("logoData");
 
-    // const count = await Overview.count();
+      // const count = await Overview.count();
 
-    return response.status(200).json(stocks);
-    // return response.status(200).json({
-    //   stocks,
-    //   totalPages: Math.ceil(count / limit),
-    //   currentPage: page,
-    // });
-    //
+      return response.status(200).json(stocks);
+    } else {
+      // without search
+      // request Overviews and combine with Quotes and Logourls based on the common field 'ticker'
+      const stocks = await Overview.find()
+        .sort({ ticker: 1 })
+        .limit(limit * 1)
+        .skip((page - 1) * limit)
+        .populate("quotesData")
+        .populate("logoData");
+
+      // const count = await Overview.count();
+
+      return response.status(200).json(stocks);
+      // return response.status(200).json({
+      //   stocks,
+      //   totalPages: Math.ceil(count / limit),
+      //   currentPage: page,
+      // });
+      //
+    }
   }
 
   // @patchrequest, step3
