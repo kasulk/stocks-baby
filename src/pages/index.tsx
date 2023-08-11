@@ -24,7 +24,7 @@ export default function Home() {
   });
 
   const [isShowFavoriteStocks, setIsShowFavoriteStocks] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  // const [searchTerm, setSearchTerm] = useState("");
   const [searchQuery, setSearchQuery] = useState(""); //new:
   const [sortParam, setSortParam] = useState<SortParamType>({
     // TS: Yair
@@ -111,10 +111,7 @@ export default function Home() {
     event.preventDefault();
     // setSearchTerm(event.target.value);
     // new:
-    // console.log(event.target.value);
-
     setSearchQuery(event.target.value);
-    console.log(searchQuery);
   }
 
   function mutateFavoriteData( // Yair
@@ -208,7 +205,7 @@ export default function Home() {
             onToggleFavorite={handleToggleFavorite}
             currentUser={currentUser}
             isShowFavoriteStocks={isShowFavoriteStocks}
-            searchTerm={searchTerm}
+            // searchTerm={searchTerm}
           ></StocksList>
         </InfiniteScroll>
         {/* {isLoadingMore && <Loader />} */}
