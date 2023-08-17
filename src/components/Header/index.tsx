@@ -28,7 +28,7 @@ export default function Header({
   return (
     <header className="fixed top-0 z-10 flex flex-col w-full bg-accent-4 bg-opacity-90 p-4 pb-2">
       <div className="flex flex-wrap justify-center sm:justify-between items-center">
-        <h1 className="font-serif font-black italic text-4xl sm:text-5xl md:text-6xl text-customcontentcolor mr-4">
+        <h1 className="font-serif font-black italic text-2xl sm:text-5xl md:text-6xl text-customcontentcolor mr-4">
           Ursula
         </h1>
         <div className="flex items-center m-2 ml-4">
