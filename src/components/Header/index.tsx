@@ -2,19 +2,22 @@ import DarkmodeToggle from "../DarkmodeToggle";
 import LoginButton from "../LoginButton";
 import SearchForm from "../SearchForm";
 import ShowFavoriteStocksToggle from "../ShowFavoriteStocksToggle";
+import SortDropdown from "../SortDropdown";
 
 type props = {
   handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleThemeSwitch: any;
-  theme: any;
-  searchQuery: any;
-  currentUser: any;
-  isShowFavoriteStocks: any;
-  setIsShowFavoriteStocks: any;
+  //   handleSort: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleThemeSwitch: () => void;
+  theme?: string | null;
+  searchQuery: string;
+  currentUser?: string | null;
+  isShowFavoriteStocks: boolean;
+  setIsShowFavoriteStocks: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function Header({
   handleSearch,
+  //   handleSort,
   handleThemeSwitch,
   theme,
   searchQuery,

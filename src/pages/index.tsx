@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FavoriteMutation, SortParamType, Stock } from "../../types";
-import DarkmodeToggle from "../components/DarkmodeToggle";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Loader from "../components/Loader";
-import LoginButton from "../components/LoginButton";
-import SearchForm from "../components/SearchForm";
-import ShowFavoriteStocksToggle from "../components/ShowFavoriteStocksToggle";
 import StocksList from "../components/StocksList";
-import SortDropdown from "../components/SortDropdown";
 import useSWRMutation from "swr/mutation";
 import { useSession } from "next-auth/react";
 import useLocalStorageState from "use-local-storage-state";
@@ -165,7 +160,16 @@ export default function Home() {
 
   return (
     <>
-      <Header />
+      <Header
+        handleSearch={handleSearch}
+        // handleSort={handleSort}
+        handleThemeSwitch={handleThemeSwitch}
+        theme={theme}
+        searchQuery={searchQuery}
+        currentUser={currentUser}
+        isShowFavoriteStocks={isShowFavoriteStocks}
+        setIsShowFavoriteStocks={setIsShowFavoriteStocks}
+      />
 
       <main className="pb-20 pt-72 sm:pt-52 md:pt-40">
         <InfiniteScroll
@@ -199,6 +203,7 @@ export default function Home() {
           </button>
         )} */}
       </main>
+
       <Footer />
     </>
   );
