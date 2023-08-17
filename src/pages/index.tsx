@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FavoriteMutation, SortParamType, Stock } from "../../types";
 import DarkmodeToggle from "../components/DarkmodeToggle";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import Loader from "../components/Loader";
 import LoginButton from "../components/LoginButton";
 import SearchForm from "../components/SearchForm";
@@ -164,7 +165,7 @@ export default function Home() {
 
   return (
     <>
-      <header className="fixed top-0 z-10 flex flex-col w-full bg-accent-4 bg-opacity-90 p-4 pb-2">
+      <Header>
         <div className="flex flex-wrap justify-center sm:justify-between items-center">
           <h1 className="font-serif font-black italic text-4xl sm:text-5xl md:text-6xl text-customcontentcolor mr-4">
             Ursula
@@ -189,7 +190,8 @@ export default function Home() {
             />
           )}
         </div>
-      </header>
+      </Header>
+
       <main className="pb-20 pt-72 sm:pt-52 md:pt-40">
         <InfiniteScroll
           next={() => setSize(size + 1)}
