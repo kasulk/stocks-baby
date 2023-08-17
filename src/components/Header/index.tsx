@@ -6,7 +6,7 @@ import SortDropdown from "../SortDropdown";
 
 type props = {
   handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  //   handleSort: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleSort: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   handleThemeSwitch: () => void;
   theme?: string | null;
   searchQuery: string;
@@ -17,7 +17,7 @@ type props = {
 
 export default function Header({
   handleSearch,
-  //   handleSort,
+  handleSort,
   handleThemeSwitch,
   theme,
   searchQuery,
@@ -42,7 +42,7 @@ export default function Header({
         </div>
       </div>
       <div className="flex flex-col-reverse items-center sm:flex-row sm:flex-wrap-reverse sm:items-center sm:justify-center mt-2">
-        {/* <SortDropdown onSort={handleSort} /> */}
+        <SortDropdown onSort={handleSort} />
         <SearchForm onChange={handleSearch} searchQuery={searchQuery} />
         {currentUser && (
           <ShowFavoriteStocksToggle

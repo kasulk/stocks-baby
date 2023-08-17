@@ -10,7 +10,7 @@ export default function SortDropdown({ onSort }: Props) {
     <div className="transition hover:scale-x-105 mx-2 lg:mx-4 mb-3">
       <form method="post">
         {/* <label htmlFor="sort">Sort: </label> */}
-        <select
+        {/* <select
           name="sort"
           id="sort"
           className="transition shadow-sm shadow-accent-1 hover:shadow-md hover:shadow-accent-1 active:shadow-none py-2 px-4 rounded-md bg-accent-1 hover:bg-accent-2"
@@ -39,6 +39,34 @@ export default function SortDropdown({ onSort }: Props) {
               Bruchwert%: descending
             </option>
           </optgroup>
+        </select> */}
+
+        {/* new sort dropdowns for future implementation */}
+        <select
+          name="sort"
+          id="sort"
+          className="transition shadow-sm shadow-accent-1 hover:shadow-md hover:shadow-accent-1 active:shadow-none py-2 px-4 rounded-md bg-accent-1 hover:bg-accent-2"
+          // onChange={onSort}
+        >
+          <option className="italic" value="0" disabled>
+            sort by
+          </option>
+          <option value="Symbol">Ticker</option>
+          <option value="Name">Name</option>
+          <option value="DividendYield">Div%</option>
+          <option value="MarketCap">Market Cap</option>
+          <option value="DistanceFairValue">Price to Fair Value</option>
+          <option value="DistanceAnalystTarget">Price to Analyst Target</option>
+          <option value="Bruchwert52Week">Bruchwert%</option>
+        </select>
+        <select
+          name="sort"
+          id="sort"
+          className="transition shadow-sm shadow-accent-1 hover:shadow-md hover:shadow-accent-1 active:shadow-none py-2 px-4 ml-4 rounded-md bg-accent-1 hover:bg-accent-2"
+          // onChange={onSort}
+        >
+          <option value="ascending">ascending</option>
+          <option value="descending">descending</option>
         </select>
       </form>
     </div>

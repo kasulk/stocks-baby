@@ -162,7 +162,7 @@ export default function Home() {
     <>
       <Header
         handleSearch={handleSearch}
-        // handleSort={handleSort}
+        handleSort={handleSort}
         handleThemeSwitch={handleThemeSwitch}
         theme={theme}
         searchQuery={searchQuery}
