@@ -165,32 +165,7 @@ export default function Home() {
 
   return (
     <>
-      <Header>
-        <div className="flex flex-wrap justify-center sm:justify-between items-center">
-          <h1 className="font-serif font-black italic text-4xl sm:text-5xl md:text-6xl text-customcontentcolor mr-4">
-            Ursula
-          </h1>
-          <div className="flex items-center m-2 ml-4">
-            <LoginButton />
-            <DarkmodeToggle
-              onClick={() => {
-                handleThemeSwitch();
-              }}
-              theme={theme}
-            />
-          </div>
-        </div>
-        <div className="flex flex-col-reverse items-center sm:flex-row sm:flex-wrap-reverse sm:items-center sm:justify-center mt-2">
-          {/* <SortDropdown onSort={handleSort} /> */}
-          <SearchForm onChange={handleSearch} searchQuery={searchQuery} />
-          {currentUser && (
-            <ShowFavoriteStocksToggle
-              isShowFavoriteStocks={isShowFavoriteStocks}
-              setIsShowFavoriteStocks={setIsShowFavoriteStocks}
-            />
-          )}
-        </div>
-      </Header>
+      <Header />
 
       <main className="pb-20 pt-72 sm:pt-52 md:pt-40">
         <InfiniteScroll
