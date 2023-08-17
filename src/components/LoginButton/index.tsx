@@ -31,7 +31,7 @@ export default function LoginButton() {
     <>
       {/* Not signed in <br /> */}
       <button
-        className="transition hover:scale-x-105 bg-accent-1 hover:bg-accent-2 active:bg-accent-3 shadow-sm shadow-accent-1 hover:shadow-md hover:shadow-accent-1 active:shadow-none rounded-md py-2 px-4 m-2 md:mr-4 mr-0"
+        className="transition text-xs sm:text-base hover:scale-x-105 bg-accent-1 hover:bg-accent-2 active:bg-accent-3 shadow-sm shadow-accent-1 hover:shadow-md hover:shadow-accent-1 active:shadow-none rounded-md py-1 px-2 sm:py-2 sm:px-4 m-2 md:mr-4 mr-0"
         onClick={() => signIn()}
       >
         Sign in
