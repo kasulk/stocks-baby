@@ -2,7 +2,7 @@ import FavoriteButton from "../FavoriteButton";
 import StockCardHeader from "../StockCardHeader";
 import StockCardBody from "../StockCardBody";
 import { calc52WeekBruchwert } from "../../utils/DataUtils";
-import React from "react";
+// import React from "react";
 // import { useSession, signIn, signOut } from "next-auth/react";
 
 type Props = {
@@ -129,7 +129,8 @@ export default function StockCard({
 
   return (
     <article
-      className={`relative m-6 p-6 rounded-2xl shadow-sm shadow-accent-1 text-content bg-accent-4 transition-all hover:scale-x-[1.02] md:hover:scale-x-[1.01] hover:shadow-md hover:shadow-accent-2  min-w-[320px] max-w-xs `}
+      // className={`relative m-6 p-6 rounded-2xl shadow-sm shadow-accent-1 text-content bg-accent-4 transition-all hover:scale-x-[1.02] md:hover:scale-x-[1.01] hover:shadow-md hover:shadow-accent-2  min-w-[320px] max-w-xs `}
+      className={`relative m-6 p-6 rounded-2xl shadow-sm shadow-accent-1 text-content bg-accent-4 transition-all hover:shadow-md hover:shadow-accent-2  min-w-[320px] max-w-xs `}
     >
       {currentUser && (
         <FavoriteButton
