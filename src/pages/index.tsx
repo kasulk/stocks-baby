@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FavoriteMutation, SortParamType, Stock } from "../../types";
 import DarkmodeToggle from "../components/DarkmodeToggle";
+import Footer from "@/components/Footer";
 import Loader from "../components/Loader";
 import LoginButton from "../components/LoginButton";
 import SearchForm from "../components/SearchForm";
@@ -221,9 +222,7 @@ export default function Home() {
           </button>
         )} */}
       </main>
-      <footer className="fixed bottom-0 z-10 w-full text-center p-6 bg-accent-4 bg-opacity-90">
-        <span>Made with 🍕 in Berlin</span>
-      </footer>
+      <Footer />
     </>
   );
 }
