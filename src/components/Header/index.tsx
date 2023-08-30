@@ -26,7 +26,7 @@ export default function Header({
   setIsShowFavoriteStocks,
 }: props) {
   return (
-    <header className="fixed top-0 z-10 flex flex-col w-full bg-accent-4 bg-opacity-90 p-4 pb-2">
+    <header className="fixed top-0 z-10 flex flex-col w-full bg-accent-4 bg-opacity-90 backdrop-blur-md p-4 pb-2 ">
       <div className="flex flex-wrap justify-center sm:justify-between items-center">
         <h1 className="font-serif font-black italic text-2xl sm:text-5xl md:text-6xl text-customcontentcolor mr-4">
           Ursula
