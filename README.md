@@ -2,7 +2,7 @@ Meet
 
 # Ursula 💅
 
-Ursula renders and processes fundamental data of ~3000 stocks of the largest publicly held companies in the US [Russell 3000 Index](https://en.wikipedia.org/wiki/Russell_3000_Index)
+Ursula renders and processes fundamental data of ~3000 stocks of the largest publicly held companies in the US [Russell 3000 Index](https://en.wikipedia.org/wiki/Russell_3000_Index).
 
 ## Tech Stack
 
@@ -37,4 +37,7 @@ Ursula renders and processes fundamental data of ~3000 stocks of the largest pub
 - Refactor to increase comprehensibility (start with pages/index.tsx)
 - [and so much more...](https://github.com/users/kasulk/projects/1)
 
-<div style="text-align: right;">Made with 🍕 in Berlin.</div>
+&nbsp;
+---
+
+Made with 🍕 in Berlin.
