@@ -38,6 +38,7 @@ Ursula renders and processes fundamental data of ~3000 stocks of the largest pub
 - [and so much more...](https://github.com/users/kasulk/projects/1)
 
 &nbsp;
+
 ---
 
 Made with 🍕 in Berlin.
