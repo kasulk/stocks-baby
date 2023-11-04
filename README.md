@@ -6,7 +6,9 @@ Ursula renders and processes fundamental data of ~3000 stocks of the largest pub
 
 ## Tech Stack
 
-[![Tech Stack](https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,mongodb,nodejs,tailwind)](https://skillicons.dev)
+[![Tech Stack](https://skillicons.dev/icons?i=js,ts,react,nextjs,mongodb,nodejs,tailwind,html,css,)](https://skillicons.dev)
+
+JavaScript - TypeScript - React - Next.js - MongoDB - Node.js - Tailwind - HTML5 - CSS3
 
 ## Features
 
