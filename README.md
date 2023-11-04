@@ -10,32 +10,32 @@ Ursula renders and processes fundamental data of ~3000 stocks of the largest pub
 
 ## Features
 
-- Renders and processes fundamental data of ~3000 stocks in the US [Russell 3000 Index](https://en.wikipedia.org/wiki/Russell_3000_Index) from MongoDB
-- Search
-- Login with [GitHub](https://github.com/kasulk) via [NextAuth.js](https://next-auth.js.org)
-- Responsive
-- Darkmode
-- Infinite scroll
-- Every stock is linked to [finviz.com](https://finviz.com)
+- [x] Renders and processes fundamental data of ~3000 stocks in the US [Russell 3000 Index](https://en.wikipedia.org/wiki/Russell_3000_Index) from MongoDB
+- [x] Search
+- [x] Login with [GitHub](https://github.com/kasulk) via [NextAuth.js](https://next-auth.js.org)
+- [x] Responsive
+- [x] Darkmode
+- [x] Infinite scroll
+- [x] Every stock is linked to [finviz.com](https://finviz.com)
 
 ## APIs
 
-- The data is fetched from 2 APIs ([AlphaVantage](https://www.alphavantage.co) and [TwelveData](https://twelvedata.com))
-- Due to the API restrictions, I created a script that runs on node
-- The script fetches the data on interval and stores it in the DB
-- It works seperately from Ursula, so it is found in another repo
+- [x] The data is fetched from 2 APIs ([AlphaVantage](https://www.alphavantage.co) and [TwelveData](https://twelvedata.com))
+- [x] Due to the API restrictions, I created a script that runs on node
+- [x] The script fetches the data on interval and stores it in the DB
+- [x] It works seperately from Ursula, so it is found in another repo
 
 ## Why
 
-- Ursula helps the long-term investor to find potentially undervalued companies
-- that companies can then be further investigated
+- [x] Ursula helps the long-term investor to find potentially undervalued companies
+- [x] that companies can then be further investigated
 
 ## What's next
 
-- Fixing the sort functionality
-- Fixing the favorite functionality
-- Refactor to increase comprehensibility (start with pages/index.tsx)
-- [and so much more...](https://github.com/users/kasulk/projects/1)
+- [ ] Fixing the sort functionality
+- [ ] Fixing the favorite functionality
+- [ ] Refactor to increase comprehensibility (start with pages/index.tsx)
+- [ ] [and so much more...](https://github.com/users/kasulk/projects/1)
 
 ## How to run Ursula on your machine
 
