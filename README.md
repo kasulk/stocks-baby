@@ -37,6 +37,42 @@ Ursula renders and processes fundamental data of ~3000 stocks of the largest pub
 - Refactor to increase comprehensibility (start with pages/index.tsx)
 - [and so much more...](https://github.com/users/kasulk/projects/1)
 
+## How to run Ursula on your machine
+
+### 1. Install `Node.js` and `npm`
+
+#### On Windows:
+
+Download `Node.js` [here](https://nodejs.org/en), and install it
+
+#### On Linux:
+
+```bash
+sudo apt update
+sudo apt install nodejs
+sudo apt install npm
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run Ursula
+
+```bash
+npm run dev
+```
+
+### 4. Open Ursula in your favorite browser
+
+[http://localhost:3000](http://localhost:3000)
+
+### 5. Smile
+
+🥴
+
 &nbsp;
 
 ---
